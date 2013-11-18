@@ -1,6 +1,6 @@
-module elib-bootstrap-2/bootstrap
+module elib-bootstrap-3/bootstrap
 
-imports elib-bootstrap-2/icons    
+imports elib-bootstrap-3/icons    
 
 section positioning
 
@@ -16,23 +16,25 @@ section grid system
   template gridContainer() {
   	div[class="container", all attributes]{ elements }
   }
-  template gridContainerFluid(){
-  	div[class="container-fluid", all attributes]{ elements }  	
-  } 
-  template gridRowFluid(){
-  	div[class="row-fluid", all attributes]{ elements }
-  }
   template gridRow(){
   	div[class="row", all attributes]{ elements }
   }
   template gridRow(cls: String){
     div[class="row " + cls, all attributes]{ elements }
   }
-  template gridSpan(span: Int){
-  	  div[class="span" + span, all attributes]{ elements }
+  template gridSpan(span: Int){ //deprecated
+  	  gridCol(span)[all attributes]{ elements }
   }
-  template gridSpan(span: Int, offset: Int){
-  	div[class="span" + span + " offset" + offset, all attributes]{ elements }
+  template gridSpan(span: Int, offset: Int){ //deprecated
+  	gridCol(span, offset)[all attributes]{ elements }
+  }
+  
+  template gridCol(cols : Int){
+  	div[class="col-sm-" + cols, all attributes]{ elements }
+  }
+  
+  template gridCol(cols : Int, offset : Int){
+  	div[class="col-sm-" + cols + " col-sm-offset" + offset, all attributes]{ elements }
   }
   
 section footer
@@ -48,7 +50,7 @@ section navigation bar
   template appname() { "<default>" }
 
   template brand() { 
-    navigate root() [class="brand"]{ appname }
+    navigate root() [class="navbar-brand"]{ appname }
   }
 
   template navbar() {
@@ -99,7 +101,7 @@ section navigation bar
   	}
   }  
   template navItems() {
-  	list[class="nav"]{
+  	list[class="nav navbar-nav"]{
   		elements
   	}
   }
@@ -108,7 +110,7 @@ section navigation bar
   }
   
   template navCollapseButton() {
-    <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
+    <button class="btn btn-default navbar-btn" data-target=".nav-collapse" data-toggle="collapse" type="button">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -206,7 +208,7 @@ section forms
       elements
     }
   }
-      
+   
 section horizontal forms
 
   template horizontalForm(){
@@ -276,7 +278,7 @@ section pagers
 section buttons
 
   template buttonToolbar() {
-  	div[class="btn-toolbar"]{
+  	div[class="btn btn-default-toolbar"]{
   		elements
   	}
   }
@@ -296,26 +298,26 @@ section buttons
     }
   }
   template buttonNavigate(nav: String) {
-  	//navigate url(nav) [class="btn"]{ elements }
-  	<a href=nav class="btn">elements</a>
+  	//navigate url(nav) [class="btn btn-default"]{ elements }
+  	<a href=nav class="btn btn-default">elements</a>
   }
   template button() {
-  	div[class="btn", all attributes]{ elements }
+  	div[class="btn btn-default", all attributes]{ elements }
   }
   template buttonMini(){
-  	div[class="btn btn-mini", all attributes]{ elements }
+  	div[class="btn btn-default btn-xs", all attributes]{ elements }
   }
   template buttonSmall(){
-  	div[class="btn btn-small", all attributes]{ elements }
+  	div[class="btn btn-default btn-sm", all attributes]{ elements }
   }
   template buttonPrimary() {
   	div[class="btn btn-primary ", all attributes]{ elements }
   }
   template buttonPrimaryMini(){
-  	div[class="btn btn-mini btn-primary", all attributes]{ elements }
+  	div[class="btn btn-primary btn-xs", all attributes]{ elements }
   }
   template buttonPrimarySmall(){
-  	div[class="btn btn-small btn-primary", all attributes]{ elements }
+  	div[class="btn btn-primary btn-sm", all attributes]{ elements }
   }
 
   
@@ -342,7 +344,7 @@ section dropdowns
   	listitem[class="divider"]{  }
   }  
   template dropdownToggle(cls: String){
-  	<a class="btn dropdown-toggle "+cls href="#" data-toggle="dropdown" style="height:18px;">
+  	<a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown" style="height:18px;">
   	  <span class="caret"></span>
   	</a>
   }
@@ -361,13 +363,13 @@ section dropdowns
   	</li>
   }
   template dropdownCaret() {
-    <a class="btn dropdown-toggle" href="#" data-toggle="dropdown" style="height:14px;padding:7px;">
+    <a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" style="height:14px;padding:7px;">
        <span class="caret"></span>
     </a>
     dropdownMenu{ elements }
   }
   template dropdownButton(title: String) {
-  	<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+  	<a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
 	  	    output(title) " " <span class="caret"></span>
 	  </a>
 	  dropdownMenu{ elements }
@@ -462,7 +464,7 @@ section alerts
   }  
   
   template alertError() {
-  	div[class="alert alert-error"]{
+  	div[class="alert alert-danger"]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
