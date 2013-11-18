@@ -55,23 +55,21 @@ section navigation bar
 
   template navbar() {
   	div[class="navbar navbar-inverse navbar-fixed-top"]{
-      div[class="navbar-inner"]{
-        div[class="container"]{
-        	elements
-        }
+      div[class="container"]{
+      	elements
       }
     }
   }
   
   template navbarResponsive() {
     div[class="navbar navbar-inverse navbar-fixed-top"]{
-      div[class="navbar-inner"]{
-        div[class="container"]{
-          navCollapseButton
-          brand
-          div[class="nav-collapse collapse", style="height: 0px;"]{
-            elements
-          }
+      div[class="container"]{
+        div[class="navbar-header"]{
+        	brand
+        	navCollapseButton
+        }
+        div[class="navbar-collapse collapse", style="height: 0px;"]{
+          elements
         }
       }
     }
@@ -80,7 +78,7 @@ section navigation bar
   template navbarFluid() {
     div[class="navbar navbar-inverse navbar-fixed-top"]{
       div[class="navbar-inner"]{
-        div[class="container-fluid"]{
+        div[class="container"]{
           elements
         }
       }
@@ -99,7 +97,12 @@ section navigation bar
   	div[class="nav-collapse"]{
   		elements
   	}
-  }  
+  }
+  template navbarRight() {
+  	div[class="navbar-right"]{
+  		elements
+  	}
+  } 
   template navItems() {
   	list[class="nav navbar-nav"]{
   		elements
@@ -110,10 +113,10 @@ section navigation bar
   }
   
   template navCollapseButton() {
-    <button class="btn btn-default navbar-btn" data-target=".nav-collapse" data-toggle="collapse" type="button">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    	<span class="icon-bar"></span>
+    	<span class="icon-bar"></span>
+    	<span class="icon-bar"></span>
     </button>
   }
   
@@ -234,17 +237,17 @@ section horizontal forms
   }
 
   template inputAppend() {
-    <span class="input-append">
-      elements
-    </span>
+    inputGroup{ elements }
   }
   template inputPrepend() {
-    <span class="input-prepend">
-      elements
-    </span>
+    inputGroup{ elements }
   }
   template inputPrependAppend() {
-    <span class="input-prepend input-append">
+    inputGroup{ elements }
+  }
+  
+  template inputGroup() {
+  	<span class="input-group">
       elements
     </span>
   }
@@ -527,7 +530,11 @@ section modal
 
   define modal(modalID : String){
   	<div class="modal " + attribute("class") id=modalID>
-  		elements
+  		<div class="modal-dialog">
+		  	<div class="modal-content">
+		  		elements
+		    </div>
+		</div>
   	</div>
   }
 
