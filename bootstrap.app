@@ -168,6 +168,10 @@ section tables
   	<thead all attributes>elements</thead>
   }
   
+  template tfooter() {
+  	<tfoot all attributes>elements</tfoot>
+  }
+  
   template th(){
   	<th all attributes>elements</th>
   }
@@ -522,6 +526,51 @@ section alerts
   }
 */
 
+section panels
+
+  define panel(){
+  	div[class="panel panel-default"]{
+  		elements
+  	}
+  }
+  define panelDanger(){
+  	div[class="panel panel-danger"]{
+  		elements
+  	}
+  }
+  define panelWarning(){
+  	div[class="panel panel-warning"]{
+  		elements
+  	}
+  }
+  define panelInfo(){
+  	div[class="panel panel-info"]{
+  		elements
+  	}
+  }
+  define panelPrimary(){
+  	div[class="panel panel-primary"]{
+  		elements
+  	}
+  }
+  define panelSuccess(){
+  	div[class="panel panel-success"]{
+  		elements
+  	}
+  }
+  define panelHeading(){
+  	div[class="panel-heading"]{
+      div[class="panel-title"]{
+      	elements
+      }
+    }
+  }
+  define panelBody(){
+  	div[class="panel-body"]{
+  		elements
+  	}
+  }
+
 section modal
 
   define modalLink (modalID : String){
@@ -581,6 +630,3 @@ section definitionList
   	define definitionListDescription() {
   		<dl class="dl-horizontal"> elements </dl>
   	}
-  	
-
-
