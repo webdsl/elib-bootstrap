@@ -1,11 +1,11 @@
-module elib-bootstrap-3/bootstrap
+module elib/elib-bootstrap/bootstrap
 
-imports elib-bootstrap-3/icons    
+imports elib/elib-bootstrap/icons    
 
 section positioning
 
   template pullRight() { 
-  	span[class="pull-right", all attributes]{ elements }
+  	span[class="pull-right", all attributes]{ elements } 
   }
   template pullLeft() {  
   	span[class="pull-left", all attributes]{ elements }
