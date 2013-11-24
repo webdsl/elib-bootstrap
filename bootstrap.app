@@ -199,9 +199,22 @@ section forms
   }
   
   template formActions(){
-  	div[class="form-actions"]{ elements }
+  	// div[class="form-group"]{ 
+  	//   div[class="col-sm-offset-2 col-sm-10"]{
+  	//     elements 
+  	//   }
+  	// }
+  	formActions(2, 10){ elements }
   }
   
+  template formActions(labelOff: Int, elemCol: Int){
+    div[class="form-group"]{ 
+      div[class="col-sm-offset-" + labelOff + " col-sm-" + elemCol]{
+        elements 
+      }
+    }
+  }
+    
   template formSearch(query: Ref<String>) {
     form[class="form-search"]{
       input(query)[class="input-medium search-query", placeholder="Search"] 
@@ -219,7 +232,7 @@ section forms
 section horizontal forms
 
   template horizontalForm(){
-  	form[class="form-horizontal"] {
+  	form[class="form-horizontal", role="form"] {
   		elements
   	}
   }
@@ -231,12 +244,22 @@ section horizontal forms
   	}
   }  
   template controlGroup(s: String){
-    div[class="control-group"]{
-    	label(s)[class="control-label"]{ 
-    		div[class="controls"]{
-    		  elements
-    		}
-    	}
+    // div[class="form-group"]{
+    // 	label(s)[class="control-label"]{ 
+    // 		div[class="controls"]{
+    // 		  elements
+    // 		}
+    // 	}
+    // }
+    controlGroup(s, 2, 10){ elements }
+  }
+  template controlGroup(s: String, labelCol: Int, elemCol: Int){   
+    div[class="form-group"]{
+      label(s)[class="control-label col-sm-" + labelCol]{
+        div[class="col-sm-" + elemCol]{
+          elements
+        }
+      }
     }
   }
 
