@@ -262,10 +262,10 @@ section breadcrumbs
   	<ul class="breadcrumb"> elements </ul>
   }
   template breadcrumb() {
-  	<li> <span class="divider">"/"</span> elements </li>
-  }
-  template breadcrumbFirst() {
   	<li> elements </li>
+  }
+  template breadcrumbActive() {
+  	<li class="active"> elements </li>
   }
   
 section pagers
