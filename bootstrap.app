@@ -262,6 +262,10 @@ section horizontal forms
       }
     }
   }
+  
+  template helpBlock(){
+    <span class="help-block"> elements </span>
+  }
 
   template inputAppend() {
     inputGroup{ elements }
