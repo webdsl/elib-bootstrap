@@ -181,7 +181,7 @@ section forms
   template span() { <span all attributes>elements</span> }
 
   template inlForm() { 
-  	span[class="inlineForm"]{ 
+  	span[class="form-inline"]{ 
   		form{
   		  elements
   	  } 
@@ -378,7 +378,7 @@ section dropdowns
   	listitem[class="divider"]{  }
   }  
   template dropdownToggle(cls: String){
-  	<a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown" style="height:18px;">
+  	<a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown">
   	  <span class="caret"></span>
   	</a>
   }
