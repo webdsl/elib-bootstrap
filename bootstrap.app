@@ -312,7 +312,7 @@ section pagers
 section buttons
 
   template buttonToolbar() {
-  	div[class="btn btn-default-toolbar"]{
+  	div[class="btn-toolbar", role="toolbar"]{
   		elements
   	}
   }
