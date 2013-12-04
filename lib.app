@@ -1,5 +1,4 @@
-module elib/elib-bootstrap/bootstrap
-
+module elib/elib-bootstrap/lib
 imports elib/elib-bootstrap/icons    
 
 section positioning
@@ -181,8 +180,8 @@ section forms
   template span() { <span all attributes>elements</span> }
 
   template inlForm() { 
-  	span[class="form-inline"]{ 
-  		form{
+  	span[class="form-inline", role="form"]{ 
+  		form[class="bla"]{
   		  elements
   	  } 
   	}
