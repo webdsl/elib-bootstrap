@@ -596,6 +596,40 @@ section panels
   		elements
   	}
   }
+  
+  define panelFooter(){
+  	div[class="panel-footer"]{
+  		elements
+  	}
+  }
+  
+  define panel( header : String ){
+  	panelInternal( header, "panel-default"){ elements }
+  }
+  define panelDanger( header : String ){
+  	panelInternal( header, "panel-danger"){ elements }
+  }
+  define panelWarning( header : String ){
+  	panelInternal( header, "panel-warning"){ elements }
+  }
+  define panelInfo( header : String ){
+  	panelInternal( header, "panel-info"){ elements }
+  }
+  define panelPrimary( header : String ){
+  	panelInternal( header, "panel-primary"){ elements }
+  }
+  define panelSuccess( header : String ){
+  	panelInternal( header, "panel-success"){ elements }
+  }
+  
+  define panelInternal( header : String, panelclass : String){
+  	div[class="panel " + panelclass]{
+  		panelHeading { output(header) }
+  		panelBody { elements }
+  	}
+  }
+  
+  
 
 section modal
 
