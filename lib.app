@@ -33,7 +33,7 @@ section grid system
   }
   
   template gridCol(cols : Int, offset : Int){
-  	div[class="col-sm-" + cols + " col-sm-offset" + offset, all attributes]{ elements }
+  	div[class="col-sm-" + cols + " col-sm-offset-" + offset, all attributes]{ elements }
   }
   
 section footer
@@ -259,6 +259,17 @@ section horizontal forms
           elements
         }
       }
+    }
+  }  
+  template checkboxGroup( label : String ){
+    checkboxGroup(label, 2, 10){ elements } 
+  }
+  
+  template checkboxGroup( label : String, labelCol: Int, elemCol: Int ){
+    div[class="checkbox"]{
+      <label class="col-sm-" + elemCol + " col-sm-offset-" + labelCol>
+        elements output(label)
+      </label>
     }
   }
   
