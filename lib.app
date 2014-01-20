@@ -701,3 +701,22 @@ section definitionList
   	define definitionListDescription() {
   		<dl class="dl-horizontal"> elements </dl>
   	}
+  	
+ section media
+ 
+ 	define media(){
+ 		div[class="media"]{	elements }
+ 	}
+ 	
+ 	define mediaBody(){
+ 		div[class="media-body"]{ elements }
+ 	}
+ 	
+ 	define thumbnail(){
+ 		div[class="thumbnail"]{ elements }
+ 	}
+ 	
+ 	define caption(){
+ 		div[class="caption"]{ elements }
+ 	}
+ 	
