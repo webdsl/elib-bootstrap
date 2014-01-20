@@ -451,10 +451,10 @@ section tabs
   	tab(label, id, false)
   }
   template tab(label: String, id: String, active: Bool) { 
-  	<li class=activeClass(active)><a href="#"+id data-toggle="tab">output(label)</a></li>
+  	<li class=activeClass(active)><a href="#"+id.replace(" ","-") data-toggle="tab">output(label)</a></li>
   	<script>
       $(function () {
-        $('#~id').tab('show')
+        $('#~(id.replace(" ","-"))').tab('show')
       })
     </script>
   }
@@ -479,7 +479,7 @@ section tabs
   	tabPane(id, false) { elements }
   }
   template tabPane(id: String, active: Bool){
-  	div[class="tab-pane " + activeClass(active), id=id]{
+  	div[class="tab-pane " + activeClass(active), id=id.replace(" ","-")]{
   		elements 
   	}
   }
@@ -723,4 +723,3 @@ section definitionList
  	define caption(){
  		div[class="caption"]{ elements }
  	}
- 	
