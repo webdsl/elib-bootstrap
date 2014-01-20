@@ -708,6 +708,10 @@ section definitionList
  		div[class="media"]{	elements }
  	}
  	
+ 	define mediaObject(){
+ 		div[class="media-object"]{ elements }
+ 	}
+ 	
  	define mediaBody(){
  		div[class="media-body"]{ elements }
  	}
