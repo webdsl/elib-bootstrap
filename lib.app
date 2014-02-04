@@ -435,10 +435,29 @@ section miscellaneous
   
 section tabs
 
+  template tabsBSNoURL(){
+  	<ul id="tab" class="nav nav-tabs">
+  		elements
+  	</ul>
+  }
   template tabsBS() {  
   	<ul id="tab" class="nav nav-tabs">
   		elements
   	</ul>
+  	<script>
+		$(function(){
+		  var hash = window.location.hash;
+		  hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+		
+		  $('.nav-tabs a').click(function (e) {
+		    $(this).tab('show');
+		    var scrollmem = $('body').scrollTop();
+		    window.location.hash = this.hash;
+		    $('html,body').scrollTop(scrollmem);
+		  });
+		  
+		});
+	</script>
   }
   
   template tabActive(label: String, id: String) { 
