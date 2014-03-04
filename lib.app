@@ -526,6 +526,13 @@ section alerts
   	}
   }  
   
+  template alertWarning() {
+  	div[class="alert alert-warning"]{
+  		<a class="close" data-dismiss="alert">"x"</a>
+  		elements
+  	}
+  }
+  
   template alertError() {
   	div[class="alert alert-danger"]{
   		<a class="close" data-dismiss="alert">"x"</a>
