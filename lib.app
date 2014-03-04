@@ -503,6 +503,19 @@ section tabs
   	}
   }
   
+section labels
+
+  template labelDefault(){ labelInternal("label-default"){ elements } }
+  template labelSuccess(){ labelInternal("label-success"){ elements } }
+  template labelPrimary(){ labelInternal("label-primary"){ elements } }
+  template labelWarning(){ labelInternal("label-warning"){ elements } }
+  template labelDanger(){ labelInternal("label-danger"){ elements } }
+  template labelInfo(){ labelInternal("label-info"){ elements } }
+  
+  template labelInternal( labelClass : String ){
+  	<span class="label "+labelClass> elements </span>
+  }
+  
 section alerts
 
   template alert() {
