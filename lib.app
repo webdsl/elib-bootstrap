@@ -19,7 +19,7 @@ section grid system
   	div[class="row", all attributes]{ elements }
   }
   template gridRow(cls: String){
-    div[class="row " + cls, all attributes]{ elements }
+    div[class="row " + cls + attribute("class"), all attributes]{ elements }
   }
   template gridSpan(span: Int){ //deprecated
   	  gridCol(span)[all attributes]{ elements }
@@ -29,28 +29,28 @@ section grid system
   }
   
   template gridCol(cols : Int){
-  	div[class="col-sm-" + cols, all attributes]{ elements }
+  	div[class="col-sm-" + cols + " " + attribute("class"), all attributes]{ elements }
   }  
   template gridCol(cols : Int, offset : Int){
-  	div[class="col-sm-" + cols + " col-sm-offset-" + offset, all attributes]{ elements }
+  	div[class="col-sm-" + cols + " col-sm-offset-" + offset+ " " + attribute("class"), all attributes]{ elements }
   }
   template gridColXs(cols : Int){
     div[class="col-xs-" + cols, all attributes]{ elements }
   } 
   template gridColXs(cols : Int, offset : Int){
-    div[class="col-xs-" + cols + " col-xs-offset-" + offset, all attributes]{ elements }
+    div[class="col-xs-" + cols + " col-xs-offset-" + offset + " " + attribute("class"), all attributes]{ elements }
   }
   template gridColMd(cols : Int){
-    div[class="col-md-" + cols, all attributes]{ elements }
+    div[class="col-md-" + cols + " " +  attribute("class"), all attributes]{ elements }
   } 
   template gridColMd(cols : Int, offset : Int){
-    div[class="col-md-" + cols + " col-md-offset-" + offset, all attributes]{ elements }
+    div[class="col-md-" + cols + " col-md-offset-" + offset + " " + attribute("class"), all attributes]{ elements }
   }
   template gridColLg(cols : Int){
-    div[class="col-lg-" + cols, all attributes]{ elements }
+    div[class="col-lg-" + cols + " " +  attribute("class"), all attributes]{ elements }
   }
   template gridColLg(cols : Int, offset : Int){
-    div[class="col-lg-" + cols + " col-lg-offset-" + offset, all attributes]{ elements }
+    div[class="col-lg-" + cols + " col-lg-offset-" + offset + " " + attribute("class"), all attributes]{ elements }
   }
     
 section footer
