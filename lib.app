@@ -33,6 +33,12 @@ section grid system
   }  
   template gridCol(cols : Int, offset : Int){
   	div[class="col-sm-" + cols + " col-sm-offset-" + offset+ " " + attribute("class"), all attributes]{ elements }
+  }  
+  template gridColPush(cols : Int, offset : Int){
+  	div[class="col-sm-" + cols + " col-sm-push-" + offset, all attributes]{ elements }
+  }
+  template gridColPull(cols : Int, offset : Int){
+  	div[class="col-sm-" + cols + " col-sm-pull-" + offset, all attributes]{ elements }
   }
   template gridColXs(cols : Int){
     div[class="col-xs-" + cols, all attributes]{ elements }
