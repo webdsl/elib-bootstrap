@@ -30,12 +30,29 @@ section grid system
   
   template gridCol(cols : Int){
   	div[class="col-sm-" + cols, all attributes]{ elements }
-  }
-  
+  }  
   template gridCol(cols : Int, offset : Int){
   	div[class="col-sm-" + cols + " col-sm-offset-" + offset, all attributes]{ elements }
   }
-  
+  template gridColXs(cols : Int){
+    div[class="col-xs-" + cols, all attributes]{ elements }
+  } 
+  template gridColXs(cols : Int, offset : Int){
+    div[class="col-xs-" + cols + " col-xs-offset-" + offset, all attributes]{ elements }
+  }
+  template gridColMd(cols : Int){
+    div[class="col-md-" + cols, all attributes]{ elements }
+  } 
+  template gridColMd(cols : Int, offset : Int){
+    div[class="col-md-" + cols + " col-md-offset-" + offset, all attributes]{ elements }
+  }
+  template gridColLg(cols : Int){
+    div[class="col-lg-" + cols, all attributes]{ elements }
+  }
+  template gridColLg(cols : Int, offset : Int){
+    div[class="col-lg-" + cols + " col-lg-offset-" + offset, all attributes]{ elements }
+  }
+    
 section footer
 
   template footer() { 
@@ -605,32 +622,32 @@ section alerts
 section panels
 
   define panel(){
-  	div[class="panel panel-default"]{
+  	div[class="panel panel-default", all attributes]{
   		elements
   	}
   }
   define panelDanger(){
-  	div[class="panel panel-danger"]{
+  	div[class="panel panel-danger", all attributes]{
   		elements
   	}
   }
   define panelWarning(){
-  	div[class="panel panel-warning"]{
+  	div[class="panel panel-warning", all attributes]{
   		elements
   	}
   }
   define panelInfo(){
-  	div[class="panel panel-info"]{
+  	div[class="panel panel-info", all attributes]{
   		elements
   	}
   }
   define panelPrimary(){
-  	div[class="panel panel-primary"]{
+  	div[class="panel panel-primary", all attributes]{
   		elements
   	}
   }
   define panelSuccess(){
-  	div[class="panel panel-success"]{
+  	div[class="panel panel-success", all attributes]{
   		elements
   	}
   }
@@ -724,6 +741,18 @@ section modal
   	<script>
   		$('#~modalID').hide();
   	</script>
+  }
+  
+section list groups
+
+  template listGroup() {
+    <ul class="list-group">
+      elements
+    </ul>
+  }
+  
+  template listGroupItem() { 
+    <li class="list-group-item">elements</li>
   }
   
 section definitionList
