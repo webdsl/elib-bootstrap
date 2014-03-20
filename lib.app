@@ -292,6 +292,10 @@ section horizontal forms
       elements
     </span>
   }
+  
+  template inputGroupButton(){
+  	<span class="input-group-btn"> elements </span>
+  }
     
 section breadcrumbs
 
