@@ -498,12 +498,15 @@ section tabs
   	tab(label, id, false)
   }
   template tab(label: String, id: String, active: Bool) { 
-  	<li class=activeClass(active)><a href="#"+id.replace(" ","-") data-toggle="tab">output(label)</a></li>
+  	<li class=activeClass(active)><a href=hrefHashId(id, true) data-toggle="tab">output(label)</a></li>
   	<script>
       $(function () {
-        $('#~(id.replace(" ","-"))').tab('show')
+        $('~(hrefHashId(id, true))').tab('show')
       })
     </script>
+  }
+  function hrefHashId(s : String, includeHash : Bool) : String {
+  	return if(includeHash) "#" + /(\W|\s)+/.replaceAll("-",s) else /(\W|\s)+/.replaceAll("-",s);
   }
   function activeClass(active: Bool): String {
     if(active) { return "active"; } else { return ""; }
@@ -526,7 +529,7 @@ section tabs
   	tabPane(id, false) { elements }
   }
   template tabPane(id: String, active: Bool){
-  	div[class="tab-pane " + activeClass(active), id=id.replace(" ","-")]{
+  	div[class="tab-pane " + activeClass(active), id=hrefHashId(id,false)]{
   		elements 
   	}
   }
