@@ -666,7 +666,7 @@ section panels
   	}
   }
   define panelHeading(){
-  	div[class="panel-heading"]{
+  	div[class="panel-heading clearfix"]{
       div[class="panel-title"]{
       	elements
       }
