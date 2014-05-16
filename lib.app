@@ -273,7 +273,7 @@ section horizontal forms
     // 		}
     // 	}
     // }
-    controlGroup(s, 2, 10){ elements }
+    controlGroup(s, 2, 10)[all attributes]{ elements }
   }
   template controlGroup(s: String, labelCol: Int, elemCol: Int){   
     div[class="form-group " + attribute("class", ""), all attributes except "class"]{
