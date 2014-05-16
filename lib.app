@@ -276,7 +276,7 @@ section horizontal forms
     controlGroup(s, 2, 10){ elements }
   }
   template controlGroup(s: String, labelCol: Int, elemCol: Int){   
-    div[class="form-group"]{
+    div[class="form-group " + attribute("class", ""), all attributes except "class"]{
       label(s)[class="control-label col-sm-" + labelCol]{
         div[class="col-sm-" + elemCol]{
           elements
