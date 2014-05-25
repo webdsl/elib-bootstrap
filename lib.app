@@ -474,7 +474,17 @@ section tabs
   	<script>
 		$(document).ready(function() {
 		    // show active tab on reload
-		    if (location.hash !== '') $('a[href="' + location.hash + '"]').tab('show');
+		    if (location.hash !== ''){ 
+		    	$('a[href="' + location.hash + '"]').tab('show');
+		    	// and open parent tabs in case there are nested tabs
+		    	$('.tab-pane').each(function() {
+			        var cur_tab = $(this);
+			        if ( $(this).find(location.hash).length > 0 ) {
+			            $('.nav-tabs a[href=#'+ cur_tab.attr('id') +']').tab('show');
+			            return false;
+			        }
+			    });
+		    }
 		
 		    // remember the hash in the URL without jumping
 		    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
