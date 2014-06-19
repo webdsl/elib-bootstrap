@@ -15,6 +15,9 @@ section grid system
   template gridContainer() {
   	div[class="container", all attributes]{ elements }
   }
+template gridContainerFluid() {
+  	div[class="container-fluid", all attributes]{ elements }
+  }
   template gridRow(){
   	div[class="row", all attributes]{ elements }
   }
