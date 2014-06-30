@@ -549,15 +549,15 @@ section tabs
   
 section labels
 
-  template labelDefault(){ labelInternal("label-default"){ elements } }
-  template labelSuccess(){ labelInternal("label-success"){ elements } }
-  template labelPrimary(){ labelInternal("label-primary"){ elements } }
-  template labelWarning(){ labelInternal("label-warning"){ elements } }
-  template labelDanger(){ labelInternal("label-danger"){ elements } }
-  template labelInfo(){ labelInternal("label-info"){ elements } }
+  template labelDefault(){ labelInternal("label-default")[all attributes]{ elements } }
+  template labelSuccess(){ labelInternal("label-success")[all attributes]{ elements } }
+  template labelPrimary(){ labelInternal("label-primary")[all attributes]{ elements } }
+  template labelWarning(){ labelInternal("label-warning")[all attributes]{ elements } }
+  template labelDanger(){ labelInternal("label-danger")[all attributes]{ elements } }
+  template labelInfo(){ labelInternal("label-info")[all attributes]{ elements } }
   
   template labelInternal( labelClass : String ){
-  	<span class="label "+labelClass> elements </span>
+  	<span class=labelClass + " label " + attribute("class") all attributes except "class"> elements </span>
   }
   
 section alerts
