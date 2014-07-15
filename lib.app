@@ -497,7 +497,15 @@ section tabs
 		            location.hash = '#'+$(e.target).attr('href').substr(1);
 		       }
 		    });
+		    
+		    //When no tab is active, set the first one to active
+		    $('.nav-tabs').each(function() {
+		        if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
+		        	$(this).children().first().addClass('active');
+		        }
+	    	});
 		});
+		
 	</script>
   }
   
@@ -533,6 +541,15 @@ section tabs
   	div[class="tab-content"]{ 
   		elements
   	}
+  	<script>  	
+		$(document).ready(function() {
+  	  		$('.tab-content').each(function() {
+		        if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
+		        	$(this).find('.tab-pane').first().addClass('active');
+		        }
+		    });
+	    });
+    </script>
   }
   
   template tabPaneActive(id: String){
