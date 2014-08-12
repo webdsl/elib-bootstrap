@@ -36,7 +36,15 @@ template gridContainerFluid() {
   }  
   template gridCol(cols : Int, offset : Int){
   	div[class="col-sm-" + cols + " col-sm-offset-" + offset+ " " + attribute("class"), all attributes]{ elements }
-  }  
+  }
+  
+  template gridColAdapt(colsSm : Int, colsLg : Int){
+  	div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " " + attribute("class"), all attributes]{ elements }
+  }
+  template gridColAdapt(colsSm : Int, offsetSm : Int, colsLg : Int, offsetLg : Int){
+  	div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg + " " + attribute("class"), all attributes]{ elements }
+  }
+  
   template gridColPush(cols : Int, offset : Int){
   	div[class="col-sm-" + cols + " col-sm-push-" + offset, all attributes]{ elements }
   }
