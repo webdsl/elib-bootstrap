@@ -187,6 +187,12 @@ section tables
   	}
   }
   
+  template tableStriped(){
+      table[class="table table-striped table-condensed",  all attributes]{
+          elements
+      }
+  }
+  
   template tableHovered(){
   	table[class="table table-hover",  all attributes]{
   		elements
