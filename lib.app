@@ -88,7 +88,7 @@ section navigation bar
 
   template navbar() {
   	div[class="navbar navbar-inverse navbar-fixed-top"]{
-      div[class="container"]{
+      gridContainer{
       	elements
       }
     }
@@ -96,7 +96,7 @@ section navigation bar
   
   template navbarResponsive() {
     div[class="navbar navbar-inverse navbar-fixed-top"]{
-      div[class="container"]{
+      gridContainer{
         div[class="navbar-header"]{
         	brand
         	navCollapseButton
@@ -111,7 +111,7 @@ section navigation bar
   template navbarFluid() {
     div[class="navbar navbar-inverse navbar-fixed-top"]{
       div[class="navbar-inner"]{
-        div[class="container"]{
+        gridContainer{
           elements
         }
       }
@@ -120,7 +120,7 @@ section navigation bar
   template navbarStatic() {
   	div[class="navbar"]{
       div[class="navbar-inner"]{
-        div[class="container"]{
+        gridContainer{
         	elements
         }
       }
