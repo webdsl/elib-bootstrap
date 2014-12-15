@@ -1,5 +1,5 @@
-body{
-  /* padding-top: 40px; */
+body {
+    padding-top: 45px;    
 }
 
 .navbar .brand {
@@ -11,12 +11,6 @@ body{
     border-top: 1px solid #E5E5E5;
     padding: 20px 0;
     margin: 40px 0 0 0;
-}
-
-@media (min-width:980px){
-    body {
-        padding-top: 45px;    
-    }
 }
 
 

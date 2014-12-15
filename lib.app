@@ -433,11 +433,11 @@ section dropdowns
   }  
   template dropdownToggle(cls: String){
   	<a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown">
-  	  <span class="caret"></span>
+  	  elements " " <span class="caret"></span>
   	</a>
   }
   template dropdownToggle(){ 
-  	dropdownToggle("")
+  	dropdownToggle(""){ elements }
   }
   template dropdown() {
     listitem[class="dropdown"]{ elements }
@@ -457,10 +457,8 @@ section dropdowns
     dropdownMenu{ elements }
   }
   template dropdownButton(title: String) {
-  	<a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
-	  	    output(title) " " <span class="caret"></span>
-	  </a>
-	  dropdownMenu{ elements }
+  	dropdownToggle(attribute("class")){ output(title) }
+	dropdownMenu{ elements }
   }
   
   
