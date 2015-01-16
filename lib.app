@@ -94,8 +94,12 @@ section navigation bar
     }
   }
   
-  template navbarResponsive() {
-    div[class="navbar navbar-inverse navbar-fixed-top"]{
+  template navbarResponsive(){
+  	navbarResponsive(true){ elements }
+  }
+  
+  template navbarResponsive(fixed : Bool) {
+    div[class=if(fixed)"navbar navbar-inverse navbar-fixed-top" else "navbar navbar-inverse navbar-static-top"]{
       gridContainer{
         div[class="navbar-header"]{
         	brand
