@@ -1,6 +1,38 @@
 module elib/elib-bootstrap/lib
 imports elib/elib-bootstrap/icons    
 
+section default attribute sets
+  // override attributes navigate{ class="navigate" }
+  // override attributes downloadlink{ class="downloadlink" }
+  // override attributes outputimage{ class="outputimage" }
+  override attributes submit{ class="btn btn-default" }
+  attributes btnSuccess {	class= "btn btn-success" }
+  attributes btnWarn{	class= "btn btn-warning" }
+  attributes btnDanger{	class= "btn btn-danger" }
+  attributes btnPrimary { class= "btn btn-primary" }
+  override attributes submitlink{ submit attributes }
+  // override attributes form{ }
+  // override attributes navigatebutton{ }
+  // override attributes captcha{ }
+  // override attributes image{ }
+  
+  override attributes inputInt{ class="inputInt form-control" }
+  override attributes inputString{ class="inputString form-control" }
+  override attributes inputEmail{ class="inputEmail form-control" }
+  override attributes inputSecret{ class="inputSecret form-control" }
+  override attributes inputURL{ class="inputURLform-control " }
+  override attributes inputText{ class="inputTextarea inputText form-control" }
+  override attributes inputWikiText{ class="inputTextarea inputWikiText form-control" }
+  override attributes inputFloat{ class="inputFloat form-control" }
+  override attributes inputLong{ class="inputLong form-control" }
+  override attributes inputDate{ class="inputDate form-control" } 
+  override attributes inputSelect{ class="select form-control" }
+  override attributes inputSelectMultiple{ class="select form-control" }
+  override attributes inputFile{ class="inputFile  form-control" }
+  override attributes inputMultiFile{ class="inputFile  form-control" }
+  override attributes inputSDF{ class="inputSDF form-control" }
+  // override attributes radio{ class="radio " }  
+
 section positioning
 
   template pullRight() { 
