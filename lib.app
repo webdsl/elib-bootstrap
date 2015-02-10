@@ -119,7 +119,7 @@ section navigation bar
   }
 
   template navbar() {
-  	div[class="navbar navbar-inverse navbar-fixed-top"]{
+  	div[class="navbar navbar-inverse navbar-fixed-top", all attributes]{
       gridContainer{
       	elements
       }
@@ -127,11 +127,11 @@ section navigation bar
   }
   
   template navbarResponsive(){
-  	navbarResponsive(true){ elements }
+  	navbarResponsive(true)[all attributes]{ elements }
   }
   
   template navbarResponsive(fixed : Bool) {
-    div[class=if(fixed)"navbar navbar-inverse navbar-fixed-top" else "navbar navbar-inverse navbar-static-top"]{
+    div[class=if(fixed)"navbar navbar-inverse navbar-fixed-top" else "navbar navbar-inverse navbar-static-top", all attributes]{
       gridContainer{
         div[class="navbar-header"]{
         	brand
@@ -145,7 +145,7 @@ section navigation bar
   }
   
   template navbarFluid() {
-    div[class="navbar navbar-inverse navbar-fixed-top"]{
+    div[class="navbar navbar-inverse navbar-fixed-top", all attributes]{
       div[class="navbar-inner"]{
         gridContainer{
           elements
@@ -154,7 +154,7 @@ section navigation bar
     }
   }
   template navbarStatic() {
-  	div[class="navbar"]{
+  	div[class="navbar", all attributes]{
       div[class="navbar-inner"]{
         gridContainer{
         	elements
@@ -628,35 +628,35 @@ section labels
 section alerts
 
   template alert() {
-  	div[class="alert"]{
+  	div[class="alert alert-dismissible"]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }
   
   template alertSuccess() {
-  	div[class="alert alert-success"]{
+  	div[class="alert alert-success alert-dismissible"]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }
   
   template alertInfo() {
-  	div[class="alert alert-info"]{
+  	div[class="alert alert-info alert-dismissible"]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }  
   
   template alertWarning() {
-  	div[class="alert alert-warning"]{
+  	div[class="alert alert-warning alert-dismissible"]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }
   
   template alertError() {
-  	div[class="alert alert-danger"]{
+  	div[class="alert alert-danger alert-dismissible"]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
