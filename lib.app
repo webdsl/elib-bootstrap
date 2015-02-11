@@ -586,7 +586,7 @@ section tabs
   }
   
   template tabContent(){
-  	div[class="tab-content"]{ 
+  	div[class="tab-content", all attributes]{ 
   		elements
   	}
   	<script>  	
