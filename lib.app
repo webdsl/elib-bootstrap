@@ -33,6 +33,16 @@ section default attribute sets
   override attributes inputSDF{ class="inputSDF form-control" }
   // override attributes radio{ class="radio " }  
 
+section tooltips
+
+	template tooltipsBS(){
+		<script>
+			$( document ).ready(function() {
+			    $('[title]').tooltip({container: 'body'});
+			});
+		</script>
+	}
+
 section positioning
 
   template pullRight() { 
