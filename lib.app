@@ -10,7 +10,7 @@ section default attribute sets
   attributes btnWarn{	class= "btn btn-warning" }
   attributes btnDanger{	class= "btn btn-danger" }
   attributes btnPrimary { class= "btn btn-primary" }
-  override attributes submitlink{ submit attributes }
+  // override attributes submitlink{ submit attributes }
   // override attributes form{ }
   // override attributes navigatebutton{ }
   // override attributes captcha{ }
