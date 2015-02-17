@@ -115,7 +115,7 @@ template gridContainerFluid() {
 section footer
 
   template footer() { 
-    <footer class="footer"> 
+    <footer class="footer" all attributes> 
       elements
     </footer>
   }
@@ -125,7 +125,7 @@ section navigation bar
   template appname() { "<default>" }
 
   template brand() { 
-    navigate root() [class="navbar-brand"]{ appname }
+    navigate root() [class="navbar-brand", all attributes]{ appname }
   }
 
   template navbar() {
@@ -202,22 +202,22 @@ section navigation bar
 section sections
 
   template pageHeader() {
-  	div[class="page-header"]{
+  	div[class="page-header", all attributes]{
   		header1{ elements }
   	}
   }
   template pageHeader2() {
-    div[class="page-header"]{
+    div[class="page-header", all attributes]{
       header2{ elements }
     }
   }
   template pageHeader3() {
-    div[class="page-header"]{
+    div[class="page-header", all attributes]{
       header3{ elements }
     }
   }
   template pageHeader4() {
-    div[class="page-header"]{
+    div[class="page-header", all attributes]{
       header4{ elements }
     }
   }
@@ -266,7 +266,7 @@ section forms
   // template span() { <span all attributes>elements</span> }
 
   template inlForm() { 
-  	span[class="form-inline", role="form"]{ 
+  	span[class="form-inline", role="form", all attributes]{ 
   		form[class="bla"]{
   		  elements
   	  } 
@@ -274,11 +274,11 @@ section forms
   }
 
   template formEntry(l: String){    
-    <label>output(l)</label> elements
+    <label all attributes>output(l)</label> elements
   }
   
   template formEntry(l: String, help: String){    
-    <label>output(l)</label>
+    <label all attributes>output(l)</label>
     elements
     <span class="help-inline">output(help)</span>
   }
@@ -289,11 +289,11 @@ section forms
   	//     elements 
   	//   }
   	// }
-  	formActions(2, 10){ elements }
+  	formActions(2, 10)[all attributes]{ elements }
   }
   
   template formActions(labelOff: Int, elemCol: Int){
-    div[class="form-group"]{ 
+    div[class="form-group", all attributes]{ 
       div[class="col-sm-offset-" + labelOff + " col-sm-" + elemCol]{
         elements 
       }
@@ -301,14 +301,14 @@ section forms
   }
     
   template formSearch(query: Ref<String>) {
-    form[class="form-search"]{
+    form[class="form-search", all attributes]{
       input(query)[class="input-medium search-query", placeholder="Search"] 
       elements
     }
   } 
   
   template navbarSearch(query: Ref<String>) {
-    form[class="navbar-search pull-left"]{
+    form[class="navbar-search pull-left", all attributes]{
       input(query)[class="search-query", placeholder="Search"]
       elements
     }
@@ -317,12 +317,12 @@ section forms
 section horizontal forms
 
   template horizontalForm(){
-  	form[class="form-horizontal", role="form"] {
+  	form[class="form-horizontal", role="form", all attributes] {
   		elements
   	}
   }
   template horizontalForm(title: String){
-  	horizontalForm{
+  	horizontalForm[all attributes]{
   		fieldset(title){
   			elements
   		}
@@ -348,11 +348,11 @@ section horizontal forms
     }
   }  
   template checkboxGroup( label : String ){
-    checkboxGroup(label, 2, 10){ elements } 
+    checkboxGroup(label, 2, 10)[all attributes]{ elements } 
   }
   
   template checkboxGroup( label : String, labelCol: Int, elemCol: Int ){
-    div[class="checkbox"]{
+    div[class="checkbox", all attributes]{
       <label class="col-sm-" + elemCol + " col-sm-offset-" + labelCol>
         elements output(label)
       </label>
@@ -360,59 +360,59 @@ section horizontal forms
   }
   
   template helpBlock(){
-    <span class="help-block"> elements </span>
+    <span class="help-block" all attributes> elements </span>
   }
 
   template inputAppend() {
-    inputGroup{ elements }
+    inputGroup[all attributes]{ elements }
   }
   template inputPrepend() {
-    inputGroup{ elements }
+    inputGroup[all attributes]{ elements }
   }
   template inputPrependAppend() {
-    inputGroup{ elements }
+    inputGroup[all attributes]{ elements }
   }
   
   template inputGroup() {
-  	<span class="input-group">
+  	<span class="input-group" all attributes>
       elements
     </span>
   }
   
   template inputGroupButton(){
-  	<span class="input-group-btn"> elements </span>
+  	<span class="input-group-btn" all attributes> elements </span>
   }
     
 section breadcrumbs
 
   template breadcrumbs(){ 
-  	<ul class="breadcrumb"> elements </ul>
+  	<ul class="breadcrumb" all attributes> elements </ul>
   }
   template breadcrumb() {
-  	<li> elements </li>
+  	<li all attributes> elements </li>
   }
   template breadcrumbActive() {
-  	<li class="active"> elements </li>
+  	<li class="active" all attributes> elements </li>
   }
   
 section pagers
 
   template pager() {
-  	<ul class="pager">
+  	<ul class="pager" all attributes>
   	  elements
   	</ul>
   }
   template pagerPrevious(nav: String){
-  	<li>navigate url(nav) { "Previous" }</li>
+  	<li all attributes>navigate url(nav) { "Previous" }</li>
   }  
   template pagerNext(nav: String){
-  	<li>navigate url(nav) { "Next" }</li>
+  	<li all attributes>navigate url(nav) { "Next" }</li>
   }
   
 section buttons
 
   template buttonToolbar() {
-  	div[class="btn-toolbar", role="toolbar"]{
+  	div[class="btn-toolbar", role="toolbar", all attributes]{
   		elements
   	}
   }
@@ -433,7 +433,7 @@ section buttons
   }
   template buttonNavigate(nav: String) {
   	//navigate url(nav) [class="btn btn-default"]{ elements }
-  	<a href=nav class="btn btn-default">elements</a>
+  	<a href=nav class="btn btn-default" all attributes>elements</a>
   }
   template button() {
   	div[class="btn btn-default", all attributes]{ elements }
@@ -475,7 +475,7 @@ section dropdowns
   	listitem[all attributes]{ elements }
   }
   template dropdownMenuDivider() {
-  	listitem[class="divider"]{  }
+  	listitem[class="divider", all attributes]
   }  
   template dropdownToggle(cls: String){
   	<a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown">
@@ -486,10 +486,10 @@ section dropdowns
   	dropdownToggle(""){ elements }
   }
   template dropdown() {
-    listitem[class="dropdown"]{ elements }
+    listitem[class="dropdown", all attributes]{ elements }
   }
   template dropdownInNavbar(title: String) {
-  	<li class="dropdown">
+  	<li class="dropdown" all attributes>
   	  <a class="dropdown-toggle" href="#" data-toggle="dropdown">
   	    output(title) " " <span class="caret"></span>
   	  </a>
@@ -518,18 +518,18 @@ section miscellaneous
   }
   
   template blockquote() {
-  	<blockquote> elements </blockquote>
+  	<blockquote all attributes> elements </blockquote>
   }
   
 section tabs
 
   template tabsBSNoURL(){
-  	<ul id="tab" class="nav nav-tabs">
+  	<ul id="tab" class="nav nav-tabs" all attributes>
   		elements
   	</ul>
   }
   template tabsBS() {  
-  	<ul id="tab" class="nav nav-tabs">
+  	<ul id="tab" class="nav nav-tabs" all attributes>
   		elements
   	</ul>
   	<script>
@@ -568,21 +568,21 @@ section tabs
   }
   
   template tabActive(label: String, id: String) { 
-  	tab(label, id, true)
+  	tab(label, id, true)[all attributes]
   }  
   template tabActive(label: String) { 
-  	tab(label, label, true)
+  	tab(label, label, true)[all attributes]
   }  
   template tab(label: String, id: String) { 
-  	tab(label, id, false)
+  	tab(label, id, false)[all attributes]
   }
   template tab(label: String, id: String, active: Bool) { 
-  	<li class=activeClass(active)><a href=hrefHashId(id, true) data-toggle="tab">output(label)</a></li>
-  	<script>
-      $(function () {
-        $('~(hrefHashId(id, true))').tab('show')
-      })
-    </script>
+  	<li class=activeClass(active)><a href=hrefHashId(id, true) data-toggle="tab" all attributes>output(label)</a></li>
+  	// <script>
+   //    $(function () {
+   //      $('~(hrefHashId(id, true))').tab('show')
+   //    })
+   //  </script>
   }
   function hrefHashId(s : String, includeHash : Bool) : String {
   	return if(includeHash) "#" + /(\W|\s)+/.replaceAll("-",s) else /(\W|\s)+/.replaceAll("-",s);
@@ -592,7 +592,7 @@ section tabs
   }
   
   template tabBS(label: String) { 
-  	tab(label, label){ elements } 
+  	tab(label, label)[all attributes]{ elements } 
   }
   
   template tabContent(){
@@ -611,13 +611,13 @@ section tabs
   }
   
   template tabPaneActive(id: String){
-  	tabPane(id, true) { elements }
+  	tabPane(id, true)[all attributes] { elements }
   }
   template tabPane(id: String){
-  	tabPane(id, false) { elements }
+  	tabPane(id, false)[all attributes] { elements }
   }
   template tabPane(id: String, active: Bool){
-  	div[class="tab-pane " + activeClass(active), id=hrefHashId(id,false)]{
+  	div[class="tab-pane " + activeClass(active), id=hrefHashId(id,false), all attributes]{
   		elements 
   	}
   }
@@ -638,35 +638,35 @@ section labels
 section alerts
 
   template alert() {
-  	div[class="alert alert-dismissible"]{
+  	div[class="alert alert-dismissible", all attributes]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }
   
   template alertSuccess() {
-  	div[class="alert alert-success alert-dismissible"]{
+  	div[class="alert alert-success alert-dismissible", all attributes]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }
   
   template alertInfo() {
-  	div[class="alert alert-info alert-dismissible"]{
+  	div[class="alert alert-info alert-dismissible", all attributes]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }  
   
   template alertWarning() {
-  	div[class="alert alert-warning alert-dismissible"]{
+  	div[class="alert alert-warning alert-dismissible", all attributes]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
   }
   
   template alertError() {
-  	div[class="alert alert-danger alert-dismissible"]{
+  	div[class="alert alert-danger alert-dismissible", all attributes]{
   		<a class="close" data-dismiss="alert">"x"</a>
   		elements
   	}
@@ -754,45 +754,45 @@ section panels
   	}
   }
   define panelHeading(){
-  	div[class="panel-heading clearfix"]{
+  	div[class="panel-heading clearfix", all attributes]{
       div[class="panel-title"]{
       	elements
       }
     }
   }
   define panelBody(){
-  	div[class="panel-body"]{
+  	div[class="panel-body", all attributes]{
   		elements
   	}
   }
   
   define panelFooter(){
-  	div[class="panel-footer"]{
+  	div[class="panel-footer", all attributes]{
   		elements
   	}
   }
   
   define panel( header : String ){
-  	panelInternal( header, "panel-default"){ elements }
+  	panelInternal( header, "panel-default")[all attributes]{ elements }
   }
   define panelDanger( header : String ){
-  	panelInternal( header, "panel-danger"){ elements }
+  	panelInternal( header, "panel-danger")[all attributes]{ elements }
   }
   define panelWarning( header : String ){
-  	panelInternal( header, "panel-warning"){ elements }
+  	panelInternal( header, "panel-warning")[all attributes]{ elements }
   }
   define panelInfo( header : String ){
-  	panelInternal( header, "panel-info"){ elements }
+  	panelInternal( header, "panel-info")[all attributes]{ elements }
   }
   define panelPrimary( header : String ){
-  	panelInternal( header, "panel-primary"){ elements }
+  	panelInternal( header, "panel-primary")[all attributes]{ elements }
   }
   define panelSuccess( header : String ){
-  	panelInternal( header, "panel-success"){ elements }
+  	panelInternal( header, "panel-success")[all attributes]{ elements }
   }
   
   define panelInternal( header : String, panelclass : String){
-  	div[class="panel " + panelclass]{
+  	div[class="panel " + panelclass, all attributes]{
   		panelHeading { output(header) }
   		panelBody { elements }
   	}
@@ -807,7 +807,7 @@ section modal
   }
 
   define modal(modalID : String){
-  	<div class="modal " + attribute("class") id=modalID>
+  	<div class="modal "  id=modalID all attributes except "id">
   		<div class="modal-dialog">
 		  	<div class="modal-content">
 		  		elements
@@ -817,20 +817,20 @@ section modal
   }
 
   define modalHeader(){
-  	<div class="modal-header">
+  	<div class="modal-header" all attributes>
   		<a class="close" data-dismiss="modal">iRemove()</a>
   		elements
   	</div>
   }
 
   define modalBody(){
-  	<div class="modal-body">
+  	<div class="modal-body" all attributes>
   		elements
   	</div>
   }
  
   define modalFooter(){ 
-  	<div class="modal-footer">
+  	<div class="modal-footer" all attributes>
   		elements
   	</div>
   }
@@ -848,48 +848,48 @@ section modal
 section list groups
 
   template listGroup() {
-    <ul class="list-group">
+    <ul class="list-group" all attributes>
       elements
     </ul>
   }
   
   template listGroupItem() { 
-    <li class="list-group-item">elements</li>
+    <li class="list-group-item" all attributes>elements</li>
   }
   
 section definitionList
 
 	 define definitionList() {
-		<dl>elements</dl>
+		<dl all attributes>elements</dl>
 	}
 	
 	define definitionItem(term : String) {
-		<dt> output(term) </dt>
+		<dt all attributes> output(term) </dt>
 		<dd> elements </dd>
 	}
   
   	define definitionListDescription() {
-  		<dl class="dl-horizontal"> elements </dl>
+  		<dl class="dl-horizontal" all attributes> elements </dl>
   	}
   	
  section media
  
  	define media(){
- 		div[class="media"]{	elements }
+ 		div[class="media", all attributes]{	elements }
  	}
  	
  	define mediaObject(){
- 		div[class="media-object"]{ elements }
+ 		div[class="media-object", all attributes]{ elements }
  	}
  	
  	define mediaBody(){
- 		div[class="media-body"]{ elements }
+ 		div[class="media-body", all attributes]{ elements }
  	}
  	
  	define thumbnail(){
- 		div[class="thumbnail"]{ elements }
+ 		div[class="thumbnail", all attributes]{ elements }
  	}
  	
  	define caption(){
- 		div[class="caption"]{ elements }
+ 		div[class="caption", all attributes]{ elements }
  	}
