@@ -533,9 +533,9 @@ section tabs
   		elements
   	</ul>
   	<script>
-		$(document).ready(function() {
-		    // show active tab on reload
-		    if (location.hash !== ''){ 
+  		$(window).on('hashchange', function(){
+  			// show active tab on hash in url
+			if (location.hash !== ''){ 
 		    	$('a[href="' + location.hash + '"]').tab('show');
 		    	// and open parent tabs in case there are nested tabs
 		    	$('.tab-pane').each(function() {
@@ -546,6 +546,9 @@ section tabs
 			        }
 			    });
 		    }
+		});
+		$(document).ready(function() {
+		    $(window).trigger( 'hashchange' );
 		
 		    // remember the hash in the URL without jumping
 		    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
@@ -578,11 +581,7 @@ section tabs
   }
   template tab(label: String, id: String, active: Bool) { 
   	<li class=activeClass(active)><a href=hrefHashId(id, true) data-toggle="tab" all attributes>output(label)</a></li>
-  	// <script>
-   //    $(function () {
-   //      $('~(hrefHashId(id, true))').tab('show')
-   //    })
-   //  </script>
+  	// <script> $(function () { $('~(hrefHashId(id, true))').tab('show') }) </script>
   }
   function hrefHashId(s : String, includeHash : Bool) : String {
   	return if(includeHash) "#" + /(\W|\s)+/.replaceAll("-",s) else /(\W|\s)+/.replaceAll("-",s);
