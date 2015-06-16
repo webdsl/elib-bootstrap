@@ -20,7 +20,7 @@ section default attribute sets
   override attributes inputString{ class="inputString form-control" }
   override attributes inputEmail{ class="inputEmail form-control" }
   override attributes inputSecret{ class="inputSecret form-control" }
-  override attributes inputURL{ class="inputURLform-control " }
+  override attributes inputURL{ class="inputURL form-control " }
   override attributes inputText{ class="inputTextarea inputText form-control" }
   override attributes inputWikiText{ class="inputTextarea inputWikiText form-control" }
   override attributes inputFloat{ class="inputFloat form-control" }
@@ -532,26 +532,29 @@ section tabs
   	<ul id="tab" class="nav nav-tabs" all attributes>
   		elements
   	</ul>
+  	//TODO: include once:
   	<script>
-  		$(window).on('hashchange', function(){
-  			// show active tab on hash in url
-			if (location.hash !== ''){ 
-		    	$('a[href="' + location.hash + '"]').tab('show');
-		    	// and open parent tabs in case there are nested tabs
-		    	$('.tab-pane').each(function() {
-			        var cur_tab = $(this);
-			        if ( $(this).find(location.hash).length > 0 ) {
-			            $('.nav-tabs a[href=#'+ cur_tab.attr('id') +']').tab('show');
-			            return false;
-			        }
-			    });
-		    }
-		});
+  		if ($._data( $(window)[0], 'events' ).hashchange == undefined){
+	  		$(window).on('hashchange', function(){
+	  			// show active tab on hash in url
+				if (location.hash !== ''){
+					var tab = $('a[href="' + location.hash + '"]');
+					tab.tab('show');
+			    	// and open parent tabs in case there are nested tabs
+			    	var parentPane = tab.closest( '.tab-pane' );		    	
+			    	if(parentPane.length > 0){
+			    		$('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
+				            return false;
+			    	}
+			    }
+			});
+			$(document).ready(function() {
+				$(window).trigger( 'hashchange' );
+			});
+		}
 		$(document).ready(function() {
-		    $(window).trigger( 'hashchange' );
-		
 		    // remember the hash in the URL without jumping
-		    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+		    $('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e) {
 		       if(history.pushState) {
 		            history.pushState(null, null, '#'+$(e.target).attr('href').substr(1));
 		       } else {
@@ -560,13 +563,12 @@ section tabs
 		    });
 		    
 		    //When no tab is active, set the first one to active
-		    $('.nav-tabs').each(function() {
+		    $('.nav-tabs:not(.bound)').addClass('bound').each(function() {
 		        if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
 		        	$(this).children().first().addClass('active');
 		        }
 	    	});
-		});
-		
+		});		
 	</script>
   }
   
