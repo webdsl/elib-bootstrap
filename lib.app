@@ -603,8 +603,8 @@ section tabs
   	<script>  	
 		$(document).ready(function() {
   	  		$('.tab-content').each(function() {
-		        if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
-		        	$(this).find('.tab-pane').first().addClass('active');
+		        if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
+		        	$(this).children('.tab-pane').first().addClass('active');
 		        }
 		    });
 	    });
