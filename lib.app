@@ -538,7 +538,7 @@ section tabs
 	  		$(window).on('hashchange', function(){
 	  			// show active tab on hash in url
 				if (location.hash !== ''){
-					var tab = $('a[href="' + location.hash + '"]');
+					var tab = $('a[href="' + location.hash + '"][data-toggle="tab"]');
 					tab.tab('show');
 			    	// and open parent tabs in case there are nested tabs
 			    	var parentPane = tab.closest( '.tab-pane' );		    	
