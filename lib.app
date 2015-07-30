@@ -572,17 +572,17 @@ section tabs
 	</script>
   }
   
-  template tabActive(label: String, id: String) { 
-  	tab(label, id, true)[all attributes]
+  template tabActive(label: String, idAttr: String) { 
+  	tab(label, idAttr, true)[all attributes]
   }  
   template tabActive(label: String) { 
   	tab(label, label, true)[all attributes]
   }  
-  template tab(label: String, id: String) { 
-  	tab(label, id, false)[all attributes]
+  template tab(label: String, idAttr: String) { 
+  	tab(label, idAttr, false)[all attributes]
   }
-  template tab(label: String, id: String, active: Bool) { 
-  	<li class=activeClass(active)><a href=hrefHashId(id, true) data-toggle="tab" all attributes>output(label)</a></li>
+  template tab(label: String, idAttr: String, active: Bool) { 
+  	<li class=activeClass(active)><a href=hrefHashId(idAttr, true) data-toggle="tab" all attributes>output(label)</a></li>
   	// <script> $(function () { $('~(hrefHashId(id, true))').tab('show') }) </script>
   }
   function hrefHashId(s : String, includeHash : Bool) : String {
