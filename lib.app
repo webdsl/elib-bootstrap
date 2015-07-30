@@ -611,14 +611,14 @@ section tabs
     </script>
   }
   
-  template tabPaneActive(id: String){
-  	tabPane(id, true)[all attributes] { elements }
+  template tabPaneActive(idAttr: String){
+  	tabPane(idAttr, true)[all attributes] { elements }
   }
-  template tabPane(id: String){
-  	tabPane(id, false)[all attributes] { elements }
+  template tabPane(idAttr: String){
+  	tabPane(idAttr, false)[all attributes] { elements }
   }
-  template tabPane(id: String, active: Bool){
-  	div[class="tab-pane " + activeClass(active), id=hrefHashId(id,false), all attributes]{
+  template tabPane(idAttr: String, active: Bool){
+  	div[class="tab-pane " + activeClass(active), id=hrefHashId(idAttr,false), all attributes]{
   		elements 
   	}
   }
