@@ -523,6 +523,21 @@ section miscellaneous
   
 section tabs
 
+  template tabsBS(elems: [label: String, content: TemplateElements] ){
+    tabsBS{
+      for(e in elems where e.label != ""){
+        tabBS(e.label)
+      }
+    }
+    tabContent{	par{
+      for(e in elems where e.label != ""){
+        tabPane(e.label){
+          e.content
+        }
+      }
+    } }
+  }
+
   template tabsBSNoURL(){
   	<ul id="tab" class="nav nav-tabs" all attributes>
   		elements
@@ -893,4 +908,10 @@ section definitionList
  	
  	define caption(){
  		div[class="caption", all attributes]{ elements }
+ 	}
+ 	
+ section text
+ 
+ 	define strong(){
+ 		<strong all attributes> elements </strong>
  	}
