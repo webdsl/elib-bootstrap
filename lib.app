@@ -909,9 +909,3 @@ section definitionList
  	define caption(){
  		div[class="caption", all attributes]{ elements }
  	}
- 	
- section text
- 
- 	define strong(){
- 		<strong all attributes> elements </strong>
- 	}
