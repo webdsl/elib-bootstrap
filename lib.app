@@ -547,10 +547,12 @@ section tabs
   	<ul id="tab" class="nav nav-tabs" all attributes>
   		elements
   	</ul>
-  	//TODO: include once:
+  	includeHead(rendertemplate(setHashOnTabAndOpenFirstTab))
+  }
+  template setHashOnTabAndOpenFirstTab(){
   	<script>
   		if ($._data( $(window)[0], 'events' ).hashchange == undefined){
-	  		$(window).on('hashchange', function(){
+	  		$(window).on('hashchange', function(event){
 	  			// show active tab on hash in url
 				if (location.hash !== ''){
 					var tab = $('a[href="' + location.hash + '"][data-toggle="tab"]');
@@ -562,6 +564,7 @@ section tabs
 				            return false;
 			    	}
 			    }
+			    return false;
 			});
 			$(document).ready(function() {
 				$(window).trigger( 'hashchange' );
@@ -583,9 +586,18 @@ section tabs
 		        	$(this).children().first().addClass('active');
 		        }
 	    	});
-		});		
+		});
+		
+		$(document).ready(function() {
+  	  		$('.tab-content').each(function() {
+		        if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
+		        	$(this).children('.tab-pane').first().addClass('active');
+		        }
+		    });
+	    });
 	</script>
   }
+
   
   template tabActive(label: String, idAttr: String) { 
   	tab(label, idAttr, true)[all attributes]
@@ -615,15 +627,6 @@ section tabs
   	div[class="tab-content", all attributes]{ 
   		elements
   	}
-  	<script>  	
-		$(document).ready(function() {
-  	  		$('.tab-content').each(function() {
-		        if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
-		        	$(this).children('.tab-pane').first().addClass('active');
-		        }
-		    });
-	    });
-    </script>
   }
   
   template tabPaneActive(idAttr: String){
@@ -830,6 +833,7 @@ section modal
 		    </div>
 		</div>
   	</div>
+  	includeHead( rendertemplate(modalHideOnback(".modal")) )
   }
 
   define modalHeader(){
@@ -860,7 +864,20 @@ section modal
   		$('#~modalID').hide();
   	</script>
   }
-  
+define modalHideOnback(sel : String){
+  <script>
+    $("~sel").on("shown.bs.modal", function()  { // any time a modal is shown
+      var urlReplace = "#" + $(this).attr('id'); // make the hash the id of the modal shown
+      history.pushState(null, null, urlReplace); // push state that hash into the url
+    });
+    
+    // If a pushstate has previously happened and the back button is clicked, hide any modals.
+    $(window).on('popstate', function(){
+      $("~sel").modal('hide');
+    })
+    
+  </script>
+}
 section list groups
 
   template listGroup() {
