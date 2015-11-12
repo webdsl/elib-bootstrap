@@ -35,13 +35,9 @@ section default attribute sets
 
 section tooltips
 
-	template tooltipsBS(){
-		<script>
-			$( document ).ready(function() {
-			    $('[title]').tooltip({container: 'body'});
-			});
-		</script>
-	}
+  template tooltipsBS(){
+    postProcess("$(node).find('[title]').tooltip({placement: 'auto top', container: 'body'});")
+  }
 
 section positioning
 
@@ -548,6 +544,7 @@ section tabs
   		elements
   	</ul>
   	includeHead(rendertemplate(setHashOnTabAndOpenFirstTab))
+  	postProcess("autoTabFunction(node);")
   }
   template setHashOnTabAndOpenFirstTab(){
   	<script>
@@ -570,7 +567,7 @@ section tabs
 				$(window).trigger( 'hashchange' );
 			});
 		}
-		$(document).ready(function() {
+		var autoTabFunction = function(node) {
 		    // remember the hash in the URL without jumping
 		    $('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e) {
 		       if(history.pushState) {
@@ -581,20 +578,17 @@ section tabs
 		    });
 		    
 		    //When no tab is active, set the first one to active
-		    $('.nav-tabs:not(.bound)').addClass('bound').each(function() {
+		    $(node).find('.nav-tabs:not(.bound)').addClass('bound').each(function() {
 		        if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
 		        	$(this).children().first().addClass('active');
 		        }
 	    	});
-		});
-		
-		$(document).ready(function() {
-  	  		$('.tab-content').each(function() {
+	    	$(node).find('.tab-content:not(.bound)').addClass('bound').each(function() {
 		        if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
 		        	$(this).children('.tab-pane').first().addClass('active');
 		        }
 		    });
-	    });
+		}
 	</script>
   }
 
@@ -832,8 +826,12 @@ section modal
 		  		elements
 		    </div>
 		</div>
-  	</div>
-  	includeHead( rendertemplate(modalHideOnback(".modal")) )
+  	</div>  	
+  	
+  	includeHead(
+  		"<script type='text/javascript'> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
+  		rendertemplate(postProcess("$(node).find('.modal').on('shown.bs.modal', function()  { var urlReplace = '#' + $(this).attr('id'); history.pushState(null, null, urlReplace); });"))
+  	)
   }
 
   define modalHeader(){
@@ -864,20 +862,7 @@ section modal
   		$('#~modalID').hide();
   	</script>
   }
-define modalHideOnback(sel : String){
-  <script>
-    $("~sel").on("shown.bs.modal", function()  { // any time a modal is shown
-      var urlReplace = "#" + $(this).attr('id'); // make the hash the id of the modal shown
-      history.pushState(null, null, urlReplace); // push state that hash into the url
-    });
-    
-    // If a pushstate has previously happened and the back button is clicked, hide any modals.
-    $(window).on('popstate', function(){
-      $("~sel").modal('hide');
-    })
-    
-  </script>
-}
+
 section list groups
 
   template listGroup() {
