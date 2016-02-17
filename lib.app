@@ -862,7 +862,10 @@ section modal
   		$('#~modalID').hide();
   	</script>
   }
-
+  
+  function removeModal(){
+  	runscript("$('body').removeClass('modal-open'); $('.modal-backdrop').remove();");
+  }
 section list groups
 
   template listGroup() {
