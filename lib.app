@@ -36,7 +36,7 @@ section default attribute sets
 section tooltips
 
   template tooltipsBS(){
-    postProcess("$(node).find('[title]').tooltip({placement: 'auto top', container: 'body'}); $('.tooltip.fade.top.in, .ui-tooltip-content').remove();")
+    postProcess("$(node).find('[title]').tooltip({placement: 'auto top', container: 'body'}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
   }
 
 section positioning
