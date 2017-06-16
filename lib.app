@@ -218,7 +218,7 @@ section sections
     }
   }
   template small() {
-  	<small>elements</small>
+  	<small all attributes>elements</small>
   }
  
 section tables
