@@ -6,9 +6,9 @@ section default attribute sets
   // override attributes downloadlink{ class="downloadlink" }
   // override attributes outputimage{ class="outputimage" }
   override attributes submit{ class="btn btn-default" }
-  attributes btnSuccess {	class= "btn btn-success" }
-  attributes btnWarn{	class= "btn btn-warning" }
-  attributes btnDanger{	class= "btn btn-danger" }
+  attributes btnSuccess { class= "btn btn-success" }
+  attributes btnWarn{ class= "btn btn-warning" }
+  attributes btnDanger{ class= "btn btn-danger" }
   attributes btnPrimary { class= "btn btn-primary" }
   // override attributes submitlink{ submit attributes }
   // override attributes form{ }
@@ -42,52 +42,52 @@ section tooltips
 section positioning
 
   template pullRight() { 
-  	span[class="pull-right", all attributes]{ elements } 
+    span[class="pull-right", all attributes]{ elements } 
   }
   template pullLeft() {  
-  	span[class="pull-left", all attributes]{ elements }
+    span[class="pull-left", all attributes]{ elements }
   }
 
 section grid system
 
   template gridContainer() {
-  	div[class="container", all attributes]{ elements }
+    div[class="container", all attributes]{ elements }
   }
 template gridContainerFluid() {
-  	div[class="container-fluid", all attributes]{ elements }
+    div[class="container-fluid", all attributes]{ elements }
   }
   template gridRow(){
-  	div[class="row", all attributes]{ elements }
+    div[class="row", all attributes]{ elements }
   }
   template gridRow(cls: String){
     div[class="row " + cls + attribute("class"), all attributes]{ elements }
   }
   template gridSpan(span: Int){ //deprecated
-  	  gridCol(span)[all attributes]{ elements }
+      gridCol(span)[all attributes]{ elements }
   }
   template gridSpan(span: Int, offset: Int){ //deprecated
-  	gridCol(span, offset)[all attributes]{ elements }
+    gridCol(span, offset)[all attributes]{ elements }
   }
   
   template gridCol(cols : Int){
-  	div[class="col-sm-" + cols + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + cols + " " + attribute("class"), all attributes]{ elements }
   }  
   template gridCol(cols : Int, offset : Int){
-  	div[class="col-sm-" + cols + " col-sm-offset-" + offset+ " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + cols + " col-sm-offset-" + offset+ " " + attribute("class"), all attributes]{ elements }
   }
   
   template gridColAdapt(colsSm : Int, colsLg : Int){
-  	div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " " + attribute("class"), all attributes]{ elements }
   }
   template gridColAdapt(colsSm : Int, offsetSm : Int, colsLg : Int, offsetLg : Int){
-  	div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg + " " + attribute("class"), all attributes]{ elements }
   }
   
   template gridColPush(cols : Int, offset : Int){
-  	div[class="col-sm-" + cols + " col-sm-push-" + offset, all attributes]{ elements }
+    div[class="col-sm-" + cols + " col-sm-push-" + offset, all attributes]{ elements }
   }
   template gridColPull(cols : Int, offset : Int){
-  	div[class="col-sm-" + cols + " col-sm-pull-" + offset, all attributes]{ elements }
+    div[class="col-sm-" + cols + " col-sm-pull-" + offset, all attributes]{ elements }
   }
   template gridColXs(cols : Int){
     div[class="col-xs-" + cols, all attributes]{ elements }
@@ -125,23 +125,23 @@ section navigation bar
   }
 
   template navbar() {
-  	div[class="navbar navbar-inverse navbar-fixed-top", all attributes]{
+    div[class="navbar navbar-inverse navbar-fixed-top", all attributes]{
       gridContainer{
-      	elements
+        elements
       }
     }
   }
   
   template navbarResponsive(){
-  	navbarResponsive(true)[all attributes]{ elements }
+    navbarResponsive(true)[all attributes]{ elements }
   }
   
   template navbarResponsive(fixed : Bool) {
     div[class=if(fixed)"navbar navbar-inverse navbar-fixed-top" else "navbar navbar-inverse navbar-static-top", all attributes]{
       gridContainer{
         div[class="navbar-header"]{
-        	brand
-        	navCollapseButton
+          brand
+          navCollapseButton
         }
         div[class="navbar-collapse collapse", style="height: 0px;"]{
           elements
@@ -160,28 +160,28 @@ section navigation bar
     }
   }
   template navbarStatic() {
-  	div[class="navbar", all attributes]{
+    div[class="navbar", all attributes]{
       div[class="navbar-inner"]{
         gridContainer{
-        	elements
+          elements
         }
       }
     }
   }
   template navCollapse() {
-  	div[class="nav-collapse"]{
-  		elements
-  	}
+    div[class="nav-collapse"]{
+      elements
+    }
   }
   template navbarRight() {
-  	div[class="navbar-right"]{
-  		elements
-  	}
+    div[class="navbar-right"]{
+      elements
+    }
   } 
   template navItems() {
-  	list[class="nav navbar-nav"]{
-  		elements
-  	}
+    list[class="nav navbar-nav"]{
+      elements
+    }
   }
   template navItem() {
     listitem{ elements }
@@ -189,18 +189,18 @@ section navigation bar
   
   template navCollapseButton() {
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-    	<span class="icon-bar"></span>
-    	<span class="icon-bar"></span>
-    	<span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </button>
   }
   
 section sections
 
   template pageHeader() {
-  	div[class="page-header", all attributes]{
-  		header1{ elements }
-  	}
+    div[class="page-header", all attributes]{
+      header1{ elements }
+    }
   }
   template pageHeader2() {
     div[class="page-header", all attributes]{
@@ -224,9 +224,9 @@ section sections
 section tables
 
   template tableBordered(){
-  	table[class="table table-bordered table-striped table-condensed",  all attributes]{
-  		elements
-  	}
+    table[class="table table-bordered table-striped table-condensed",  all attributes]{
+      elements
+    }
   }
   
   template tableStriped(){
@@ -236,25 +236,25 @@ section tables
   }
   
   template tableHovered(){
-  	table[class="table table-hover",  all attributes]{
-  		elements
-  	}
+    table[class="table table-hover",  all attributes]{
+      elements
+    }
   }
   
   template theader() {
-  	<thead all attributes>elements</thead>
+    <thead all attributes>elements</thead>
   }
   
   template tbody() {
-  	<thead all attributes>elements</thead>
+    <thead all attributes>elements</thead>
   }
   
   template tfooter() {
-  	<tfoot all attributes>elements</tfoot>
+    <tfoot all attributes>elements</tfoot>
   }
   
   template th(){
-  	<th all attributes>elements</th>
+    <th all attributes>elements</th>
   }
 
 section forms
@@ -262,11 +262,11 @@ section forms
   // template span() { <span all attributes>elements</span> }
 
   template inlForm() { 
-  	span[class="form-inline", role="form", all attributes]{ 
-  		form[class="bla"]{
-  		  elements
-  	  } 
-  	}
+    span[class="form-inline", role="form", all attributes]{ 
+      form[class="bla"]{
+        elements
+      } 
+    }
   }
 
   template formEntry(l: String){    
@@ -280,12 +280,12 @@ section forms
   }
   
   template formActions(){
-  	// div[class="form-group"]{ 
-  	//   div[class="col-sm-offset-2 col-sm-10"]{
-  	//     elements 
-  	//   }
-  	// }
-  	formActions(2, 10)[all attributes]{ elements }
+    // div[class="form-group"]{ 
+    //   div[class="col-sm-offset-2 col-sm-10"]{
+    //     elements 
+    //   }
+    // }
+    formActions(2, 10)[all attributes]{ elements }
   }
   
   template formActions(labelOff: Int, elemCol: Int){
@@ -313,24 +313,24 @@ section forms
 section horizontal forms
 
   template horizontalForm(){
-  	form[class="form-horizontal", role="form", all attributes] {
-  		elements
-  	}
+    form[class="form-horizontal", role="form", all attributes] {
+      elements
+    }
   }
   template horizontalForm(title: String){
-  	horizontalForm[all attributes]{
-  		fieldset(title){
-  			elements
-  		}
-  	}
+    horizontalForm[all attributes]{
+      fieldset(title){
+        elements
+      }
+    }
   }  
   template controlGroup(s: String){
     // div[class="form-group"]{
-    // 	label(s)[class="control-label"]{ 
-    // 		div[class="controls"]{
-    // 		  elements
-    // 		}
-    // 	}
+    //  label(s)[class="control-label"]{ 
+    //    div[class="controls"]{
+    //      elements
+    //    }
+    //  }
     // }
     controlGroup(s, 2, 10)[all attributes]{ elements }
   }
@@ -370,52 +370,52 @@ section horizontal forms
   }
   
   template inputGroup() {
-  	<span class="input-group" all attributes>
+    <span class="input-group" all attributes>
       elements
     </span>
   }
   
   template inputGroupButton(){
-  	<span class="input-group-btn" all attributes> elements </span>
+    <span class="input-group-btn" all attributes> elements </span>
   }
     
 section breadcrumbs
 
   template breadcrumbs(){ 
-  	<ul class="breadcrumb" all attributes> elements </ul>
+    <ul class="breadcrumb" all attributes> elements </ul>
   }
   template breadcrumb() {
-  	<li all attributes> elements </li>
+    <li all attributes> elements </li>
   }
   template breadcrumbActive() {
-  	<li class="active" all attributes> elements </li>
+    <li class="active" all attributes> elements </li>
   }
   
 section pagers
 
   template pager() {
-  	<ul class="pager" all attributes>
-  	  elements
-  	</ul>
+    <ul class="pager" all attributes>
+      elements
+    </ul>
   }
   template pagerPrevious(nav: String){
-  	<li all attributes>navigate url(nav) { "Previous" }</li>
+    <li all attributes>navigate url(nav) { "Previous" }</li>
   }  
   template pagerNext(nav: String){
-  	<li all attributes>navigate url(nav) { "Next" }</li>
+    <li all attributes>navigate url(nav) { "Next" }</li>
   }
   
 section buttons
 
   template buttonToolbar() {
-  	div[class="btn-toolbar", role="toolbar", all attributes]{
-  		elements
-  	}
+    div[class="btn-toolbar", role="toolbar", all attributes]{
+      elements
+    }
   }
   template buttonGroup(){
-  	div[class="btn-group", all attributes]{
-  		elements
-  	}
+    div[class="btn-group", all attributes]{
+      elements
+    }
   }
   template buttonGroupSpan(){
     span[class="btn-group", all attributes]{
@@ -428,35 +428,35 @@ section buttons
     }
   }
   template buttonNavigate(nav: String) {
-  	//navigate url(nav) [class="btn btn-default"]{ elements }
-  	<a href=nav class="btn btn-default" all attributes>elements</a>
+    //navigate url(nav) [class="btn btn-default"]{ elements }
+    <a href=nav class="btn btn-default" all attributes>elements</a>
   }
   template button() {
-  	div[class="btn btn-default", all attributes]{ elements }
+    div[class="btn btn-default", all attributes]{ elements }
   }
   template buttonMini(){
-  	div[class="btn btn-default btn-xs", all attributes]{ elements }
+    div[class="btn btn-default btn-xs", all attributes]{ elements }
   }
   template buttonSmall(){
-  	div[class="btn btn-default btn-sm", all attributes]{ elements }
+    div[class="btn btn-default btn-sm", all attributes]{ elements }
   }
   template buttonPrimary() {
-  	div[class="btn btn-primary ", all attributes]{ elements }
+    div[class="btn btn-primary ", all attributes]{ elements }
   }
   template buttonPrimaryMini(){
-  	div[class="btn btn-primary btn-xs", all attributes]{ elements }
+    div[class="btn btn-primary btn-xs", all attributes]{ elements }
   }
   template buttonPrimarySmall(){
-  	div[class="btn btn-primary btn-sm", all attributes]{ elements }
+    div[class="btn btn-primary btn-sm", all attributes]{ elements }
   }
 
   
 section dropdowns
 
   template dropdownMenu(){
-  	list[class="dropdown-menu", all attributes]{
-  		elements
-  	}
+    list[class="dropdown-menu", all attributes]{
+      elements
+    }
   }
   template dropdownMenuRight(){
     list[class="dropdown-menu pull-right", all attributes]{
@@ -464,33 +464,33 @@ section dropdowns
     }
   }
   template subMenu() {
-  	dropdownMenuDivider
-  	elements
+    dropdownMenuDivider
+    elements
   }
   template dropdownMenuItem() {
-  	listitem[all attributes]{ elements }
+    listitem[all attributes]{ elements }
   }
   template dropdownMenuDivider() {
-  	listitem[class="divider", all attributes]
+    listitem[class="divider", all attributes]
   }  
   template dropdownToggle(cls: String){
-  	<a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown">
-  	  elements " " <span class="caret"></span>
-  	</a>
+    <a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown">
+      elements " " <span class="caret"></span>
+    </a>
   }
   template dropdownToggle(){ 
-  	dropdownToggle(""){ elements }
+    dropdownToggle(""){ elements }
   }
   template dropdown() {
     listitem[class="dropdown", all attributes]{ elements }
   }
   template dropdownInNavbar(title: String) {
-  	<li class="dropdown" all attributes>
-  	  <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-  	    output(title) " " <span class="caret"></span>
-  	  </a>
-  	  elements
-  	</li>
+    <li class="dropdown" all attributes>
+      <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+        output(title) " " <span class="caret"></span>
+      </a>
+      elements
+    </li>
   }
   template dropdownCaret() {
     <a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" style="height:14px;padding:7px;">
@@ -499,22 +499,22 @@ section dropdowns
     dropdownMenu{ elements }
   }
   template dropdownButton(title: String) {
-  	dropdownToggle(attribute("class")){ output(title) }
-	dropdownMenu{ elements }
+    dropdownToggle(attribute("class")){ output(title) }
+  dropdownMenu{ elements }
   }
   
   
 section miscellaneous
 
   template well(){ 
-  	div[class="well", all attributes]{ elements }
+    div[class="well", all attributes]{ elements }
   }
   template wellSmall(){
-  	div[class="well well-small", all attributes]{ elements }
+    div[class="well well-small", all attributes]{ elements }
   }
   
   template blockquote() {
-  	<blockquote all attributes> elements </blockquote>
+    <blockquote all attributes> elements </blockquote>
   }
   
 section tabs
@@ -525,7 +525,7 @@ section tabs
         tabBS(e.label)
       }
     }
-    tabContent{	par{
+    tabContent{ par{
       for(e in elems where e.label != ""){
         tabPane(e.label){
           e.content
@@ -535,104 +535,104 @@ section tabs
   }
 
   template tabsBSNoURL(){
-  	<ul id="tab" class="nav nav-tabs" all attributes>
-  		elements
-  	</ul>
+    <ul id="tab" class="nav nav-tabs" all attributes>
+      elements
+    </ul>
   }
   template tabsBS() {  
-  	<ul id="tab" class="nav nav-tabs" all attributes>
-  		elements
-  	</ul>
-  	includeHead(rendertemplate(setHashOnTabAndOpenFirstTab))
-  	postProcess("autoTabFunction(node);")
+    <ul id="tab" class="nav nav-tabs" all attributes>
+      elements
+    </ul>
+    includeHead(rendertemplate(setHashOnTabAndOpenFirstTab))
+    postProcess("autoTabFunction(node);")
   }
   template setHashOnTabAndOpenFirstTab(){
-  	<script>
-  		if ($._data( $(window)[0], 'events' ).hashchange == undefined){
-	  		$(window).on('hashchange', function(event){
-	  			// show active tab on hash in url
-				if (location.hash !== ''){
-					var tab = $('a[href="' + location.hash + '"][data-toggle="tab"]');
-					tab.tab('show');
-			    	// and open parent tabs in case there are nested tabs
-			    	var parentPane = tab.closest( '.tab-pane' );		    	
-			    	if(parentPane.length > 0){
-			    		$('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
-				            return false;
-			    	}
-			    }
-			    return false;
-			});
-			$(document).ready(function() {
-				$(window).trigger( 'hashchange' );
-			});
-		}
-		var autoTabFunction = function(node) {
-		    // remember the hash in the URL without jumping
-		    $('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e) {
-		       if(history.pushState) {
-		            history.pushState(null, null, '#'+$(e.target).attr('href').substr(1));
-		       } else {
-		            location.hash = '#'+$(e.target).attr('href').substr(1);
-		       }
-		    });
-		    
-		    //When no tab is active, set the first one to active
-		    $(node).find('.nav-tabs:not(.bound)').addClass('bound').each(function() {
-		        if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
-		        	$(this).children().first().addClass('active');
-		        }
-	    	});
-	    	$(node).find('.tab-content:not(.bound)').addClass('bound').each(function() {
-		        if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
-		        	$(this).children('.tab-pane').first().addClass('active');
-		        }
-		    });
-		}
-	</script>
+    <script>
+      if ($._data( $(window)[0], 'events' ).hashchange == undefined){
+        $(window).on('hashchange', function(event){
+          // show active tab on hash in url
+        if (location.hash !== ''){
+          var tab = $('a[href="' + location.hash + '"][data-toggle="tab"]');
+          tab.tab('show');
+            // and open parent tabs in case there are nested tabs
+            var parentPane = tab.closest( '.tab-pane' );          
+            if(parentPane.length > 0){
+              $('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
+                    return false;
+            }
+          }
+          return false;
+      });
+      $(document).ready(function() {
+        $(window).trigger( 'hashchange' );
+      });
+    }
+    var autoTabFunction = function(node) {
+        // remember the hash in the URL without jumping
+        $('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e) {
+           if(history.replaceState) {
+                history.replaceState(null, null, '#'+$(e.target).attr('href').substr(1));
+           } else {
+                location.hash = '#'+$(e.target).attr('href').substr(1);
+           }
+        });
+        
+        //When no tab is active, set the first one to active
+        $(node).find('.nav-tabs:not(.bound)').addClass('bound').each(function() {
+            if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
+              $(this).children().first().addClass('active');
+            }
+        });
+        $(node).find('.tab-content:not(.bound)').addClass('bound').each(function() {
+            if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
+              $(this).children('.tab-pane').first().addClass('active');
+            }
+        });
+    }
+  </script>
   }
 
   
   template tabActive(label: String, idAttr: String) { 
-  	tab(label, idAttr, true)[all attributes]
+    tab(label, idAttr, true)[all attributes]
   }  
   template tabActive(label: String) { 
-  	tab(label, label, true)[all attributes]
+    tab(label, label, true)[all attributes]
   }  
   template tab(label: String, idAttr: String) { 
-  	tab(label, idAttr, false)[all attributes]
+    tab(label, idAttr, false)[all attributes]
   }
   template tab(label: String, idAttr: String, active: Bool) { 
-  	<li class=activeClass(active)><a href=hrefHashId(idAttr, true) data-toggle="tab" all attributes>output(label)</a></li>
-  	// <script> $(function () { $('~(hrefHashId(id, true))').tab('show') }) </script>
+    <li class=activeClass(active)><a href=hrefHashId(idAttr, true) data-toggle="tab" all attributes>output(label)</a></li>
+    // <script> $(function () { $('~(hrefHashId(id, true))').tab('show') }) </script>
   }
   function hrefHashId(s : String, includeHash : Bool) : String {
-  	return if(includeHash) "#" + /(\W|\s)+/.replaceAll("-",s) else /(\W|\s)+/.replaceAll("-",s);
+    return if(includeHash) "#" + /(\W|\s)+/.replaceAll("-",s) else /(\W|\s)+/.replaceAll("-",s);
   }
   function activeClass(active: Bool): String {
     if(active) { return "active"; } else { return ""; }
   }
   
   template tabBS(label: String) { 
-  	tab(label, label)[all attributes]{ elements } 
+    tab(label, label)[all attributes]{ elements } 
   }
   
   template tabContent(){
-  	div[class="tab-content", all attributes]{ 
-  		elements
-  	}
+    div[class="tab-content", all attributes]{ 
+      elements
+    }
   }
   
   template tabPaneActive(idAttr: String){
-  	tabPane(idAttr, true)[all attributes] { elements }
+    tabPane(idAttr, true)[all attributes] { elements }
   }
   template tabPane(idAttr: String){
-  	tabPane(idAttr, false)[all attributes] { elements }
+    tabPane(idAttr, false)[all attributes] { elements }
   }
   template tabPane(idAttr: String, active: Bool){
-  	div[class="tab-pane " + activeClass(active), id=hrefHashId(idAttr,false), all attributes]{
-  		elements 
-  	}
+    div[class="tab-pane " + activeClass(active), id=hrefHashId(idAttr,false), all attributes]{
+      elements 
+    }
   }
   
 section labels
@@ -645,49 +645,49 @@ section labels
   template labelInfo(){ labelInternal("label-info")[all attributes]{ elements } }
   
   template labelInternal( labelClass : String ){
-  	<span class=labelClass + " label " + attribute("class") all attributes except "class"> elements </span>
+    <span class=labelClass + " label " + attribute("class") all attributes except "class"> elements </span>
   }
   
 section alerts
 
   template alert() {
-  	div[class="alert alert-dismissible", all attributes]{
-  		<a class="close" data-dismiss="alert">"x"</a>
-  		elements
-  	}
+    div[class="alert alert-dismissible", all attributes]{
+      <a class="close" data-dismiss="alert">"x"</a>
+      elements
+    }
   }
   
   template alertSuccess() {
-  	div[class="alert alert-success alert-dismissible", all attributes]{
-  		<a class="close" data-dismiss="alert">"x"</a>
-  		elements
-  	}
+    div[class="alert alert-success alert-dismissible", all attributes]{
+      <a class="close" data-dismiss="alert">"x"</a>
+      elements
+    }
   }
   
   template alertInfo() {
-  	div[class="alert alert-info alert-dismissible", all attributes]{
-  		<a class="close" data-dismiss="alert">"x"</a>
-  		elements
-  	}
+    div[class="alert alert-info alert-dismissible", all attributes]{
+      <a class="close" data-dismiss="alert">"x"</a>
+      elements
+    }
   }  
   
   template alertWarning() {
-  	div[class="alert alert-warning alert-dismissible", all attributes]{
-  		<a class="close" data-dismiss="alert">"x"</a>
-  		elements
-  	}
+    div[class="alert alert-warning alert-dismissible", all attributes]{
+      <a class="close" data-dismiss="alert">"x"</a>
+      elements
+    }
   }
   
   template alertError() {
-  	div[class="alert alert-danger alert-dismissible", all attributes]{
-  		<a class="close" data-dismiss="alert">"x"</a>
-  		elements
-  	}
+    div[class="alert alert-danger alert-dismissible", all attributes]{
+      <a class="close" data-dismiss="alert">"x"</a>
+      elements
+    }
   }
 
 /*
   template tabExperiment() {
-  	<ul id="tab" class="nav nav-tabs">
+    <ul id="tab" class="nav nav-tabs">
     <li><a href="#home" data-toggle="tab">"Home"</a></li>
     <li><a href="#profile" data-toggle="tab">"Profile"</a></li>
     <li><a href="#messages" data-toggle="tab">"Messages"</a></li>
@@ -715,100 +715,100 @@ section alerts
 
 /*   
   template tabDefault(label: String) { 
-  	tab(label, true){ elements }
+    tab(label, true){ elements }
   }
     
   template tab(label: String, checked: Bool) { 
-  	var tname := getTemplate().getUniqueId()
-  	div[class="tab"]{
-  		if(checked) {
-	  	  <input type="radio" id=tname name="tab-group-1" checked="true"></input>
-	  	} else {
-	  	  <input type="radio" id=tname name="tab-group-1"></input>	  		
-	  	}
-	  	<label for=tname>output(label)</label>
-	  	div[class="content"]{
-	  		elements
-	  	}
-  	}
+    var tname := getTemplate().getUniqueId()
+    div[class="tab"]{
+      if(checked) {
+        <input type="radio" id=tname name="tab-group-1" checked="true"></input>
+      } else {
+        <input type="radio" id=tname name="tab-group-1"></input>        
+      }
+      <label for=tname>output(label)</label>
+      div[class="content"]{
+        elements
+      }
+    }
   }
 */
 
 section panels
 
   define panel(){
-  	div[class="panel panel-default", all attributes]{
-  		elements
-  	}
+    div[class="panel panel-default", all attributes]{
+      elements
+    }
   }
   define panelDanger(){
-  	div[class="panel panel-danger", all attributes]{
-  		elements
-  	}
+    div[class="panel panel-danger", all attributes]{
+      elements
+    }
   }
   define panelWarning(){
-  	div[class="panel panel-warning", all attributes]{
-  		elements
-  	}
+    div[class="panel panel-warning", all attributes]{
+      elements
+    }
   }
   define panelInfo(){
-  	div[class="panel panel-info", all attributes]{
-  		elements
-  	}
+    div[class="panel panel-info", all attributes]{
+      elements
+    }
   }
   define panelPrimary(){
-  	div[class="panel panel-primary", all attributes]{
-  		elements
-  	}
+    div[class="panel panel-primary", all attributes]{
+      elements
+    }
   }
   define panelSuccess(){
-  	div[class="panel panel-success", all attributes]{
-  		elements
-  	}
+    div[class="panel panel-success", all attributes]{
+      elements
+    }
   }
   define panelHeading(){
-  	div[class="panel-heading clearfix", all attributes]{
+    div[class="panel-heading clearfix", all attributes]{
       div[class="panel-title"]{
-      	elements
+        elements
       }
     }
   }
   define panelBody(){
-  	div[class="panel-body", all attributes]{
-  		elements
-  	}
+    div[class="panel-body", all attributes]{
+      elements
+    }
   }
   
   define panelFooter(){
-  	div[class="panel-footer", all attributes]{
-  		elements
-  	}
+    div[class="panel-footer", all attributes]{
+      elements
+    }
   }
   
   define panel( header : String ){
-  	panelInternal( header, "panel-default")[all attributes]{ elements }
+    panelInternal( header, "panel-default")[all attributes]{ elements }
   }
   define panelDanger( header : String ){
-  	panelInternal( header, "panel-danger")[all attributes]{ elements }
+    panelInternal( header, "panel-danger")[all attributes]{ elements }
   }
   define panelWarning( header : String ){
-  	panelInternal( header, "panel-warning")[all attributes]{ elements }
+    panelInternal( header, "panel-warning")[all attributes]{ elements }
   }
   define panelInfo( header : String ){
-  	panelInternal( header, "panel-info")[all attributes]{ elements }
+    panelInternal( header, "panel-info")[all attributes]{ elements }
   }
   define panelPrimary( header : String ){
-  	panelInternal( header, "panel-primary")[all attributes]{ elements }
+    panelInternal( header, "panel-primary")[all attributes]{ elements }
   }
   define panelSuccess( header : String ){
-  	panelInternal( header, "panel-success")[all attributes]{ elements }
+    panelInternal( header, "panel-success")[all attributes]{ elements }
   }
   
   define panelInternal( header : String, panelclass : String){
-  	div[class="panel " + panelclass, all attributes]{
-  		panelHeading { output(header) }
-  		panelBody { elements }
-  	}
+    div[class="panel " + panelclass, all attributes]{
+      panelHeading { output(header) }
+      panelBody { elements }
+    }
   }
   
   
@@ -816,55 +816,60 @@ section panels
 section modal
 
   define modalLink (modalID : String){
-  	<a data-toggle="modal" href="#" + modalID all attributes except ["href","data-toggle"] >elements</a>
+    <a data-toggle="modal" href="#" + modalID all attributes except ["href","data-toggle"] >elements</a>
   }
 
   define modal(modalID : String){
-  	<div class="modal "  id=modalID all attributes except "id">
-  		<div class="modal-dialog">
-		  	<div class="modal-content">
-		  		elements
-		    </div>
-		</div>
-  	</div>  	
-  	
-  	includeHead(
-  		"<script type='text/javascript'> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
-  		rendertemplate(postProcess("$(node).find('.modal').on('shown.bs.modal', function()  { var urlReplace = '#' + $(this).attr('id'); history.pushState(null, null, urlReplace); });"))
-  	)
+    <div class="modal "  id=modalID all attributes except "id">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          elements
+        </div>
+    </div>
+    </div>    
+    
+    includeHead(
+      "<script type='text/javascript'> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
+      rendertemplate(
+        postProcess(
+          "$(node).find('.modal').on( 'shown.bs.modal', function(){ if(history.pushState){ history.pushState({ id: 'modal', modalId: $(this).attr('id') }, null, window.location.href); } } )" +
+          ".on( 'hidden.bs.modal', function (){ if( history.state != null && history.state.modalId == $(this).attr('id') ){ history.back(); } } );"
+        )
+      )
+    )
   }
 
   define modalHeader(){
-  	<div class="modal-header" all attributes>
-  		<a class="close" data-dismiss="modal">iRemove()</a>
-  		elements
-  	</div>
+    <div class="modal-header" all attributes>
+      <a class="close" data-dismiss="modal">iRemove()</a>
+      elements
+    </div>
   }
 
   define modalBody(){
-  	<div class="modal-body" all attributes>
-  		elements
-  	</div>
+    <div class="modal-body" all attributes>
+      elements
+    </div>
   }
  
   define modalFooter(){ 
-  	<div class="modal-footer" all attributes>
-  		elements
-  	</div>
+    <div class="modal-footer" all attributes>
+      elements
+    </div>
   }
   
   define modalCloseLink(){
-  	<a href="#" data-dismiss="modal" all attributes except ["href","data-dismiss"]>elements</a>
+    <a href="#" data-dismiss="modal" all attributes except ["href","data-dismiss"]>elements</a>
   }
 
   define modalHide(modalID : String){
-  	<script>
-  		$('#~modalID').hide();
-  	</script>
+    <script>
+      $('#~modalID').hide();
+    </script>
   }
   
   function removeModal(){
-  	runscript("$('body').removeClass('modal-open'); $('.modal-backdrop').remove();");
+    runscript("$('body').removeClass('modal-open'); $('.modal-backdrop').remove();");
   }
 section list groups
 
@@ -880,37 +885,37 @@ section list groups
   
 section definitionList
 
-	 define definitionList() {
-		<dl all attributes>elements</dl>
-	}
-	
-	define definitionItem(term : String) {
-		<dt all attributes> output(term) </dt>
-		<dd> elements </dd>
-	}
+   define definitionList() {
+    <dl all attributes>elements</dl>
+  }
   
-  	define definitionListDescription() {
-  		<dl class="dl-horizontal" all attributes> elements </dl>
-  	}
-  	
+  define definitionItem(term : String) {
+    <dt all attributes> output(term) </dt>
+    <dd> elements </dd>
+  }
+  
+    define definitionListDescription() {
+      <dl class="dl-horizontal" all attributes> elements </dl>
+    }
+    
  section media
  
- 	define media(){
- 		div[class="media", all attributes]{	elements }
- 	}
- 	
- 	define mediaObject(){
- 		div[class="media-object", all attributes]{ elements }
- 	}
- 	
- 	define mediaBody(){
- 		div[class="media-body", all attributes]{ elements }
- 	}
- 	
- 	define thumbnail(){
- 		div[class="thumbnail", all attributes]{ elements }
- 	}
- 	
- 	define caption(){
- 		div[class="caption", all attributes]{ elements }
- 	}
+  define media(){
+    div[class="media", all attributes]{ elements }
+  }
+  
+  define mediaObject(){
+    div[class="media-object", all attributes]{ elements }
+  }
+  
+  define mediaBody(){
+    div[class="media-body", all attributes]{ elements }
+  }
+  
+  define thumbnail(){
+    div[class="thumbnail", all attributes]{ elements }
+  }
+  
+  define caption(){
+    div[class="caption", all attributes]{ elements }
+  }
