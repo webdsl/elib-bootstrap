@@ -60,7 +60,7 @@ template gridContainerFluid() {
     div[class="row", all attributes]{ elements }
   }
   template gridRow(cls: String){
-    div[class="row " + cls + attribute("class"), all attributes]{ elements }
+    div[class="row " + cls, all attributes]{ elements }
   }
   template gridSpan(span: Int){ //deprecated
       gridCol(span)[all attributes]{ elements }
@@ -70,17 +70,17 @@ template gridContainerFluid() {
   }
   
   template gridCol(cols : Int){
-    div[class="col-sm-" + cols + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + cols, all attributes]{ elements }
   }  
   template gridCol(cols : Int, offset : Int){
-    div[class="col-sm-" + cols + " col-sm-offset-" + offset+ " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + cols + " col-sm-offset-" + offset, all attributes]{ elements }
   }
   
   template gridColAdapt(colsSm : Int, colsLg : Int){
-    div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + colsSm + " col-lg-" + colsLg , all attributes]{ elements }
   }
   template gridColAdapt(colsSm : Int, offsetSm : Int, colsLg : Int, offsetLg : Int){
-    div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg , all attributes]{ elements }
   }
   
   template gridColPush(cols : Int, offset : Int){
@@ -93,19 +93,19 @@ template gridContainerFluid() {
     div[class="col-xs-" + cols, all attributes]{ elements }
   } 
   template gridColXs(cols : Int, offset : Int){
-    div[class="col-xs-" + cols + " col-xs-offset-" + offset + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-xs-" + cols + " col-xs-offset-" + offset , all attributes]{ elements }
   }
   template gridColMd(cols : Int){
-    div[class="col-md-" + cols + " " +  attribute("class"), all attributes]{ elements }
+    div[class="col-md-" + cols , all attributes]{ elements }
   } 
   template gridColMd(cols : Int, offset : Int){
-    div[class="col-md-" + cols + " col-md-offset-" + offset + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-md-" + cols + " col-md-offset-" + offset , all attributes]{ elements }
   }
   template gridColLg(cols : Int){
-    div[class="col-lg-" + cols + " " +  attribute("class"), all attributes]{ elements }
+    div[class="col-lg-" + cols , all attributes]{ elements }
   }
   template gridColLg(cols : Int, offset : Int){
-    div[class="col-lg-" + cols + " col-lg-offset-" + offset + " " + attribute("class"), all attributes]{ elements }
+    div[class="col-lg-" + cols + " col-lg-offset-" + offset , all attributes]{ elements }
   }
     
 section footer
@@ -335,7 +335,7 @@ section horizontal forms
     controlGroup(s, 2, 10)[all attributes]{ elements }
   }
   template controlGroup(s: String, labelCol: Int, elemCol: Int){   
-    div[class="form-group " + attribute("class", ""), all attributes except "class"]{
+    div[class="form-group ", all attributes]{
       label(s)[class="control-label col-sm-" + labelCol]{
         div[class="col-sm-" + elemCol]{
           elements
@@ -645,7 +645,7 @@ section labels
   template labelInfo(){ labelInternal("label-info")[all attributes]{ elements } }
   
   template labelInternal( labelClass : String ){
-    <span class=labelClass + " label " + attribute("class") all attributes except "class"> elements </span>
+    <span class=labelClass + " label" all attributes> elements </span>
   }
   
 section alerts
