@@ -56,6 +56,13 @@ section grid system
 template gridContainerFluid() {
     div[class="container-fluid", all attributes]{ elements }
   }
+  template gridRowCol(){
+    gridRowCol(12)[all attributes]{ elements }
+  }
+  template gridRowCol(cols : Int){
+    gridRow[all attributes]{ gridCol(cols){ elements } }
+  }
+  
   template gridRow(){
     div[class="row", all attributes]{ elements }
   }
