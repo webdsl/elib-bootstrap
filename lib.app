@@ -528,11 +528,23 @@ section tabs
 
   template tabsBSElem(elems: [tabId: String, tabLabelElem : TemplateElements, content: TemplateElements] ){
     tabsBS{
-      for(e in elems){
-        tabElems(e.tabId, false){
-          e.tabLabelElem
-        }
-      }
+		  if(elems.length > 8){
+		    dropdownInNavbar("Items (" + elems.length+ ")" ){
+		      dropdownMenu{
+		        for( e in elems ){
+		          tabElems(e.tabId, false){
+			          e.tabLabelElem
+			        }
+		        }
+		      }
+		    }
+		  } else {
+		    for(e in elems){
+	        tabElems(e.tabId, false){
+	          e.tabLabelElem
+	        }
+	      }
+	    }
     }
     tabContent{ par{
       for(e in elems){
