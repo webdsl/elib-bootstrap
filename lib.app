@@ -526,19 +526,42 @@ section miscellaneous
   
 section tabs
 
-  template tabsBS(elems: [label: String, content: TemplateElements] ){
+  template tabsBSElem(elems: [tabId: String, tabLabelElem : TemplateElements, content: TemplateElements] ){
     tabsBS{
-      for(e in elems where e.label != ""){
-        tabBS(e.label)
+      for(e in elems){
+        tabElems(e.tabId, false){
+          e.tabLabelElem
+        }
       }
     }
     tabContent{ par{
-      for(e in elems where e.label != ""){
-        tabPane(e.label){
+      for(e in elems){
+        tabPane(e.tabId){
           e.content
         }
       }
     } }
+  }
+  template tabsBSWithId(elems: [tabId: String, label : String, content: TemplateElements] ){
+    tabsBSElem([
+      for( e in elems ){
+        ( e.tabId,
+        { if(e.label == ""){ "-" } else{ output(e.label) } "" },
+          e.content
+        )
+      }
+    ])
+  }
+  
+  template tabsBS(elems: [label: String, content: TemplateElements] ){
+    tabsBSElem([
+      for( e in elems ){
+        ( id + e.label,
+        { if(e.label == ""){ "-" } else{ output(e.label) } "" },
+          e.content
+        )
+      }
+    ])
   }
 
   template tabsBSNoURL(){
@@ -609,8 +632,12 @@ section tabs
   template tab(label: String, idAttr: String) { 
     tab(label, idAttr, false)[all attributes]
   }
-  template tab(label: String, idAttr: String, active: Bool) { 
-    <li class=activeClass(active)><a href=hrefHashId(idAttr, true) data-toggle="tab" all attributes>output(label)</a></li>
+  template tab(label: String, idAttr: String, active: Bool) {
+    var nonEmptyLabel := if(label == "") "-" else label
+    tabElems(idAttr, active)[all attributes]{ output(nonEmptyLabel) }
+  }
+  template tabElems(idAttr: String, active: Bool) {
+    <li class=activeClass(active)><a href=hrefHashId(idAttr, true) data-toggle="tab" all attributes> elements </a></li>
     // <script> $(function () { $('~(hrefHashId(id, true))').tab('show') }) </script>
   }
   function hrefHashId(s : String, includeHash : Bool) : String {
