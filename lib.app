@@ -588,51 +588,66 @@ section tabs
     includeHead(rendertemplate(setHashOnTabAndOpenFirstTab))
     postProcess("autoTabFunction(node);")
   }
-  template setHashOnTabAndOpenFirstTab(){
-    <script>
-      if ($._data( $(window)[0], 'events' ).hashchange == undefined){
-        $(window).on('hashchange', function(event){
-          // show active tab on hash in url
-        if (location.hash !== ''){
-          var tab = $('a[href="' + location.hash + '"][data-toggle="tab"]');
-          tab.tab('show');
-            // and open parent tabs in case there are nested tabs
-            var parentPane = tab.closest( '.tab-pane' );          
-            if(parentPane.length > 0){
-              $('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
-                    return false;
-            }
-          }
-          return false;
-      });
-      $(document).ready(function() {
-        $(window).trigger( 'hashchange' );
-      });
+template setHashOnTabAndOpenFirstTab(){
+  <script>
+    function hashChangeFunc(){
+      // show active tab on hash in url
+      if (window.location.hash !== ''){
+        var tab = $('a[href="' + window.location.hash + '"][data-toggle="tab"]');
+        if(tab.length){
+	        tab.tab('show');
+	        // and open parent tabs in case there are nested tabs
+	        var parentPane = tab.closest( '.tab-pane' );
+	        if(parentPane.length){
+	          $('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
+	        }
+	      }
+      }
+      return false;
     }
-    var autoTabFunction = function(node) {
-        // remember the hash in the URL without jumping
-        $('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e) {
-           if(history.replaceState) {
-                history.replaceState(null, null, '#'+$(e.target).attr('href').substr(1));
-           } else {
-                location.hash = '#'+$(e.target).attr('href').substr(1);
-           }
-        });
-        
-        //When no tab is active, set the first one to active
-        $(node).find('.nav-tabs:not(.bound)').addClass('bound').each(function() {
-            if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
-              $(this).children().first().addClass('active');
-            }
-        });
-        $(node).find('.tab-content:not(.bound)').addClass('bound').each(function() {
-            if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
-              $(this).children('.tab-pane').first().addClass('active');
-            }
-        });
+    
+    $(document).ready(function(){
+      var tabFromRequestUrl = window.location.hash !== '' ? $('a[href="' + window.location.hash + '"][data-toggle="tab"]') : [];
+      var initUrlHash = window.location.hash;
+      hashChangeFunc()
+      if( tabFromRequestUrl.length ){
+        //Prevent the browser to auto-scroll to the anchor of the tab
+        window.location.hash = "";
+      }
+      if ($._data( $(window)[0], 'events' ).hashchange == undefined){
+        $(window).on('hashchange', hashChangeFunc);
+      }
+      setTimeout( function(){
+        if(tabFromRequestUrl.length){
+          history.replaceState(null, null, initUrlHash);
+        }
+      }, 10 );
+    });
+    var autoTabFunction = function(node){
+      // remember the hash in the URL without jumping
+      $('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e){
+        var newhash = '#' + $(e.target).attr('href').substr(1);
+        if(history.replaceState){
+          history.replaceState(null, null, newhash);
+        } else{
+          location.hash = newhash;
+        }
+      });
+      
+      //When no tab is active, set the first one to active
+      $(node).find('.nav-tabs:not(.bound)').addClass('bound').each(function(){
+        if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
+          $(this).children().first().addClass('active');
+        }
+      });
+      $(node).find('.tab-content:not(.bound)').addClass('bound').each(function(){
+        if( $(this).children().length > 0 && 1 > $(this).children('.active').length){
+          $(this).children('.tab-pane').first().addClass('active');
+        }
+      });
     }
   </script>
-  }
+}
 
   
   template tabActive(label: String, idAttr: String) { 
