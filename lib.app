@@ -593,15 +593,17 @@ template setHashOnTabAndOpenFirstTab(){
     function hashChangeFunc(){
       // show active tab on hash in url
       if (window.location.hash !== ''){
-        var tab = $('a[href="' + window.location.hash + '"][data-toggle="tab"]');
-        if(tab.length){
-	        tab.tab('show');
-	        // and open parent tabs in case there are nested tabs
-	        var parentPane = tab.closest( '.tab-pane' );
-	        if(parentPane.length){
-	          $('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
-	        }
-	      }
+        var hashTarget = $('a[href="' + window.location.hash + '"]');
+        if(hashTarget.length){
+          if( hashTarget.attr('data-toggle') === 'tab' ){
+            hashTarget.tab('show');
+          }
+          // and open parent tabs in case the target element is nested in a tab
+          var parentPane = hashTarget.closest( '.tab-pane' );
+          if(parentPane.length){
+            $('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
+          }
+        }
       }
       return false;
     }
@@ -796,37 +798,36 @@ section alerts
 */
 
 section panels
-
-  define panel(){
-    div[class="panel panel-default", all attributes]{
+  
+  derivetemplate panels PanelClass{
+    template panelPanelClass(){
+      panelNoBody("panel-panelclass")[all attributes]{ elements }
+    }
+    template panelPanelClass( header : String ){
+	    panelInternal( header, "panel-panelclass")[all attributes]{ elements }
+	  }
+  }
+  derive panels Danger
+  derive panels Warning
+  derive panels Info
+  derive panels Primary
+  derive panels Success
+  
+  template panel(){
+    panelNoBody("panel-default")[all attributes]{
       elements
     }
   }
-  define panelDanger(){
-    div[class="panel panel-danger", all attributes]{
+  template panel( header : String ){
+    panelInternal( header, "panel-default")[all attributes]{ elements }
+  }
+  
+  template panelNoBody( panelClass : String ){
+    div[class="panel " + panelClass, all attributes]{
       elements
     }
   }
-  define panelWarning(){
-    div[class="panel panel-warning", all attributes]{
-      elements
-    }
-  }
-  define panelInfo(){
-    div[class="panel panel-info", all attributes]{
-      elements
-    }
-  }
-  define panelPrimary(){
-    div[class="panel panel-primary", all attributes]{
-      elements
-    }
-  }
-  define panelSuccess(){
-    div[class="panel panel-success", all attributes]{
-      elements
-    }
-  }
+  
   define panelHeading(){
     div[class="panel-heading clearfix", all attributes]{
       div[class="panel-title"]{
@@ -845,34 +846,79 @@ section panels
       elements
     }
   }
-  
-  define panel( header : String ){
-    panelInternal( header, "panel-default")[all attributes]{ elements }
-  }
-  define panelDanger( header : String ){
-    panelInternal( header, "panel-danger")[all attributes]{ elements }
-  }
-  define panelWarning( header : String ){
-    panelInternal( header, "panel-warning")[all attributes]{ elements }
-  }
-  define panelInfo( header : String ){
-    panelInternal( header, "panel-info")[all attributes]{ elements }
-  }
-  define panelPrimary( header : String ){
-    panelInternal( header, "panel-primary")[all attributes]{ elements }
-  }
-  define panelSuccess( header : String ){
-    panelInternal( header, "panel-success")[all attributes]{ elements }
-  }
-  
+    
   define panelInternal( header : String, panelclass : String){
-    div[class="panel " + panelclass, all attributes]{
+    panelNoBody(panelclass)[all attributes]{
       panelHeading { output(header) }
       panelBody { elements }
     }
   }
-  
-  
+
+  template accordionPanels(){
+    accordionPanels( true )[all attributes]{ elements }
+  }
+  template accordionPanels(withUrlHash : Bool){
+    var accordionId : String := id
+    var panelGroupClass := if(withUrlHash) "panel-group collapse-auto-url" else "panel-group"
+    var currentPanelId := ""
+    var expanded := false
+
+	  template panelNoBody( panelClass : String ){
+	    init{
+	      currentPanelId := getTemplate().getUniqueIdNoCache();
+        var expandedAttr := attribute( "aria-expanded" );
+        expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
+	    }
+	    div[class="panel " + panelClass, all attributes]{
+	      elements
+	    }
+	  }		  
+		  define panelHeading(){
+		    div[class="panel-heading clearfix", role="tab", id=currentPanelId, all attributes]{
+          <h3 class="panel-title">
+            <a role="button" if(!expanded){class="collapsed"} data-toggle="collapse" data-parent="#"+accordionId href="#collapse"+currentPanelId aria-expanded=""+expanded aria-controls="collapse"+currentPanelId>
+              collapseIndicator(accordionId) elements
+            </a>
+          </h3>
+		    }
+		  }
+		  define panelBody(){
+		    div[id="collapse"+currentPanelId, class="panel-collapse collapse" + (if(expanded) " in" else ""), role="tabpanel", aria-labelledby=accordionId]{
+			    div[class="panel-body", all attributes]{
+			      elements
+			    }
+			  }
+		  }
+	  
+	  if(withUrlHash){
+		  head{
+	      <script>
+	        function accordionInit(){
+	          $('.panel-group.collapse-auto-url .collapse').on('shown.bs.collapse', function (){
+	            var urlReplace = "#" + $(this).attr('id'); //make the hash the id of the modal shown
+	            history.pushState(null, null, urlReplace);
+	          });
+	          tryShowPanel();
+	        }
+	        function tryShowPanel(){
+	          // Open panel on hash in url
+	          if (location.hash !== ''){
+	            $('.panel-group ' + location.hash).collapse('show');
+	          }
+	          return false;
+	        }
+	        
+	        $(window).bind('hashchange.accordion', tryShowPanel);
+	        $(document).ready( accordionInit );
+	      </script>
+	    }
+    }
+    
+    div[class=panelGroupClass , id=accordionId, role="tablist", aria-multiselectable="true"]{
+      elements
+    }    
+    
+  }
 
 section modal
 
