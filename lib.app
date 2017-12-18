@@ -919,6 +919,25 @@ section panels
     }    
     
   }
+  
+  template collapseIndicator(accordionId : String){
+    var accordionIdSelector := "#" + accordionId + " .panel-collapse"
+    
+    iChevronRight " "
+    
+    <script>
+    $( document ).ready(function() {
+      $('~accordionIdSelector').on('shown.bs.collapse', function () {
+          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
+      });
+      
+      $('~accordionIdSelector').on('hidden.bs.collapse', function () {
+          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
+      });
+    });
+    </script>
+    
+  }
 
 section modal
 
