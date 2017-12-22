@@ -862,33 +862,50 @@ section panels
     var panelGroupClass := if(withUrlHash) "panel-group collapse-auto-url" else "panel-group"
     var currentPanelId := ""
     var expanded := false
+    var panelLevel := 0
 
 	  template panelNoBody( panelClass : String ){
 	    init{
-	      currentPanelId := getTemplate().getUniqueIdNoCache();
-        var expandedAttr := attribute( "aria-expanded" );
-        expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
+	        panelLevel := panelLevel + 1;
+		      currentPanelId := getTemplate().getUniqueIdNoCache();
+	        var expandedAttr := attribute( "aria-expanded" );
+	        expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
 	    }
 	    div[class="panel " + panelClass, all attributes]{
 	      elements
 	    }
+	    render{ panelLevel := panelLevel - 1; }
 	  }		  
-		  define panelHeading(){
-		    div[class="panel-heading clearfix", role="tab", id=currentPanelId, all attributes]{
-          <h3 class="panel-title">
-            <a role="button" if(!expanded){class="collapsed"} data-toggle="collapse" data-parent="#"+accordionId href="#collapse"+currentPanelId aria-expanded=""+expanded aria-controls="collapse"+currentPanelId>
-              collapseIndicator(accordionId) elements
-            </a>
-          </h3>
+		template panelHeading(){
+		  if(panelLevel > 1){
+        div[class="panel-heading clearfix", all attributes]{
+		      div[class="panel-title"]{
+		        elements
+		      }
 		    }
-		  }
-		  define panelBody(){
+		  } else {
+		    div[class="panel-heading clearfix", role="tab", id=currentPanelId, all attributes]{
+	        <h3 class="panel-title">
+	          <a role="button" if(!expanded){class="collapsed"} data-toggle="collapse" data-parent="#"+accordionId href="#collapse"+currentPanelId aria-expanded=""+expanded aria-controls="collapse"+currentPanelId>
+	            collapseIndicator(accordionId) elements
+	          </a>
+	        </h3>
+		    }
+	    }
+	  }
+	  template panelBody(){
+	    if(panelLevel > 1){
+        div[class="panel-body", all attributes]{
+		      elements
+		    }
+	    } else {
 		    div[id="collapse"+currentPanelId, class="panel-collapse collapse" + (if(expanded) " in" else ""), role="tabpanel", aria-labelledby=accordionId]{
 			    div[class="panel-body", all attributes]{
 			      elements
 			    }
 			  }
 		  }
+	  }
 	  
 	  if(withUrlHash){
 		  head{
