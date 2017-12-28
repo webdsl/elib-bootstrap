@@ -853,7 +853,7 @@ section panels
       panelBody { elements }
     }
   }
-
+  template administerVarsInternal(){ /* overridden */ }
   template accordionPanels(){
     accordionPanels( true )[all attributes]{ elements }
   }
@@ -874,8 +874,12 @@ section panels
 	    div[class="panel " + panelClass, all attributes]{
 	      elements
 	    }
-	    render{ panelLevel := panelLevel - 1; }
-	  }		  
+	    administerVarsInternal
+	    
+	  }	
+	  template administerVarsInternal(){
+	    init{ panelLevel := panelLevel - 1; }
+	  }
 		template panelHeading(){
 		  if(panelLevel > 1){
         div[class="panel-heading clearfix", all attributes]{
