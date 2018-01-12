@@ -1018,6 +1018,9 @@ section modal
   function removeModal(){
     runscript("$('body').removeClass('modal-open'); $('.modal-backdrop').remove();");
   }
+  function hideModals(){
+    runscript("$('.modal.in').modal('hide');");
+  }
 section list groups
 
   template listGroup() {
