@@ -962,6 +962,17 @@ section panels
 
 section modal
 
+  template modalInfo( linkTitle : String ){
+    modalLink( id )[all attributes]{ output(linkTitle) }
+    modal( id ){
+      modalHeader{ header3{ output(linkTitle) } }
+      modalBody{
+        elements
+      }
+      modalFooter{ modalCloseLink[class = "btn btn-default"] { iRemove " Close" } }
+    }
+  }
+
   define modalLink (modalID : String){
     <a data-toggle="modal" href="#" + modalID all attributes except ["href","data-toggle"] >elements</a>
   }
@@ -972,7 +983,7 @@ section modal
         <div class="modal-content">
           elements
         </div>
-    </div>
+      </div>
     </div>    
     
     includeHead(
