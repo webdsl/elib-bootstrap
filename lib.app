@@ -987,7 +987,7 @@ section modal
     </div>    
     
     includeHead(
-      "<script type='text/javascript'> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
+      "<script type=\"text/javascript\"> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
       rendertemplate(
         postProcess(
           "$(node).find('.modal').on( 'shown.bs.modal', function(){ if(history.pushState){ history.pushState({ id: 'modal', modalId: $(this).attr('id') }, null, window.location.href); } } )" +
