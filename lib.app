@@ -917,8 +917,12 @@ section panels
 	        function accordionInit(){
 	          $('.panel-group.collapse-auto-url .collapse').on('shown.bs.collapse', function (){
 	            var urlReplace = "#" + $(this).attr('id'); //make the hash the id of the modal shown
-	            history.pushState(null, null, urlReplace);
-	          });
+	            history.replaceState(undefined, undefined , urlReplace)
+	          }).on('hide.bs.collapse', function (){
+	            if( window.location.hash.indexOf( $(this).attr('id') ) > -1 ){
+	              history.replaceState(undefined, undefined , "#")   
+	            }
+            });
 	          tryShowPanel();
 	        }
 	        function tryShowPanel(){
