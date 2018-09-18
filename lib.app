@@ -1034,7 +1034,7 @@ section modal
     runscript("$('body').removeClass('modal-open'); $('.modal-backdrop').remove();");
   }
   function hideModals(){
-    runscript("$('.modal.in').modal('hide');");
+    runscript("$('.modal.in').modal('hide'); $('body').removeClass('modal-open'); $('.modal-backdrop').remove();");
   }
 section list groups
 
