@@ -855,10 +855,11 @@ section panels
   }
   template administerVarsInternal(){ /* overridden */ }
   template accordionPanels(){
-    accordionPanels( true )[all attributes]{ elements }
+    accordionPanels( true, "" )[all attributes]{ elements }
   }
-  template accordionPanels(withUrlHash : Bool){
-    var accordionId : String := id
+  //optionalId is only needed when using multiple accordionPanels loaded by ajax. In case the panels loaded >1 times using the same ajax template, it would result in the same id.  
+  template accordionPanels(withUrlHash : Bool, optionalId : String){
+    var accordionId : String := if(optionalId != null && optionalId != "") optionalId else id
     var panelGroupClass := if(withUrlHash) "panel-group collapse-auto-url" else "panel-group"
     var currentPanelId := ""
     var expanded := false
@@ -867,7 +868,7 @@ section panels
 	  template panelNoBody( panelClass : String ){
 	    init{
 	        panelLevel := panelLevel + 1;
-		      currentPanelId := getTemplate().getUniqueIdNoCache();
+		      currentPanelId := accordionId + getTemplate().getUniqueIdNoCache();
 	        var expandedAttr := attribute( "aria-expanded" );
 	        expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
 	    }
