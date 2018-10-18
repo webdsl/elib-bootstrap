@@ -506,8 +506,10 @@ section dropdowns
     dropdownMenu{ elements }
   }
   template dropdownButton(title: String) {
-    dropdownToggle(attribute("class")){ output(title) }
-  dropdownMenu{ elements }
+    buttonGroup{
+     dropdownToggle(attribute("class")){ output(title) }
+     dropdownMenu{ elements }
+   }
   }
   
   
@@ -865,79 +867,82 @@ section panels
     var expanded := false
     var panelLevel := 0
 
-	  template panelNoBody( panelClass : String ){
-	    init{
-	        panelLevel := panelLevel + 1;
-		      currentPanelId := accordionId + getTemplate().getUniqueIdNoCache();
-	        var expandedAttr := attribute( "aria-expanded" );
-	        expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
-	    }
-	    div[class="panel " + panelClass, all attributes]{
-	      elements
-	    }
-	    administerVarsInternal
-	    
-	  }	
-	  template administerVarsInternal(){
-	    init{ panelLevel := panelLevel - 1; }
-	  }
-		template panelHeading(){
-		  if(panelLevel > 1){
+    template panelNoBody( panelClass : String ){
+      render{
+         //This should be done in render phase, not in init for correct ajax behavior.
+         //When done in init, it won't update currentPanelId/level after action phase,
+         //so each panel gets id/level of last panel
+          panelLevel := panelLevel + 1;
+          currentPanelId := accordionId + getTemplate().getUniqueIdNoCache();
+          var expandedAttr := attribute( "aria-expanded" );
+          expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
+      }
+      div[class="panel " + panelClass, all attributes]{
+        elements
+      }
+      administerVarsInternal
+      
+    } 
+    template administerVarsInternal(){
+      render{ panelLevel := panelLevel - 1; }
+    }
+    template panelHeading(){
+      if(panelLevel > 1){
         div[class="panel-heading clearfix", all attributes]{
-		      div[class="panel-title"]{
-		        elements
-		      }
-		    }
-		  } else {
-		    div[class="panel-heading clearfix", role="tab", id=currentPanelId, all attributes]{
-	        <h3 class="panel-title">
-	          <a role="button" if(!expanded){class="collapsed"} data-toggle="collapse" data-parent="#"+accordionId href="#collapse"+currentPanelId aria-expanded=""+expanded aria-controls="collapse"+currentPanelId>
-	            collapseIndicator(accordionId) elements
-	          </a>
-	        </h3>
-		    }
-	    }
-	  }
-	  template panelBody(){
-	    if(panelLevel > 1){
+          div[class="panel-title"]{
+            elements
+          }
+        }
+      } else {
+        div[class="panel-heading clearfix", role="tab", id=currentPanelId, all attributes]{
+          <h3 class="panel-title">
+            <a role="button" if(!expanded){class="collapsed"} data-toggle="collapse" data-parent="#"+accordionId href="#collapse"+currentPanelId aria-expanded=""+expanded aria-controls="collapse"+currentPanelId>
+              collapseIndicator(accordionId) elements
+            </a>
+          </h3>
+        }
+      }
+    }
+    template panelBody(){
+      if(panelLevel > 1){
         div[class="panel-body", all attributes]{
-		      elements
-		    }
-	    } else {
-		    div[id="collapse"+currentPanelId, class="panel-collapse collapse" + (if(expanded) " in" else ""), role="tabpanel", aria-labelledby=accordionId]{
-			    div[class="panel-body", all attributes]{
-			      elements
-			    }
-			  }
-		  }
-	  }
-	  
-	  if(withUrlHash){
-		  head{
-	      <script>
-	        function accordionInit(){
-	          $('.panel-group.collapse-auto-url .collapse').on('shown.bs.collapse', function (){
-	            var urlReplace = "#" + $(this).attr('id'); //make the hash the id of the modal shown
-	            history.replaceState(undefined, undefined , urlReplace)
-	          }).on('hide.bs.collapse', function (){
-	            if( window.location.hash.indexOf( $(this).attr('id') ) > -1 ){
-	              history.replaceState(undefined, undefined , "#")   
-	            }
+          elements
+        }
+      } else {
+        div[id="collapse"+currentPanelId, class="panel-collapse collapse" + (if(expanded) " in" else ""), role="tabpanel", aria-labelledby=accordionId]{
+          div[class="panel-body", all attributes]{
+            elements
+          }
+        }
+      }
+    }
+    
+    if(withUrlHash){
+      head{
+        <script>
+          function accordionInit(){
+            $('.panel-group.collapse-auto-url .collapse').on('shown.bs.collapse', function (){
+              var urlReplace = "#" + $(this).attr('id'); //make the hash the id of the modal shown
+              history.replaceState(undefined, undefined , urlReplace)
+            }).on('hide.bs.collapse', function (){
+              if( window.location.hash.indexOf( $(this).attr('id') ) > -1 ){
+                history.replaceState(undefined, undefined , "#")   
+              }
             });
-	          tryShowPanel();
-	        }
-	        function tryShowPanel(){
-	          // Open panel on hash in url
-	          if (location.hash !== ''){
-	            $('.panel-group ' + location.hash).collapse('show');
-	          }
-	          return false;
-	        }
-	        
-	        $(window).bind('hashchange.accordion', tryShowPanel);
-	        $(document).ready( accordionInit );
-	      </script>
-	    }
+            tryShowPanel();
+          }
+          function tryShowPanel(){
+            // Open panel on hash in url
+            if (location.hash !== ''){
+              $('.panel-group ' + location.hash).collapse('show');
+            }
+            return false;
+          }
+          
+          $(window).bind('hashchange.accordion', tryShowPanel);
+          $(document).ready( accordionInit );
+        </script>
+      }
     }
     
     div[class=panelGroupClass , id=accordionId, role="tablist", aria-multiselectable="true"]{
