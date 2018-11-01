@@ -225,7 +225,7 @@ section sections
     }
   }
   template small() {
-  	<small all attributes>elements</small>
+    <small all attributes>elements</small>
   }
  
 section tables
@@ -530,23 +530,23 @@ section tabs
 
   template tabsBSElem(elems: [tabId: String, tabLabelElem : TemplateElements, content: TemplateElements] ){
     tabsBS{
-		  if(elems.length > 8){
-		    dropdownInNavbar("Items (" + elems.length+ ")" ){
-		      dropdownMenu{
-		        for( e in elems ){
-		          tabElems(e.tabId, false){
-			          e.tabLabelElem
-			        }
-		        }
-		      }
-		    }
-		  } else {
-		    for(e in elems){
-	        tabElems(e.tabId, false){
-	          e.tabLabelElem
-	        }
-	      }
-	    }
+      if(elems.length > 8){
+        dropdownInNavbar("Items (" + elems.length+ ")" ){
+          dropdownMenu{
+            for( e in elems ){
+              tabElems(e.tabId, false){
+                e.tabLabelElem
+              }
+            }
+          }
+        }
+      } else {
+        for(e in elems){
+          tabElems(e.tabId, false){
+            e.tabLabelElem
+          }
+        }
+      }
     }
     tabContent{ par{
       for(e in elems){
@@ -806,8 +806,8 @@ section panels
       panelNoBody("panel-panelclass")[all attributes]{ elements }
     }
     template panelPanelClass( header : String ){
-	    panelInternal( header, "panel-panelclass")[all attributes]{ elements }
-	  }
+      panelInternal( header, "panel-panelclass")[all attributes]{ elements }
+    }
   }
   derive panels Danger
   derive panels Warning
@@ -866,16 +866,28 @@ section panels
     var currentPanelId := ""
     var expanded := false
     var panelLevel := 0
+    var afterAction := false
+    
+    databind{ afterAction := true; }
+    render{ panelLevel := 0; }
 
     template panelNoBody( panelClass : String ){
+      init{
+        panelLevel := panelLevel + 1;
+        currentPanelId := accordionId + getTemplate().getUniqueIdNoCache();
+        var expandedAttr := attribute( "aria-expanded" );
+        expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
+      }
       render{
-         //This should be done in render phase, not in init for correct ajax behavior.
-         //When done in init, it won't update currentPanelId/level after action phase,
+         //redo administration in render phase when action is performed for correct ajax behavior
+         //When only done in init, it won't update currentPanelId/level after action phase,
          //so each panel gets id/level of last panel
-          panelLevel := panelLevel + 1;
-          currentPanelId := accordionId + getTemplate().getUniqueIdNoCache();
-          var expandedAttr := attribute( "aria-expanded" );
-          expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
+         if(afterAction){
+            panelLevel := panelLevel + 1;
+            currentPanelId := accordionId + getTemplate().getUniqueIdNoCache();
+            var expandedAttr := attribute( "aria-expanded" );
+            expanded := if( expandedAttr != null && expandedAttr == "true") true else false;
+          }
       }
       div[class="panel " + panelClass, all attributes]{
         elements
@@ -884,7 +896,12 @@ section panels
       
     } 
     template administerVarsInternal(){
-      render{ panelLevel := panelLevel - 1; }
+      init{ panelLevel := panelLevel - 1; }
+      render{
+        if(afterAction){
+          panelLevel := panelLevel - 1;
+        }
+      }
     }
     template panelHeading(){
       if(panelLevel > 1){
@@ -947,10 +964,10 @@ section panels
     
     div[class=panelGroupClass , id=accordionId, role="tablist", aria-multiselectable="true"]{
       elements
-    }    
+    }
     
   }
-  
+    
   template collapseIndicator(accordionId : String){
     var accordionIdSelector := "#" + accordionId + " .panel-collapse"
     
