@@ -668,11 +668,11 @@ template setHashOnTabAndOpenFirstTab(){
     tabElems(idAttr, active)[all attributes]{ output(nonEmptyLabel) }
   }
   template tabElems(idAttr: String, active: Bool) {
-    <li class=activeClass(active)> tabLink(idAttr)[all attributes]{ elements } </li>
+    <li class=activeClass(active)> <a href=hrefHashId(idAttr, true) data-toggle="tab" all attributes> elements </a> </li>
     // <script> $(function () { $('~(hrefHashId(id, true))').tab('show') }) </script>
   }
   template tabLink(idAttr : String){
-    <a href=hrefHashId(idAttr, true) data-toggle="tab" all attributes> elements </a>
+    <a href="javascript:$('a[href=~hrefHashId(idAttr, true)]').click();void(0)" all attributes> elements </a>
   }
   function hrefHashId(s : String, includeHash : Bool) : String {
     return if(includeHash) "#" + /(\W|\s)+/.replaceAll("-",s) else /(\W|\s)+/.replaceAll("-",s);
