@@ -583,8 +583,18 @@ section tabs
       elements
     </ul>
   }
+  template pillsBS(){
+  	tabsPills( "nav-pills" )[all attributes]{
+      elements
+    }
+  }
   template tabsBS() {  
-    <ul id="tab" class="nav nav-tabs" all attributes>
+    tabsPills("nav-tabs")[all attributes]{
+    	elements
+    }
+  }
+  template tabsPills( tabClass : String){
+  	<ul id="tab" class="nav " + tabClass all attributes>
       elements
     </ul>
     includeHead(rendertemplate(setHashOnTabAndOpenFirstTab))
@@ -603,8 +613,9 @@ template setHashOnTabAndOpenFirstTab(){
           // and open parent tabs in case the target element is nested in a tab
           var parentPane = hashTarget.closest( '.tab-pane' );
           if(parentPane.length){
-            $('.nav-tabs a[href=#'+ parentPane.attr('id') +']').tab('show');
+            $('.nav a[href=#'+ parentPane.attr('id') +']').tab('show');
           }
+          var parentCollapse = hashTarget.closest( '.panel-collapse:not(.in)' ).collapse('show');
         }
       }
       return false;
@@ -639,7 +650,7 @@ template setHashOnTabAndOpenFirstTab(){
       });
       
       //When no tab is active, set the first one to active
-      $(node).find('.nav-tabs:not(.bound)').addClass('bound').each(function(){
+      $(node).find('.nav:not(.bound)').addClass('bound').each(function(){
         if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
           $(this).children().first().addClass('active');
         }
@@ -929,7 +940,7 @@ section panels
           elements
         }
       } else {
-        div[id="collapse"+currentPanelId, class="panel-collapse collapse" + (if(expanded) " in" else ""), role="tabpanel", aria-labelledby=accordionId]{
+        div[id="collapse"+currentPanelId, class="panel-collapse collapse" + (if(expanded) " in" else ""), role="tabpanel", aria-labelledby=currentPanelId]{
           div[class="panel-body", all attributes]{
             elements
           }
@@ -976,25 +987,27 @@ section panels
     
     iChevronRight " "
     
-    <script>
-    $( document ).ready(function() {
-      $('~accordionIdSelector').on('shown.bs.collapse', function () {
-          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
-      });
-      
-      $('~accordionIdSelector').on('hidden.bs.collapse', function () {
-          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
-      });
-    });
-    </script>
+    head{
+      <script>
+		    $( document ).ready(function() {
+		      $('~accordionIdSelector').on('shown.bs.collapse', function () {
+		          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
+		      });
+		      
+		      $('~accordionIdSelector').on('hidden.bs.collapse', function () {
+		          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
+		      });
+		    });
+      </script>
+    }
     
   }
 
 section modal
 
-  template modalInfo( linkTitle : String ){
+  template modalInfo( linkTitle : String){
     modalLink( id )[all attributes]{ output(linkTitle) }
-    modal( id ){
+    modal( id, "" ){
       modalHeader{ header3{ output(linkTitle) } }
       modalBody{
         elements
@@ -1008,13 +1021,16 @@ section modal
   }
 
   define modal(modalID : String){
+    modal(modalID, "")[all attributes]{ elements }
+  }
+  define modal(modalID : String, modalSizeClass : String){
     <div class="modal "  id=modalID all attributes except "id">
-      <div class="modal-dialog">
+      <div class="modal-dialog ~modalSizeClass">
         <div class="modal-content">
           elements
         </div>
       </div>
-    </div>    
+    </div>  
     
     includeHead(
       "<script type=\"text/javascript\"> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
