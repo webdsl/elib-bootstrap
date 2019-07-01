@@ -1007,8 +1007,12 @@ section modal
 
   template modalInfo( linkTitle : String){
     modalLink( id )[all attributes]{ output(linkTitle) }
-    modal( id, "" ){
-      modalHeader{ header3{ output(linkTitle) } }
+    modalInfo( id, linkTitle )
+    
+  }
+  template modalInfo( modalID: String, title : String){
+    modal( modalID, "" )[all attributes]{
+      modalHeader{ header3{ output(title) } }
       modalBody{
         elements
       }
