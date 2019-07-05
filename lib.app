@@ -650,7 +650,7 @@ template setHashOnTabAndOpenFirstTab(){
       });
       
       //When no tab is active, set the first one to active
-      $(node).find('.nav:not(.bound)').addClass('bound').each(function(){
+      $(node).find('.nav-tabs:not(.bound), .nav-pills:not(.bound)').addClass('bound').each(function(){
         if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
           $(this).children().first().addClass('active');
         }
