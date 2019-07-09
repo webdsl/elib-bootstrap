@@ -332,13 +332,6 @@ section horizontal forms
     }
   }  
   template controlGroup(s: String){
-    // div[class="form-group"]{
-    //  label(s)[class="control-label"]{ 
-    //    div[class="controls"]{
-    //      elements
-    //    }
-    //  }
-    // }
     controlGroup(s, 2, 10)[all attributes]{ elements }
   }
   template controlGroup(s: String, labelCol: Int, elemCol: Int){   
@@ -1007,7 +1000,9 @@ section modal
 
   template modalInfo( linkTitle : String){
     modalLink( id )[all attributes]{ output(linkTitle) }
-    modalInfo( id, linkTitle )
+    modalInfo( id, linkTitle ){
+      elements
+    }
     
   }
   template modalInfo( modalID: String, title : String){
