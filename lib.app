@@ -808,13 +808,20 @@ section alerts
 
 section panels
   
-  derivetemplate panels PanelClass{
-    template panelPanelClass(){
-      panelNoBody("panel-panelclass")[all attributes]{ elements }
+  derivetemplate panels Cls{
+    template panelCls(){
+      panelNoBody("panel-cls")[all attributes]{ elements }
     }
-    template panelPanelClass( header : String ){
-      panelInternal( header, "panel-panelclass")[all attributes]{ elements }
+    template panelCls( header : String ){
+      panelInternal( header, "panel-cls")[all attributes]{ elements }
     }
+    template panelClsWithHeading( headerElem : TemplateElements ){
+      panelNoBody("panel-cls")[all attributes]{
+        panelHeading { headerElem }
+        panelBody { elements }
+      }
+    }
+
   }
   derive panels Danger
   derive panels Warning
@@ -829,6 +836,13 @@ section panels
   }
   template panel( header : String ){
     panelInternal( header, "panel-default")[all attributes]{ elements }
+  }
+  
+  template panelWithHeading( headerElem : TemplateElements ){
+    panelNoBody("panel-default")[all attributes]{
+      panelHeading { headerElem }
+      panelBody { elements }
+    }
   }
   
   template panelNoBody( panelClass : String ){
