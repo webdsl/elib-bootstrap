@@ -722,39 +722,27 @@ section labels
   
 section alerts
 
-  template alert() {
-    div[class="alert alert-dismissible", all attributes]{
-      <a class="close" data-dismiss="alert">"x"</a>
+  template alert(){
+  	div[class="alert alert-dismissible", all attributes]{
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">rawoutput("&times;")</span>
+      </button>
       elements
     }
+  	  
   }
   
-  template alertSuccess() {
-    div[class="alert alert-success alert-dismissible", all attributes]{
-      <a class="close" data-dismiss="alert">"x"</a>
-      elements
-    }
-  }
+  derive alert Success
+  derive alert Info
+  derive alert Warning
+  derive alert Error
   
-  template alertInfo() {
-    div[class="alert alert-info alert-dismissible", all attributes]{
-      <a class="close" data-dismiss="alert">"x"</a>
-      elements
-    }
-  }  
-  
-  template alertWarning() {
-    div[class="alert alert-warning alert-dismissible", all attributes]{
-      <a class="close" data-dismiss="alert">"x"</a>
-      elements
-    }
-  }
-  
-  template alertError() {
-    div[class="alert alert-danger alert-dismissible", all attributes]{
-      <a class="close" data-dismiss="alert">"x"</a>
-      elements
-    }
+  derivetemplate alert Type{
+	  template alertType() {
+	    alert[class="alert-type", all attributes]{
+	    	elements
+	    }
+	  }
   }
 
 /*
