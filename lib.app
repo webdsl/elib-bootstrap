@@ -732,12 +732,14 @@ section alerts
   	  
   }
   
-  derive alert Success
-  derive alert Info
-  derive alert Warning
-  derive alert Error
+  expand
+    Success
+    Info
+    Warning
+    Error
+    to alert
   
-  derivetemplate alert Type{
+  expandtemplate alert to Type{
 	  template alertType() {
 	    alert[class="alert-type", all attributes]{
 	    	elements
@@ -796,7 +798,7 @@ section alerts
 
 section panels
   
-  derivetemplate panels Cls{
+  expandtemplate panels to Cls{
     template panelCls(){
       panelNoBody("panel-cls")[all attributes]{ elements }
     }
@@ -811,11 +813,13 @@ section panels
     }
 
   }
-  derive panels Danger
-  derive panels Warning
-  derive panels Info
-  derive panels Primary
-  derive panels Success
+  expand
+    Danger
+    Warning
+    Info
+    Primary
+    Success
+    to panels
   
   template panel(){
     panelNoBody("panel-default")[all attributes]{
