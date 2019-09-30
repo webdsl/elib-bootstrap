@@ -1,5 +1,5 @@
 module elib/elib-bootstrap/lib
-imports elib/elib-bootstrap/icons    
+imports elib/elib-bootstrap/icons
 
 section default attribute sets
   // override attributes navigate{ class="navigate" }
@@ -15,7 +15,7 @@ section default attribute sets
   // override attributes navigatebutton{ }
   // override attributes captcha{ }
   // override attributes image{ }
-  
+
   override attributes inputInt{ class="inputInt form-control" }
   override attributes inputString{ class="inputString form-control" }
   override attributes inputEmail{ class="inputEmail form-control" }
@@ -25,13 +25,13 @@ section default attribute sets
   override attributes inputWikiText{ class="inputTextarea inputWikiText form-control" }
   override attributes inputFloat{ class="inputFloat form-control" }
   override attributes inputLong{ class="inputLong form-control" }
-  override attributes inputDate{ class="inputDate form-control" } 
+  override attributes inputDate{ class="inputDate form-control" }
   override attributes inputSelect{ class="select form-control" }
   override attributes inputSelectMultiple{ class="select form-control" }
   override attributes inputFile{ class="inputFile  form-control" }
   override attributes inputMultiFile{ class="inputFile  form-control" }
   override attributes inputSDF{ class="inputSDF form-control" }
-  // override attributes radio{ class="radio " }  
+  // override attributes radio{ class="radio " }
 
 section tooltips
 
@@ -41,10 +41,10 @@ section tooltips
 
 section positioning
 
-  template pullRight() { 
-    span[class="pull-right", all attributes]{ elements } 
+  template pullRight() {
+    span[class="pull-right", all attributes]{ elements }
   }
-  template pullLeft() {  
+  template pullLeft() {
     span[class="pull-left", all attributes]{ elements }
   }
 
@@ -62,7 +62,7 @@ template gridContainerFluid() {
   template gridRowCol(cols : Int){
     gridRow[all attributes]{ gridCol(cols){ elements } }
   }
-  
+
   template gridRow(){
     div[class="row", all attributes]{ elements }
   }
@@ -75,21 +75,21 @@ template gridContainerFluid() {
   template gridSpan(span: Int, offset: Int){ //deprecated
     gridCol(span, offset)[all attributes]{ elements }
   }
-  
+
   template gridCol(cols : Int){
     div[class="col-sm-" + cols, all attributes]{ elements }
-  }  
+  }
   template gridCol(cols : Int, offset : Int){
     div[class="col-sm-" + cols + " col-sm-offset-" + offset, all attributes]{ elements }
   }
-  
+
   template gridColAdapt(colsSm : Int, colsLg : Int){
     div[class="col-sm-" + colsSm + " col-lg-" + colsLg , all attributes]{ elements }
   }
   template gridColAdapt(colsSm : Int, offsetSm : Int, colsLg : Int, offsetLg : Int){
     div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg , all attributes]{ elements }
   }
-  
+
   template gridColPush(cols : Int, offset : Int){
     div[class="col-sm-" + cols + " col-sm-push-" + offset, all attributes]{ elements }
   }
@@ -98,13 +98,13 @@ template gridContainerFluid() {
   }
   template gridColXs(cols : Int){
     div[class="col-xs-" + cols, all attributes]{ elements }
-  } 
+  }
   template gridColXs(cols : Int, offset : Int){
     div[class="col-xs-" + cols + " col-xs-offset-" + offset , all attributes]{ elements }
   }
   template gridColMd(cols : Int){
     div[class="col-md-" + cols , all attributes]{ elements }
-  } 
+  }
   template gridColMd(cols : Int, offset : Int){
     div[class="col-md-" + cols + " col-md-offset-" + offset , all attributes]{ elements }
   }
@@ -114,20 +114,20 @@ template gridContainerFluid() {
   template gridColLg(cols : Int, offset : Int){
     div[class="col-lg-" + cols + " col-lg-offset-" + offset , all attributes]{ elements }
   }
-    
+
 section footer
 
-  template footer() { 
-    <footer class="footer" all attributes> 
+  template footer() {
+    <footer class="footer" all attributes>
       elements
     </footer>
   }
-  
+
 section navigation bar
 
   template appname() { "<default>" }
 
-  template brand() { 
+  template brand() {
     navigate root() [class="navbar-brand", all attributes]{ appname }
   }
 
@@ -138,11 +138,11 @@ section navigation bar
       }
     }
   }
-  
+
   template navbarResponsive(){
     navbarResponsive(true)[all attributes]{ elements }
   }
-  
+
   template navbarResponsive(fixed : Bool) {
     div[class=if(fixed)"navbar navbar-inverse navbar-fixed-top" else "navbar navbar-inverse navbar-static-top", all attributes]{
       gridContainer{
@@ -156,7 +156,7 @@ section navigation bar
       }
     }
   }
-  
+
   template navbarFluid() {
     div[class="navbar navbar-inverse navbar-fixed-top", all attributes]{
       div[class="navbar-inner"]{
@@ -184,7 +184,7 @@ section navigation bar
     div[class="navbar-right"]{
       elements
     }
-  } 
+  }
   template navItems() {
     list[class="nav navbar-nav"]{
       elements
@@ -193,7 +193,7 @@ section navigation bar
   template navItem() {
     listitem{ elements }
   }
-  
+
   template navCollapseButton() {
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-bar"></span>
@@ -201,7 +201,7 @@ section navigation bar
       <span class="icon-bar"></span>
     </button>
   }
-  
+
 section sections
 
   template pageHeader() {
@@ -227,7 +227,7 @@ section sections
   template small() {
     <small all attributes>elements</small>
   }
- 
+
 section tables
 
   template tableBordered(){
@@ -235,31 +235,31 @@ section tables
       elements
     }
   }
-  
+
   template tableStriped(){
       table[class="table table-striped table-condensed",  all attributes]{
           elements
       }
   }
-  
+
   template tableHovered(){
     table[class="table table-hover",  all attributes]{
       elements
     }
   }
-  
+
   template theader() {
     <thead all attributes>elements</thead>
   }
-  
+
   template tbody() {
-    <thead all attributes>elements</thead>
+    <tbody all attributes>elements</thead>
   }
-  
+
   template tfooter() {
     <tfoot all attributes>elements</tfoot>
   }
-  
+
   template th(){
     <th all attributes>elements</th>
   }
@@ -268,55 +268,55 @@ section forms
 
   // template span() { <span all attributes>elements</span> }
 
-  template inlForm() { 
-    span[class="form-inline", role="form", all attributes]{ 
+  template inlForm() {
+    span[class="form-inline", role="form", all attributes]{
       form[class="bla"]{
         elements
-      } 
+      }
     }
   }
 
-  template formEntry(l: String){    
+  template formEntry(l: String){
     <label all attributes>output(l)</label> elements
   }
-  
-  template formEntry(l: String, help: String){    
+
+  template formEntry(l: String, help: String){
     <label all attributes>output(l)</label>
     elements
     <span class="help-inline">output(help)</span>
   }
-  
+
   template formActions(){
-    // div[class="form-group"]{ 
+    // div[class="form-group"]{
     //   div[class="col-sm-offset-2 col-sm-10"]{
-    //     elements 
+    //     elements
     //   }
     // }
     formActions(2, 10)[all attributes]{ elements }
   }
-  
+
   template formActions(labelOff: Int, elemCol: Int){
-    div[class="form-group", all attributes]{ 
+    div[class="form-group", all attributes]{
       div[class="col-sm-offset-" + labelOff + " col-sm-" + elemCol]{
-        elements 
+        elements
       }
     }
   }
-    
+
   template formSearch(query: Ref<String>) {
     form[class="form-search", all attributes]{
-      input(query)[class="input-medium search-query", placeholder="Search"] 
+      input(query)[class="input-medium search-query", placeholder="Search"]
       elements
     }
-  } 
-  
+  }
+
   template navbarSearch(query: Ref<String>) {
     form[class="navbar-search pull-left", all attributes]{
       input(query)[class="search-query", placeholder="Search"]
       elements
     }
   }
-   
+
 section horizontal forms
 
   template horizontalForm(){
@@ -330,11 +330,11 @@ section horizontal forms
         elements
       }
     }
-  }  
+  }
   template controlGroup(s: String){
     controlGroup(s, 2, 10)[all attributes]{ elements }
   }
-  template controlGroup(s: String, labelCol: Int, elemCol: Int){   
+  template controlGroup(s: String, labelCol: Int, elemCol: Int){
     div[class="row form-group ", all attributes]{
       label(s)[class="control-label col-sm-" + labelCol]{
         div[class="col-sm-" + elemCol]{
@@ -342,11 +342,11 @@ section horizontal forms
         }
       }
     }
-  }  
-  template checkboxGroup( label : String ){
-    checkboxGroup(label, 2, 10)[all attributes]{ elements } 
   }
-  
+  template checkboxGroup( label : String ){
+    checkboxGroup(label, 2, 10)[all attributes]{ elements }
+  }
+
   template checkboxGroup( label : String, labelCol: Int, elemCol: Int ){
     div[class="checkbox", all attributes]{
       <label class="col-sm-" + elemCol + " col-sm-offset-" + labelCol>
@@ -354,7 +354,7 @@ section horizontal forms
       </label>
     }
   }
-  
+
   template helpBlock(){
     <span class="help-block" all attributes> elements </span>
   }
@@ -368,20 +368,20 @@ section horizontal forms
   template inputPrependAppend() {
     inputGroup[all attributes]{ elements }
   }
-  
+
   template inputGroup() {
     <span class="input-group" all attributes>
       elements
     </span>
   }
-  
+
   template inputGroupButton(){
     <span class="input-group-btn" all attributes> elements </span>
   }
-    
+
 section breadcrumbs
 
-  template breadcrumbs(){ 
+  template breadcrumbs(){
     <ul class="breadcrumb" all attributes> elements </ul>
   }
   template breadcrumb() {
@@ -390,7 +390,7 @@ section breadcrumbs
   template breadcrumbActive() {
     <li class="active" all attributes> elements </li>
   }
-  
+
 section pagers
 
   template pager() {
@@ -400,11 +400,11 @@ section pagers
   }
   template pagerPrevious(nav: String){
     <li all attributes>navigate url(nav) { "Previous" }</li>
-  }  
+  }
   template pagerNext(nav: String){
     <li all attributes>navigate url(nav) { "Next" }</li>
   }
-  
+
 section buttons
 
   template buttonToolbar() {
@@ -450,7 +450,7 @@ section buttons
     div[class="btn btn-primary btn-sm", all attributes]{ elements }
   }
 
-  
+
 section dropdowns
 
   template dropdownMenu(){
@@ -472,13 +472,13 @@ section dropdowns
   }
   template dropdownMenuDivider() {
     listitem[class="divider", all attributes]
-  }  
+  }
   template dropdownToggle(cls: String){
     <a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown">
       elements " " <span class="caret"></span>
     </a>
   }
-  template dropdownToggle(){ 
+  template dropdownToggle(){
     dropdownToggle(""){ elements }
   }
   template dropdown() {
@@ -504,21 +504,24 @@ section dropdowns
      dropdownMenu{ elements }
    }
   }
-  
-  
+
+
 section miscellaneous
 
-  template well(){ 
+  template well(){
     div[class="well", all attributes]{ elements }
   }
   template wellSmall(){
-    div[class="well well-small", all attributes]{ elements }
+    div[class="well well-sm", all attributes]{ elements }
   }
-  
+  template wellLarge(){
+    div[class="well well-lg", all attributes]{ elements }
+  }
+
   template blockquote() {
     <blockquote all attributes> elements </blockquote>
   }
-  
+
 section tabs
 
   template tabsBSElem(elems: [tabId: String, tabLabelElem : TemplateElements, content: TemplateElements] ){
@@ -559,7 +562,7 @@ section tabs
       }
     ])
   }
-  
+
   template tabsBS(elems: [label: String, content: TemplateElements] ){
     tabsBSElem([
       for( e in elems ){
@@ -577,17 +580,17 @@ section tabs
     </ul>
   }
   template pillsBS(){
-  	tabsPills( "nav-pills" )[all attributes]{
+    tabsPills( "nav-pills" )[all attributes]{
       elements
     }
   }
-  template tabsBS() {  
+  template tabsBS() {
     tabsPills("nav-tabs")[all attributes]{
-    	elements
+      elements
     }
   }
   template tabsPills( tabClass : String){
-  	<ul id="tab" class="nav " + tabClass all attributes>
+    <ul id="tab" class="nav " + tabClass all attributes>
       elements
     </ul>
     includeHead(rendertemplate(setHashOnTabAndOpenFirstTab))
@@ -613,7 +616,7 @@ template setHashOnTabAndOpenFirstTab(){
       }
       return false;
     }
-    
+
     $(document).ready(function(){
       var tabFromRequestUrl = window.location.hash !== '' ? $('a[href="' + window.location.hash + '"][data-toggle="tab"]') : [];
       var initUrlHash = window.location.hash;
@@ -641,7 +644,7 @@ template setHashOnTabAndOpenFirstTab(){
           location.hash = newhash;
         }
       });
-      
+
       //When no tab is active, set the first one to active
       $(node).find('.nav-tabs:not(.bound), .nav-pills:not(.bound)').addClass('bound').each(function(){
         if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
@@ -657,14 +660,14 @@ template setHashOnTabAndOpenFirstTab(){
   </script>
 }
 
-  
-  template tabActive(label: String, idAttr: String) { 
+
+  template tabActive(label: String, idAttr: String) {
     tab(label, idAttr, true)[all attributes]
-  }  
-  template tabActive(label: String) { 
+  }
+  template tabActive(label: String) {
     tab(label, label, true)[all attributes]
-  }  
-  template tab(label: String, idAttr: String) { 
+  }
+  template tab(label: String, idAttr: String) {
     tab(label, idAttr, false)[all attributes]
   }
   template tab(label: String, idAttr: String, active: Bool) {
@@ -684,17 +687,17 @@ template setHashOnTabAndOpenFirstTab(){
   function activeClass(active: Bool): String {
     if(active) { return "active"; } else { return ""; }
   }
-  
-  template tabBS(label: String) { 
-    tab(label, label)[all attributes]{ elements } 
+
+  template tabBS(label: String) {
+    tab(label, label)[all attributes]{ elements }
   }
-  
+
   template tabContent(){
-    div[class="tab-content", all attributes]{ 
+    div[class="tab-content", all attributes]{
       elements
     }
   }
-  
+
   template tabPaneActive(idAttr: String){
     tabPane(idAttr, true)[all attributes] { elements }
   }
@@ -703,10 +706,10 @@ template setHashOnTabAndOpenFirstTab(){
   }
   template tabPane(idAttr: String, active: Bool){
     div[class="tab-pane " + activeClass(active), id=hrefHashId(idAttr,false), all attributes]{
-      elements 
+      elements
     }
   }
-  
+
 section labels
 
   template labelDefault(){ labelInternal("label-default")[all attributes]{ elements } }
@@ -715,36 +718,36 @@ section labels
   template labelWarning(){ labelInternal("label-warning")[all attributes]{ elements } }
   template labelDanger(){ labelInternal("label-danger")[all attributes]{ elements } }
   template labelInfo(){ labelInternal("label-info")[all attributes]{ elements } }
-  
+
   template labelInternal( labelClass : String ){
     <span class=labelClass + " label" all attributes> elements </span>
   }
-  
+
 section alerts
 
   template alert(){
-  	div[class="alert alert-dismissible", all attributes]{
+    div[class="alert alert-dismissible", all attributes]{
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">rawoutput("&times;")</span>
       </button>
       elements
     }
-  	  
+
   }
-  
+
   expand
     Success
     Info
     Warning
     Error
     to alert
-  
+
   expandtemplate alert to Type{
-	  template alertType() {
-	    alert[class="alert-type", all attributes]{
-	    	elements
-	    }
-	  }
+    template alertType() {
+      alert[class="alert-type", all attributes]{
+        elements
+      }
+    }
   }
 
 /*
@@ -755,38 +758,38 @@ section alerts
     <li><a href="#messages" data-toggle="tab">"Messages"</a></li>
     <li><a href="#settings" data-toggle="tab">"Settings"</a></li>
     </ul>
-     
+
     <div class="tab-content">
       <div class="tab-pane active" id="home">"home content"</div>
       <div class="tab-pane" id="profile">"profile content"</div>
       <div class="tab-pane" id="messages">"messages content"</div>
       <div class="tab-pane" id="settings">"settings content"</div>
     </div>
-     
+
     <script>
       $(function () {
         $('.tabs a:last').tab('show')
         $('#home').tab('show')
-        $('#profile').tab('show')     
-        $('#messages').tab('show')      
+        $('#profile').tab('show')
+        $('#messages').tab('show')
         $('#settings').tab('show')
       })
     </script>
   }
 */
 
-/*   
-  template tabDefault(label: String) { 
+/*
+  template tabDefault(label: String) {
     tab(label, true){ elements }
   }
-    
-  template tab(label: String, checked: Bool) { 
+
+  template tab(label: String, checked: Bool) {
     var tname := getTemplate().getUniqueId()
     div[class="tab"]{
       if(checked) {
         <input type="radio" id=tname name="tab-group-1" checked="true"></input>
       } else {
-        <input type="radio" id=tname name="tab-group-1"></input>        
+        <input type="radio" id=tname name="tab-group-1"></input>
       }
       <label for=tname>output(label)</label>
       div[class="content"]{
@@ -797,7 +800,7 @@ section alerts
 */
 
 section panels
-  
+
   expandtemplate panels to Cls{
     template panelCls(){
       panelNoBody("panel-cls")[all attributes]{ elements }
@@ -820,7 +823,7 @@ section panels
     Primary
     Success
     to panels
-  
+
   template panel(){
     panelNoBody("panel-default")[all attributes]{
       elements
@@ -829,20 +832,20 @@ section panels
   template panel( header : String ){
     panelInternal( header, "panel-default")[all attributes]{ elements }
   }
-  
+
   template panelWithHeading( headerElem : TemplateElements ){
     panelNoBody("panel-default")[all attributes]{
       panelHeading { headerElem }
       panelBody { elements }
     }
   }
-  
+
   template panelNoBody( panelClass : String ){
     div[class="panel " + panelClass, all attributes]{
       elements
     }
   }
-  
+
   define panelHeading(){
     div[class="panel-heading clearfix", all attributes]{
       div[class="panel-title"]{
@@ -855,13 +858,13 @@ section panels
       elements
     }
   }
-  
+
   define panelFooter(){
     div[class="panel-footer", all attributes]{
       elements
     }
   }
-    
+
   define panelInternal( header : String, panelclass : String){
     panelNoBody(panelclass)[all attributes]{
       panelHeading { output(header) }
@@ -872,7 +875,7 @@ section panels
   template accordionPanels(){
     accordionPanels( true, "" )[all attributes]{ elements }
   }
-  //optionalId is only needed when using multiple accordionPanels loaded by ajax. In case the panels loaded >1 times using the same ajax template, it would result in the same id.  
+  //optionalId is only needed when using multiple accordionPanels loaded by ajax. In case the panels loaded >1 times using the same ajax template, it would result in the same id.
   template accordionPanels(withUrlHash : Bool, optionalId : String){
     var accordionId : String := if(optionalId != null && optionalId != "") optionalId else id
     var panelGroupClass := if(withUrlHash) "panel-group collapse-auto-url" else "panel-group"
@@ -880,7 +883,7 @@ section panels
     var expanded := false
     var panelLevel := 0
     var afterAction := false
-    
+
     databind{ afterAction := true; }
     render{ panelLevel := 0; }
 
@@ -906,8 +909,8 @@ section panels
         elements
       }
       administerVarsInternal
-      
-    } 
+
+    }
     template administerVarsInternal(){
       init{ panelLevel := panelLevel - 1; }
       render{
@@ -946,7 +949,7 @@ section panels
         }
       }
     }
-    
+
     if(withUrlHash){
       head{
         <script>
@@ -956,7 +959,7 @@ section panels
               history.replaceState(undefined, undefined , urlReplace)
             }).on('hide.bs.collapse', function (){
               if( window.location.hash.indexOf( $(this).attr('id') ) > -1 ){
-                history.replaceState(undefined, undefined , "#")   
+                history.replaceState(undefined, undefined , "#")
               }
             });
             tryShowPanel();
@@ -968,38 +971,38 @@ section panels
             }
             return false;
           }
-          
+
           $(window).bind('hashchange.accordion', tryShowPanel);
           $(document).ready( accordionInit );
         </script>
       }
     }
-    
+
     div[class=panelGroupClass , id=accordionId, role="tablist", aria-multiselectable="true"]{
       elements
     }
-    
+
   }
-    
+
   template collapseIndicator(accordionId : String){
     var accordionIdSelector := "#" + accordionId + " .panel-collapse"
-    
+
     iChevronRight " "
-    
+
     head{
       <script>
-		    $( document ).ready(function() {
-		      $('~accordionIdSelector').on('shown.bs.collapse', function () {
-		          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
-		      });
-		      
-		      $('~accordionIdSelector').on('hidden.bs.collapse', function () {
-		          $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
-		      });
-		    });
+        $( document ).ready(function() {
+          $('~accordionIdSelector').on('shown.bs.collapse', function () {
+              $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
+          });
+
+          $('~accordionIdSelector').on('hidden.bs.collapse', function () {
+              $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
+          });
+        });
       </script>
     }
-    
+
   }
 
 section modal
@@ -1009,7 +1012,7 @@ section modal
     modalInfo( id, linkTitle ){
       elements
     }
-    
+
   }
   template modalInfo( modalID: String, title : String){
     modal( modalID, "" )[all attributes]{
@@ -1035,8 +1038,8 @@ section modal
           elements
         </div>
       </div>
-    </div>  
-    
+    </div>
+
     includeHead(
       "<script type=\"text/javascript\"> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
       rendertemplate(
@@ -1060,13 +1063,13 @@ section modal
       elements
     </div>
   }
- 
-  define modalFooter(){ 
+
+  define modalFooter(){
     <div class="modal-footer" all attributes>
       elements
     </div>
   }
-  
+
   define modalCloseLink(){
     <a href="#" data-dismiss="modal" all attributes except ["href","data-dismiss"]>elements</a>
   }
@@ -1076,7 +1079,7 @@ section modal
       $('#~modalID').hide();
     </script>
   }
-  
+
   function removeModal(){
     runscript("$('body').removeClass('modal-open'); $('.modal-backdrop').remove();");
   }
@@ -1090,44 +1093,44 @@ section list groups
       elements
     </ul>
   }
-  
-  template listGroupItem() { 
+
+  template listGroupItem() {
     <li class="list-group-item" all attributes>elements</li>
   }
-  
+
 section definitionList
 
    define definitionList() {
     <dl all attributes>elements</dl>
   }
-  
+
   define definitionItem(term : String) {
     <dt all attributes> output(term) </dt>
     <dd> elements </dd>
   }
-  
+
     define definitionListDescription() {
       <dl class="dl-horizontal" all attributes> elements </dl>
     }
-    
+
  section media
- 
+
   define media(){
     div[class="media", all attributes]{ elements }
   }
-  
+
   define mediaObject(){
     div[class="media-object", all attributes]{ elements }
   }
-  
+
   define mediaBody(){
     div[class="media-body", all attributes]{ elements }
   }
-  
+
   define thumbnail(){
     div[class="thumbnail", all attributes]{ elements }
   }
-  
+
   define caption(){
     div[class="caption", all attributes]{ elements }
   }
