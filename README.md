@@ -1,6 +1,4 @@
-elib-bootstrap
-================
+Bootstrap 4 library for Webdsl
+==============================
 
-Bootstrap library for WebDSL (current Bootstrap version: v3.3.5)
-
-Older versions can be found in branches.
+Bootstrap library for WebDSL (current Bootstrap version: v4.3.1)
