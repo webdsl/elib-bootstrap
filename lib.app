@@ -33,10 +33,10 @@ section tooltips
 section positioning
 
   template pullRight() {
-    span[class="pull-right", all attributes]{ elements }
+    span[class="float-right", all attributes]{ elements }
   }
   template pullLeft() {
-    span[class="pull-left", all attributes]{ elements }
+    span[class="float-left", all attributes]{ elements }
   }
 
 section grid system
