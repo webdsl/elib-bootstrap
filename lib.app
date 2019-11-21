@@ -189,7 +189,7 @@ section navigation bar
     div[class=if(fixed)"navbar navbar-inverse navbar-fixed-top" else "navbar navbar-inverse navbar-static-top", all attributes]{
       gridContainer{
         div[class="navbar-header"]{
-          brand
+          navbarBrand
           navCollapseButton
         }
         div[class="navbar-collapse collapse", style="height: 0px;"]{
@@ -243,6 +243,51 @@ section navigation bar
       <span class="icon-bar"></span>
     </button>
   }
+
+  // NOTE: brand() has been renamed to navbarBrand()
+
+  /** Add a brand to the navbar. Use in a navbar() template. */
+  template navbarBrand() {
+    navigate root() [class="navbar-brand", all attributes]{ appname }
+  }
+
+  /** Add navigation items (navbarNavLinkItem()) to the navbar. Use in a navbar() template. */
+  template navbarNav() {
+    div[class="navbar-nav", all attributes]{ elements }
+  }
+  /** Adds a nav item link to a navbar. Use in the navbarNav() template. */
+  template navbarNavLinkItem(nav: String) {
+    navbarNavLinkItem(nav, false, false)[all attributes]{ elements }
+  }
+  /** Adds a nav item link to a navbar. Use in the navbarNav() template. */
+  template navbarNavLinkItem(nav: String, active: Bool, disabled: Bool) {
+    <a href=nav class="nav-item nav-link " + activeClass(active) + " " + disabledClass(disabled) if (disabled) { tabindex="-1" aria-disabled="true" } all attributes>elements</a>
+  }
+
+  /** Adds a dropdown button to a navbar. Use in the navbarNav() template. */
+  template navbarNavDropdownItem(title: String) {
+    dropdown[class="nav-item"]{
+      dropdownToggleLink(id, "nav-link") { output(title) }
+      dropdownMenu(id) {
+        elements
+      }
+    }
+  }
+  
+  /** Adds a list of navigation items (navbarNavListItem()) to the navbar. Use in a navbar() template. */
+  template navbarNavList() {
+    list[class="navbar-nav", all attributes]{ elements }
+  }
+  /** Adds a nav list item to a navbar. Use in the navbarNavList() template. */
+  template navbarNavListItem() {
+    listitem[class="nav-item", all attributes]{ elements }
+  }
+  /** Adds a nav link to a navbar. Use in the navbarNavListItem() template. */
+  template navbarNavLink(nav: String, active: Bool, disabled: Bool) {
+    <a href=nav class="nav-link " + activeClass(active) + " " + disabledClass(disabled) if (disabled) { tabindex="-1" aria-disabled="true" } all attributes>elements</a>
+  }
+
+
 
 section sections
 
@@ -495,57 +540,120 @@ section buttons
 
 section dropdowns
 
-  template dropdownMenu(){
-    list[class="dropdown-menu", all attributes]{
+  /** A dropdown link. The class is used to style the toggle,
+  the elements are put in the menu. */
+  template dropdownLink(title: String) {
+    dropdown() {
+      dropdownToggleLink(id, attribute("class")){ output(title) }
+      dropdownMenu(id){ elements }
+    }
+  }
+  /** A dropdown button. The class is used to style the toggle,
+  the elements are put in the menu. */
+  template dropdownButton(title: String) {
+    buttonGroup() {
+      dropdownToggleButton(id, attribute("class")){ output(title) }
+      dropdownMenu(id){ elements }
+    }
+  }
+  /** A split dropdown button. The class is used to style the button and toggle,
+  the elements are put in the menu. */
+  template dropdownSplitButton(title: String) {
+    buttonGroup() {
+      <button class="btn "+attribute("class")>output(title)</button>
+      dropdownToggleButton(attribute("class") + " dropdown-toggle-split"){ <span class="sr-only">"Toggle Dropdown"</span> }
+      dropdownMenu(id){ elements }
+    }
+  }
+
+  /** A dropdown menu. Use dropdownLinkMenu() or dropdownButtonMenu() for the content. */
+  template dropdown() {
+    div[class="dropdown", all attributes]{ elements }
+  }
+  // NOTE: dropdownButton() has been renamed to dropdownLinkMenu()
+  /** A dropdown link with the specified title. Use inside dropdown() to toggle the dropdown and provide the menu. */
+  template dropdownLinkMenu(title: String) {
+    buttonGroup{
+      dropdownToggleLink(id, attribute("class")){ output(title) }
+      dropdownMenu(id){ elements }
+    }
+  }
+  /** A dropdown button with the specified title. Use inside dropdown() to toggle the dropdown and provide the menu. */
+  template dropdownButtonMenu(title: String) {
+    buttonGroup{
+      dropdownToggleButton(id, attribute("class")){ output(title) }
+      dropdownMenu(id){ elements }
+    }
+  }
+  // NOTE: dropdownToggle() has been renamed to dropdownToggleLink().
+
+  /** A toggle link for a dropdown menu. Use inside dropdown() to toggle the dropdown. */
+  template dropdownToggleLink(idAttr: String){
+    dropdownToggleLink(idAttr, ""){ elements }
+  }
+  /** A toggle link for a dropdown menu, with the specified class. Use inside dropdown() to toggle the dropdown. */
+  template dropdownToggleLink(idAttr: String, cls: String){
+    // TODO: Support id for aria-labelledby
+    <a class="dropdown-toggle "+cls href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id=idAttr>
+      elements
+    </a>
+  }
+
+  /** A toggle button for a dropdown menu. Use inside dropdown() to toggle the dropdown. */
+  template dropdownToggleButton(idAttr: String){
+    dropdownToggleButton(idAttr, ""){ elements }
+  }
+  /** A toggle button for a dropdown menu, with the specified class. Use inside dropdown() to toggle the dropdown. */
+  template dropdownToggleButton(idAttr: String, cls: String){
+    <button class="btn dropdown-toggle "+cls href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id=idAttr>
+      elements
+    </button>
+  }
+
+  /** A dropdown menu. Use inside dropdown() to provide the menu. */
+  template dropdownMenu(idAttr: String){
+    div[class="dropdown-menu", aria-labelledby=idAttr, all attributes]{
       elements
     }
   }
-  template dropdownMenuRight(){
-    list[class="dropdown-menu pull-right", all attributes]{
+  /** A dropdown menu floating right. Use inside dropdown() to provide the menu. */
+  template dropdownMenuRight(idAttr: String){
+    div[class="dropdown-menu float-right", aria-labelledby=idAttr, all attributes]{
       elements
     }
   }
+
+  /** A link item in a dropdown menu. */
+  template dropdownMenuLinkItem(nav: String) {
+    dropdownMenuLinkItem(nav, false, false)[all attributes]{ elements }
+  }
+  /** A link item in a dropdown menu. */
+  template dropdownMenuLinkItem(nav: String, active: Bool, disabled: Bool) {
+    <a href=nav class="dropdown-item " + activeClass(active) + " " + disabledClass(disabled) if (disabled) { tabindex="-1" aria-disabled="true" } all attributes>elements</a>
+  }
+  /** A text item in a dropdown menu. */
+  template dropdownMenuTextItem() {
+    <span class="dropdown-item-text" all attributes>elements</span>
+  }
+  /** A header item in a dropdown menu. */
+  template dropdownMenuHeaderItem() {
+    <h6 class="dropdown-header" all attributes>elements</h6>
+  }
+  // NOTE: dropdownMenuDivider() has been renamed to dropdownMenuDividerItem()
+  /** A divider item in a dropdown menu. */
+  template dropdownMenuDividerItem() {
+    <div class="dropdown-divider" all attributes></div>
+  }
+
   template subMenu() {
-    dropdownMenuDivider
+    dropdownMenuDividerItem
     elements
   }
-  template dropdownMenuItem() {
-    listitem[all attributes]{ elements }
-  }
-  template dropdownMenuDivider() {
-    listitem[class="divider", all attributes]
-  }
-  template dropdownToggle(cls: String){
-    <a class="btn btn-default dropdown-toggle "+cls href="#" data-toggle="dropdown">
-      elements " " <span class="caret"></span>
-    </a>
-  }
-  template dropdownToggle(){
-    dropdownToggle(""){ elements }
-  }
-  template dropdown() {
-    listitem[class="dropdown", all attributes]{ elements }
-  }
-  template dropdownInNavbar(title: String) {
-    <li class="dropdown" all attributes>
-      <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-        output(title) " " <span class="caret"></span>
-      </a>
-      elements
-    </li>
-  }
-  template dropdownCaret() {
-    <a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" style="height:14px;padding:7px;">
-       <span class="caret"></span>
-    </a>
-    dropdownMenu{ elements }
-  }
-  template dropdownButton(title: String) {
-    buttonGroup{
-     dropdownToggle(attribute("class")){ output(title) }
-     dropdownMenu{ elements }
-   }
-  }
+  
+  // NOTE: dropdownMenuItem() has been removed. Use dropdownMenu*Item() or <p> or <form>.
+  // NOTE: dropdownInNavbar() has been renamed to navbarNavDropdownItem()
+
+  // NOTE: dropdownCaret() has been removed.
 
 
 section miscellaneous
@@ -569,12 +677,10 @@ section tabs
   template tabsBSElem(elems: [tabId: String, tabLabelElem : TemplateElements, content: TemplateElements] ){
     tabsBS{
       if(elems.length > 8){
-        dropdownInNavbar("Items (" + elems.length+ ")" ){
-          dropdownMenu{
-            for( e in elems ){
-              tabElems(e.tabId, false){
-                e.tabLabelElem
-              }
+        navbarNavDropdownItem("Items (" + elems.length+ ")" ){
+          for( e in elems ){
+            tabElems(e.tabId, false){
+              e.tabLabelElem
             }
           }
         }
@@ -728,6 +834,9 @@ template setHashOnTabAndOpenFirstTab(){
   }
   function activeClass(active: Bool): String {
     if(active) { return "active"; } else { return ""; }
+  }
+  function disabledClass(disabled: Bool): String {
+    if(disabled) { return "disabled"; } else { return ""; }
   }
 
   template tabBS(label: String) {
