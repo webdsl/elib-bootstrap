@@ -50,69 +50,111 @@ section positioning
 
 section grid system
 
+  /** A grid container. */
   template gridContainer() {
     div[class="container", all attributes]{ elements }
   }
-template gridContainerFluid() {
+  /** A full-width grid container. */
+  template gridContainerFluid() {
     div[class="container-fluid", all attributes]{ elements }
   }
+  /** A grid row consisting of a single column. */
   template gridRowCol(){
     gridRowCol(12)[all attributes]{ elements }
   }
-  template gridRowCol(cols : Int){
-    gridRow[all attributes]{ gridCol(cols){ elements } }
+  /** A grid row consisting of a single column of the specified span. */
+  template gridRowCol(colSpan: Int){
+    gridRow[all attributes]{ gridCol(colSpan){ elements } }
   }
 
+  /** A grid row. */
   template gridRow(){
     div[class="row", all attributes]{ elements }
   }
+  /** A grid row with the specified class added. */
   template gridRow(cls: String){
     div[class="row " + cls, all attributes]{ elements }
   }
-  template gridSpan(span: Int){ //deprecated
-      gridCol(span)[all attributes]{ elements }
+
+  /** Grid column spanning the specified number of columns on small viewports and bigger. */
+  template gridCol(colSpan: Int){
+    gridColSm(colSpan)[all attributes]{ elements }
   }
-  template gridSpan(span: Int, offset: Int){ //deprecated
-    gridCol(span, offset)[all attributes]{ elements }
+  /** Grid column spanning the specified number of columns starting at the specified offset on small viewports and bigger. */
+  template gridCol(colSpan: Int, offset: Int){
+    gridColSm(colSpan, offset)[all attributes]{ elements }
+  }
+  /** A grid column that spans the specified number of columns on small and large viewports respectively. */
+  template gridColAdapt(colSpanSm: Int, colSpanLg: Int){
+    div[class="col-sm-" + colSpanSm + " col-lg-" + colSpanLg , all attributes]{ elements }
+  }
+  /** A grid column that spans the specified number of columns on small and large viewports respectively,
+  offset by the specified number of columns on small and large viewports respectively. */
+  template gridColAdapt(colSpanSm: Int, offsetSm: Int, colSpanLg: Int, offsetLg: Int){
+    div[class="col-sm-" + colSpanSm + " col-lg-" + colSpanLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg , all attributes]{ elements }
   }
 
-  template gridCol(cols : Int){
-    div[class="col-sm-" + cols, all attributes]{ elements }
+  // NOTE: gridColPush() and gridColPull() have been removed. Use gridColOrder() instead.
+
+  /** Grid column for small viewports and bigger, spanning the specified number of columns,
+  using the specified order. */
+  template gridColOrder(colSpan: Int, order: Int){
+    div[class="col-sm-" + colSpan + " order-" + order, all attributes]{ elements }
   }
-  template gridCol(cols : Int, offset : Int){
-    div[class="col-sm-" + cols + " col-sm-offset-" + offset, all attributes]{ elements }
+  /** Grid column for small viewports and bigger, spanning the specified number of columns,
+  ordering before all other columns. */
+  template gridColOrderFirst(colSpan: Int){
+    div[class="col-sm-" + colSpan + " order-first", all attributes]{ elements }
+  }
+  /** Grid column for small viewports and bigger, spanning the specified number of columns,
+  ordering after all other columns. */
+  template gridColOrderLast(colSpan: Int){
+    div[class="col-sm-" + colSpan + " order-last", all attributes]{ elements }
+  }
+  
+  /** Grid column spanning the specified number of columns on all viewports. */
+  template gridColXs(colSpan: Int){
+    div[class="col-" + colSpan, all attributes]{ elements }
+  }
+  /** Grid column spanning the specified number of columns starting at the specified offset on all viewports. */
+  template gridColXs(colSpan: Int, offset: Int){
+    div[class="col-" + colSpan + " col-offset-" + offset , all attributes]{ elements }
   }
 
-  template gridColAdapt(colsSm : Int, colsLg : Int){
-    div[class="col-sm-" + colsSm + " col-lg-" + colsLg , all attributes]{ elements }
+  /** Grid column spanning the specified number of columns on small viewports and bigger. */
+  template gridColSm(colSpan: Int){
+    div[class="col-sm-" + colSpan, all attributes]{ elements }
   }
-  template gridColAdapt(colsSm : Int, offsetSm : Int, colsLg : Int, offsetLg : Int){
-    div[class="col-sm-" + colsSm + " col-lg-" + colsLg + " col-sm-offset-" + offsetSm + " col-lg-offset-" + offsetLg , all attributes]{ elements }
+  /** Grid column spanning the specified number of columns starting at the specified offset on small viewports and bigger. */
+  template gridColSm(colSpan: Int, offset: Int){
+    div[class="col-sm-" + colSpan + " col-sm-offset-" + offset, all attributes]{ elements }
   }
 
-  template gridColPush(cols : Int, offset : Int){
-    div[class="col-sm-" + cols + " col-sm-push-" + offset, all attributes]{ elements }
+  /** Grid column spanning the specified number of columns on medium viewports and bigger. */
+  template gridColMd(colSpan: Int){
+    div[class="col-md-" + colSpan , all attributes]{ elements }
   }
-  template gridColPull(cols : Int, offset : Int){
-    div[class="col-sm-" + cols + " col-sm-pull-" + offset, all attributes]{ elements }
+  /** Grid column spanning the specified number of columns starting at the specified offset on medium viewports and bigger. */
+  template gridColMd(colSpan: Int, offset: Int){
+    div[class="col-md-" + colSpan + " col-md-offset-" + offset , all attributes]{ elements }
   }
-  template gridColXs(cols : Int){
-    div[class="col-xs-" + cols, all attributes]{ elements }
+
+  /** Grid column spanning the specified number of columns on large viewports and bigger. */
+  template gridColLg(colSpan: Int){
+    div[class="col-lg-" + colSpan , all attributes]{ elements }
   }
-  template gridColXs(cols : Int, offset : Int){
-    div[class="col-xs-" + cols + " col-xs-offset-" + offset , all attributes]{ elements }
+  /** Grid column spanning the specified number of columns starting at the specified offset on large viewports and bigger. */
+  template gridColLg(colSpan: Int, offset: Int){
+    div[class="col-lg-" + colSpan + " col-lg-offset-" + offset , all attributes]{ elements }
   }
-  template gridColMd(cols : Int){
-    div[class="col-md-" + cols , all attributes]{ elements }
+
+  /** Grid column spanning the specified number of columns on extra large viewports and bigger. */
+  template gridColXl(colSpan: Int){
+    div[class="col-xl-" + colSpan , all attributes]{ elements }
   }
-  template gridColMd(cols : Int, offset : Int){
-    div[class="col-md-" + cols + " col-md-offset-" + offset , all attributes]{ elements }
-  }
-  template gridColLg(cols : Int){
-    div[class="col-lg-" + cols , all attributes]{ elements }
-  }
-  template gridColLg(cols : Int, offset : Int){
-    div[class="col-lg-" + cols + " col-lg-offset-" + offset , all attributes]{ elements }
+  /** Grid column spanning the specified number of columns starting at the specified offset on extra large viewports and bigger. */
+  template gridColXl(colSpan: Int, offset: Int){
+    div[class="col-xl-" + colSpan + " col-xl-offset-" + offset , all attributes]{ elements }
   }
 
 section footer
