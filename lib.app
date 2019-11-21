@@ -2,19 +2,11 @@ module elib/elib-bootstrap/lib
 imports elib/elib-bootstrap/icons
 
 section default attribute sets
-  // override attributes navigate{ class="navigate" }
-  // override attributes downloadlink{ class="downloadlink" }
-  // override attributes outputimage{ class="outputimage" }
   override attributes submit{ class="btn btn-default" }
   attributes btnSuccess { class= "btn btn-success" }
   attributes btnWarn{ class= "btn btn-warning" }
   attributes btnDanger{ class= "btn btn-danger" }
   attributes btnPrimary { class= "btn btn-primary" }
-  // override attributes submitlink{ submit attributes }
-  // override attributes form{ }
-  // override attributes navigatebutton{ }
-  // override attributes captcha{ }
-  // override attributes image{ }
 
   override attributes inputInt{ class="inputInt form-control" }
   override attributes inputString{ class="inputString form-control" }
@@ -29,9 +21,8 @@ section default attribute sets
   override attributes inputSelect{ class="select form-control" }
   override attributes inputSelectMultiple{ class="select form-control" }
   override attributes inputFile{ class="inputFile  form-control" }
-  override attributes inputMultiFile{ class="inputFile  form-control" }
+  override attributes inputMultiFile{ class="inputFile form-control" }
   override attributes inputSDF{ class="inputSDF form-control" }
-  // override attributes radio{ class="radio " }
 
 section tooltips
 
@@ -159,6 +150,7 @@ section grid system
 
 section footer
 
+  /** A footer. */
   template footer() {
     <footer class="footer" all attributes>
       elements
@@ -167,11 +159,8 @@ section footer
 
 section navigation bar
 
+  /** Name of the application, to be overridden. */
   template appname() { "<default>" }
-
-  template brand() {
-    navigate root() [class="navbar-brand", all attributes]{ appname }
-  }
 
   template navbar() {
     div[class="navbar navbar-inverse navbar-fixed-top", all attributes]{
