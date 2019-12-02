@@ -20,12 +20,13 @@ section default attribute sets
   override attributes inputDate{ class="inputDate form-control" }
   override attributes inputSelect{ class="select form-control" }
   override attributes inputSelectMultiple{ class="select form-control" }
-  override attributes inputFile{ class="inputFile  form-control" }
+  override attributes inputFile{ class="inputFile form-control" }
   override attributes inputMultiFile{ class="inputFile form-control" }
   override attributes inputSDF{ class="inputSDF form-control" }
 
 section tooltips
 
+  // TODO: Migrate to Bootstrap 4
   template tooltipsBS(){
     postProcess("$(node).find('[title]').tooltip({placement: 'auto top', container: 'body'}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
   }
