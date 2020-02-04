@@ -33,9 +33,11 @@ section tooltips
 
 section positioning
 
+  /** Pulls the content to the right. */
   template pullRight() {
     span[class="float-right", all attributes]{ elements }
   }
+  /** Pulls the content to the left. */
   template pullLeft() {
     span[class="float-left", all attributes]{ elements }
   }
@@ -103,7 +105,7 @@ section grid system
   template gridColOrderLast(colSpan: Int){
     div[class="col-sm-" + colSpan + " order-last", all attributes]{ elements }
   }
-  
+
   /** Grid column spanning the specified number of columns on all viewports. */
   template gridColXs(colSpan: Int){
     div[class="col-" + colSpan, all attributes]{ elements }
@@ -234,7 +236,7 @@ section navigation bar
     </button>
   }
 
-  // NOTE: brand() has been renamed to navbarBrand()
+  template brand() { navbarBrand() }	// deprecated
 
   /** Add a brand to the navbar. Use in a navbar() template. */
   template navbarBrand() {
@@ -263,7 +265,7 @@ section navigation bar
       }
     }
   }
-  
+
   /** Adds a list of navigation items (navbarNavListItem()) to the navbar. Use in a navbar() template. */
   template navbarNavList() {
     list[class="navbar-nav", all attributes]{ elements }
@@ -560,7 +562,6 @@ section dropdowns
   template dropdown() {
     div[class="dropdown", all attributes]{ elements }
   }
-  // NOTE: dropdownButton() has been renamed to dropdownLinkMenu()
   /** A dropdown link with the specified title. Use inside dropdown() to toggle the dropdown and provide the menu. */
   template dropdownLinkMenu(title: String) {
     buttonGroup{
@@ -575,7 +576,6 @@ section dropdowns
       dropdownMenu(id){ elements }
     }
   }
-  // NOTE: dropdownToggle() has been renamed to dropdownToggleLink().
 
   /** A toggle link for a dropdown menu. Use inside dropdown() to toggle the dropdown. */
   template dropdownToggleLink(idAttr: String){
@@ -629,7 +629,7 @@ section dropdowns
   template dropdownMenuHeaderItem() {
     <h6 class="dropdown-header" all attributes>elements</h6>
   }
-  // NOTE: dropdownMenuDivider() has been renamed to dropdownMenuDividerItem()
+
   /** A divider item in a dropdown menu. */
   template dropdownMenuDividerItem() {
     <div class="dropdown-divider" all attributes></div>
@@ -639,11 +639,19 @@ section dropdowns
     dropdownMenuDividerItem
     elements
   }
-  
-  // NOTE: dropdownMenuItem() has been removed. Use dropdownMenu*Item() or <p> or <form>.
-  // NOTE: dropdownInNavbar() has been renamed to navbarNavDropdownItem()
 
-  // NOTE: dropdownCaret() has been removed.
+  // NOTE: dropdownToggle() has been renamed to dropdownToggleLink().
+  template dropdownToggle(idAttr: String) { dropdownToggleLink(idAttr) } // deprecated
+  // NOTE: dropdownMenuDivider() has been renamed to dropdownMenuDividerItem()
+  template dropdownMenuDivider() { dropdownMenuDividerItem() }	// deprecated
+  // NOTE: dropdownButton() has been renamed to dropdownLinkMenu()
+  template dropdownButton(title: String) { dropdownLinkMenu(title) }	// deprecated
+  // NOTE: dropdownMenuItem() has been removed. Use dropdownMenu*Item() or <p> or <form>.
+  template dropdownMenuItem() { dropdownMenuTextItem() } // deprecated
+  // NOTE: dropdownInNavbar() has been renamed to navbarNavDropdownItem()
+  template dropdownInNavbar(title: String) { navbarNavDropdownItem(title) }	// deprecated
+  // NOTE: dropdownCaret() has been removed
+  template dropdownCaret() { } // deprecated
 
 
 section miscellaneous
