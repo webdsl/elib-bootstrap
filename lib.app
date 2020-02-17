@@ -1032,7 +1032,7 @@ section modal
     modal(modalID, "")[all attributes]{ elements }
   }
   define modal(modalID : String, modalSizeClass : String){
-    <div class="modal "  id=modalID all attributes except "id">
+    <div class="modal " tabindex="-1" id=modalID all attributes except "id">
       <div class="modal-dialog ~modalSizeClass">
         <div class="modal-content">
           elements
