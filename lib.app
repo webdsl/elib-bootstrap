@@ -358,17 +358,19 @@ section horizontal forms
   template helpBlock(){
     <span class="help-block" all attributes> elements </span>
   }
-
-  template inputAppend() {
-    inputGroup[all attributes]{ elements }
+  
+  template inputGroupAppend( appendText : String ){
+    inputGroup[all attributes]{
+      elements
+      inputGroupAddon{ ~appendText }
+    }
   }
-  template inputPrepend() {
-    inputGroup[all attributes]{ elements }
+  template inputGroupPrepend( appendText : String ){
+    inputGroup[all attributes]{
+      inputGroupAddon{ ~appendText }
+      elements
+    }
   }
-  template inputPrependAppend() {
-    inputGroup[all attributes]{ elements }
-  }
-
   template inputGroup() {
     <span class="input-group" all attributes>
       elements
@@ -377,6 +379,10 @@ section horizontal forms
 
   template inputGroupButton(){
     <span class="input-group-btn" all attributes> elements </span>
+  }
+  
+  template inputGroupAddon(){
+    <span class="input-group-addon" all attributes> elements </span>
   }
 
 section breadcrumbs
