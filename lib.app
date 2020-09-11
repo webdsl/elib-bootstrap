@@ -789,8 +789,14 @@ section miscellaneous
   template wellSmall() { cardSimple()[all attributes]{ elements } } //deprecated
   // NOTE: wellLarge() has been removed, use cardSimple()
   template wellLarge() { cardSimple()[all attributes]{ elements } } //deprecated
+
+  /** A blockquote. */
   template blockquote() {
-    <blockquote all attributes> elements </blockquote>
+    <blockquote class="blockquote mb-0" all attributes> elements </blockquote>
+  }
+  /** A footer in a blockquote, such as who said the quote. Use inside blockquote(). */
+  template blockquoteFooter() {
+  	<footer class="blockquote-footer" all attributes> elements </footer>
   }
 
 section tabs
