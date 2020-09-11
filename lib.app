@@ -720,16 +720,75 @@ section dropdowns
 
 section miscellaneous
 
-  template well(){
-    div[class="well", all attributes]{ elements }
+  /** A simple card, top-level element. Use cardBody*() inside. */
+  template cardSimple(){
+    card[all attributes]{ cardBody{ elements } }
   }
-  template wellSmall(){
-    div[class="well well-sm", all attributes]{ elements }
+  /** A card, top-level element. Use card*() inside. */
+  template card(){
+    div[class="card my-3", all attributes]{ elements }
   }
-  template wellLarge(){
-    div[class="well well-lg", all attributes]{ elements }
+  
+  
+  /** Card top image. Use inside card(). */
+  template cardImageTop(imgSrc: String, altText: String) {
+  	<img src=imgSrc class="card-img-top" alt=altText all attributes>
   }
-
+  /** Card bottom image. Use inside card(). */
+  template cardImageBottom(imgSrc: String, altText: String) {
+  	<img src=imgSrc class="card-img-bottom" alt=altText all attributes>
+  }
+  /** Card bottom image. Use inside card(), use cardBody*() inside. */
+  template cardBodyWithImageOverlay(imgSrc: String, altText: String) {
+  	<img src=imgSrc class="card-img" alt=altText all attributes>
+  	div[class="card-img-overlay"] { elements }
+  }
+  /** Card body. Use inside card(). */
+  template cardBody(){
+	div[class="card-body", all attributes]{ elements }
+  }
+  /** Card list. Use inside card(). */
+  template cardList() {
+  	list[class="list-group list-group-flush"] { elements }
+  }
+  /** Card header. Use inside card(). */
+  template cardHeader() {
+	div[class="card-header", all attributes]{ elements }
+  }
+  /** Card footer. Use inside card(). */
+  template cardFooter() {
+	div[class="card-footer", all attributes]{ elements }
+  }
+  
+  
+  /** Card body title. Use inside cardBody(). */
+  template cardBodyTitle() {
+  	h5[class="card-title", all attributes] { elements }
+  }
+  /** Card body subtitle. Use inside cardBody(). */
+  template cardBodySubtitle() {
+  	h6[class="card-subtitle mb-2 text-muted", all attributes] { elements }
+  }
+  /** Card body text. Use inside cardBody(). */
+  template cardBodyText() {
+  	<p class="card-text" all attributes> elements </p>
+  }
+  /** Card body link. Use inside cardBody(). */
+  template cardBodyLink(nav: String) {
+  	cardBodyLink(nav, false, false)[all attributes]
+  }
+  /** Card body link. Use inside cardBody(). */
+  template cardBodyLink(nav: String, active: Bool, disabled: Bool) {
+  	<a href=nav class="card-link " + activeClass(active) + " " + disabledClass(disabled) if (disabled) { tabindex="-1" aria-disabled="true" } all attributes>elements</a>
+  }
+  
+  
+  // NOTE: well() has been renamed to cardSimple()
+  template well() { cardSimple()[all attributes]{ elements } } //deprecated
+  // NOTE: wellSmall() has been removed, use cardSimple()
+  template wellSmall() { cardSimple()[all attributes]{ elements } } //deprecated
+  // NOTE: wellLarge() has been removed, use cardSimple()
+  template wellLarge() { cardSimple()[all attributes]{ elements } } //deprecated
   template blockquote() {
     <blockquote all attributes> elements </blockquote>
   }
