@@ -15,7 +15,9 @@ To migrate from the previous Bootstrap 3 to this version:
 
 - replace the following:
   - `gridSpan()` to `gridCol()` (was deprecated)
-- `gridColPush()` and `gridColPull()` have been removed from Bootstrap, use `gridColOrder()` instead
+- remove the following:
+  - `dropdownSubMenu()` (was removed from Bootstrap)
+  - `gridColPush()` and `gridColPull()` (where removed from Bootstrap), use `gridColOrder()` instead
 
 
 ### Optional Migration
@@ -28,6 +30,7 @@ The following are recommended but optional migrations from Bootstrap 3:
   - `dropdownButton()` to `dropdownLinkMenu()`
   - `dropdownMenuItem()` to `dropdownMenu*Item()` or `<p>` or `<form>`
   - `dropdownInNavbar()` to `navbarNavDropdownItem()`
+  - `dropdownMenuDivider()` to `dropdownMenuDividerItem()`
 - remove the following:
   - `dropdownCaret()`
 

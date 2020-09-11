@@ -27,10 +27,18 @@ section default attribute sets
 
 section tooltips
 
-  // TODO: Migrate to Bootstrap 4
-  template tooltipsBS(){
-    postProcess("$(node).find('[title]').tooltip({placement: 'auto top', container: 'body'}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
+  /** Enables all tooltips on a page. */
+  template tooltipBS(){
+  	postProcess("$('[data-toggle=\"tooltip\"]').tooltip()")
   }
+  /**
+   * To add tooltips to an element, add the `data-toggle="tooltip"` attribute.
+   * The title attribute of the element is used as the tooltip text.
+   * 
+   * To change the position of the tooltip, use the `data-placement="top"` attribute
+   * (or `right`, `bottom`, `left`). To render HTML in the title attribute, use the
+   * `data-html="true"` attribute.
+   */
 
 section positioning
 
@@ -166,12 +174,17 @@ section navigation bar
   /** Name of the application, to be overridden. */
   template appname() { "<default>" }
 
+  /** A navbar fixed at the top with centered contents. The elements are contained in the navbar.
+   * Required: specify the .navbar-expand-* class.
+   * Optional: specify the .navbar-light or .navbar-dark class to set the foreground color to dark or light respectively.
+   * Optional: specify the .bg-* class to set the background color.
+   */ 
   template navbar() {
-    div[class="navbar navbar-inverse navbar-fixed-top", all attributes]{
-      gridContainer{
-        elements
-      }
-    }
+  	<nav class="navbar fixed-top" all attributes>
+  		gridContainer{
+        	elements
+      	}
+  	</nav>
   }
 
   template navbarResponsive(){
@@ -583,19 +596,9 @@ section dropdowns
       dropdownMenu(id){ elements }
     }
   }
-  // TODO:
-  template dropdownSubMenu(title : String){
-  	dropdownMenuItem[class="dropdown dropdown-submenu", all attributes]{
-  		<a tabindex="-1" href="#"> output(title) </a>
-  		dropdownMenu{
-  			elements
-  		}
-  	}
-  }
-  // TODO:
-  template dropdownMenuDivider() {
-    listitem[class="divider", all attributes]
-  }
+  
+  // NOTE: dropdownSubMenu() was removed from Bootstrap
+  
   /** A toggle link for a dropdown menu. Use inside dropdown() to toggle the dropdown. */
   template dropdownToggleLink(idAttr: String){
     dropdownToggleLink(idAttr, ""){ elements }
@@ -671,6 +674,8 @@ section dropdowns
   template dropdownInNavbar(title: String) { navbarNavDropdownItem(title) }	// deprecated
   // NOTE: dropdownCaret() has been removed
   template dropdownCaret() { } // deprecated
+  // NOTE: dropdownMenuDivider() has been renamed to dropdownMenuDividerItem()
+  template dropdownMenuDivider() { dropdownMenuDividerItem() } //deprecated
 
 
 section miscellaneous
