@@ -29,10 +29,10 @@ update-bootstrap:
 	mkdir -p $(BOOTSTRAP_JS_DIR)/
 	mkdir -p $(BOOTSTRAP_CSS_DIR)/
 	unzip -j bootstrap.zip -d $(TMP_DIR)/
-	mv $(TMP_DIR)/*.bundle$(INFIX).js $(BOOTSTRAP_JS_DIR)/
-	mv $(TMP_DIR)/*.bundle$(INFIX).js.map $(BOOTSTRAP_JS_DIR)/
-	mv $(TMP_DIR)/*$(INFIX).css $(BOOTSTRAP_CSS_DIR)/
-	mv $(TMP_DIR)/*$(INFIX).css.map $(BOOTSTRAP_CSS_DIR)/
+	mv $(TMP_DIR)/bootstrap.bundle$(INFIX).js $(BOOTSTRAP_JS_DIR)/
+	mv $(TMP_DIR)/bootstrap.bundle$(INFIX).js.map $(BOOTSTRAP_JS_DIR)/
+	mv $(TMP_DIR)/bootstrap$(INFIX).css $(BOOTSTRAP_CSS_DIR)/
+	mv $(TMP_DIR)/bootstrap*$(INFIX).css.map $(BOOTSTRAP_CSS_DIR)/
 	rm -rf $(TMP_DIR)/
 	rm bootstrap.zip
 
