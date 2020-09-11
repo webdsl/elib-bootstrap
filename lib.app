@@ -438,17 +438,19 @@ section horizontal forms
   template helpBlock(){
     <span class="help-block" all attributes> elements </span>
   }
-
-  template inputAppend() {
-    inputGroup[all attributes]{ elements }
+  
+  template inputGroupAppend( appendText : String ){
+    inputGroup[all attributes]{
+      elements
+      inputGroupAddon{ ~appendText }
+    }
   }
-  template inputPrepend() {
-    inputGroup[all attributes]{ elements }
+  template inputGroupPrepend( appendText : String ){
+    inputGroup[all attributes]{
+      inputGroupAddon{ ~appendText }
+      elements
+    }
   }
-  template inputPrependAppend() {
-    inputGroup[all attributes]{ elements }
-  }
-
   template inputGroup() {
     <span class="input-group" all attributes>
       elements
@@ -457,6 +459,10 @@ section horizontal forms
 
   template inputGroupButton(){
     <span class="input-group-btn" all attributes> elements </span>
+  }
+  
+  template inputGroupAddon(){
+    <span class="input-group-addon" all attributes> elements </span>
   }
 
 section breadcrumbs
@@ -577,7 +583,17 @@ section dropdowns
       dropdownMenu(id){ elements }
     }
   }
-
+  template dropdownSubMenu(title : String){
+  	dropdownMenuItem[class="dropdown dropdown-submenu", all attributes]{
+  		<a tabindex="-1" href="#"> output(title) </a>
+  		dropdownMenu{
+  			elements
+  		}
+  	}
+  }
+  template dropdownMenuDivider() {
+    listitem[class="divider", all attributes]
+  }
   /** A toggle link for a dropdown menu. Use inside dropdown() to toggle the dropdown. */
   template dropdownToggleLink(idAttr: String){
     dropdownToggleLink(idAttr, ""){ elements }
@@ -1182,7 +1198,7 @@ section modal
     modal(modalID, "")[all attributes]{ elements }
   }
   define modal(modalID : String, modalSizeClass : String){
-    <div class="modal "  id=modalID all attributes except "id">
+    <div class="modal " tabindex="-1" id=modalID all attributes except "id">
       <div class="modal-dialog ~modalSizeClass">
         <div class="modal-content">
           elements
