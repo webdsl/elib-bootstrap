@@ -1,5 +1,6 @@
 module elib/elib-bootstrap/lib
 imports elib/elib-bootstrap/icons
+imports elib/elib-bootstrap/icons-fontawesome
 
 section default attribute sets
   override attributes submit{ class="btn btn-default" }
