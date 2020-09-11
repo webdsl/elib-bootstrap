@@ -4,27 +4,9 @@ module elib-bootstrap/icons-fontawesome
  ****************************************/
 
 section Icons
-/*
-  Copy the CSS part of the FontAwesome CSS, and paste it on this regex:
-  https://regex101.com/r/sSVOFy/5
-  Or copy a list of icon names into one of these regexes:
-  - Solid: https://regex101.com/r/qlVswg/2
-  - Regular: https://regex101.com/r/qlVswg/3
-  - Brand: https://regex101.com/r/qlVswg/4
-  - Light: https://regex101.com/r/qlVswg/5
-  - Duotone: https://regex101.com/r/qlVswg/6
-  Then in a text editor do a regular expression substitution on:
-  ^(\s*i\w*)-(\w)(\w+)
-  replace with:
-  \1\U\2\E\3
-  (See also: https://regex101.com/r/nZllLY/3)
-  And hit replace all multiple times (because it will only catch one `-` at a time)
-*/
 
+// Solid icons
 htmlwrapper{
-
-  // Solid icons (Free)
-  // ------------------
   iAd i[class="fas fa-ad"]
   iAddressBook i[class="fas fa-address-book"]
   iAddressCard i[class="fas fa-address-card"]
@@ -78,6 +60,9 @@ htmlwrapper{
   iBackspace i[class="fas fa-backspace"]
   iBackward i[class="fas fa-backward"]
   iBacon i[class="fas fa-bacon"]
+  iBacteria i[class="fas fa-bacteria"]
+  iBacterium i[class="fas fa-bacterium"]
+  iBahai i[class="fas fa-bahai"]
   iBalanceScale i[class="fas fa-balance-scale"]
   iBalanceScaleLeft i[class="fas fa-balance-scale-left"]
   iBalanceScaleRight i[class="fas fa-balance-scale-right"]
@@ -125,6 +110,7 @@ htmlwrapper{
   iBowlingBall i[class="fas fa-bowling-ball"]
   iBox i[class="fas fa-box"]
   iBoxOpen i[class="fas fa-box-open"]
+  iBoxTissue i[class="fas fa-box-tissue"]
   iBoxes i[class="fas fa-boxes"]
   iBraille i[class="fas fa-braille"]
   iBrain i[class="fas fa-brain"]
@@ -162,6 +148,7 @@ htmlwrapper{
   iCarBattery i[class="fas fa-car-battery"]
   iCarCrash i[class="fas fa-car-crash"]
   iCarSide i[class="fas fa-car-side"]
+  iCaravan i[class="fas fa-caravan"]
   iCaretDown i[class="fas fa-caret-down"]
   iCaretLeft i[class="fas fa-caret-left"]
   iCaretRight i[class="fas fa-caret-right"]
@@ -246,6 +233,7 @@ htmlwrapper{
   iCompactDisc i[class="fas fa-compact-disc"]
   iCompass i[class="fas fa-compass"]
   iCompress i[class="fas fa-compress"]
+  iCompressAlt i[class="fas fa-compress-alt"]
   iCompressArrowsAlt i[class="fas fa-compress-arrows-alt"]
   iConciergeBell i[class="fas fa-concierge-bell"]
   iCookie i[class="fas fa-cookie"]
@@ -281,6 +269,7 @@ htmlwrapper{
   iDiceTwo i[class="fas fa-dice-two"]
   iDigitalTachograph i[class="fas fa-digital-tachograph"]
   iDirections i[class="fas fa-directions"]
+  iDisease i[class="fas fa-disease"]
   iDivide i[class="fas fa-divide"]
   iDizzy i[class="fas fa-dizzy"]
   iDna i[class="fas fa-dna"]
@@ -322,6 +311,7 @@ htmlwrapper{
   iExclamationCircle i[class="fas fa-exclamation-circle"]
   iExclamationTriangle i[class="fas fa-exclamation-triangle"]
   iExpand i[class="fas fa-expand"]
+  iExpandAlt i[class="fas fa-expand-alt"]
   iExpandArrowsAlt i[class="fas fa-expand-arrows-alt"]
   iExternalLinkAlt i[class="fas fa-external-link-alt"]
   iExternalLinkSquareAlt i[class="fas fa-external-link-square-alt"]
@@ -331,6 +321,7 @@ htmlwrapper{
   iFan i[class="fas fa-fan"]
   iFastBackward i[class="fas fa-fast-backward"]
   iFastForward i[class="fas fa-fast-forward"]
+  iFaucet i[class="fas fa-faucet"]
   iFax i[class="fas fa-fax"]
   iFeather i[class="fas fa-feather"]
   iFeatherAlt i[class="fas fa-feather-alt"]
@@ -380,6 +371,7 @@ htmlwrapper{
   iFolderOpen i[class="fas fa-folder-open"]
   iFolderPlus i[class="fas fa-folder-plus"]
   iFont i[class="fas fa-font"]
+  iFontAwesomeLogoFull i[class="fas fa-font-awesome-logo-full"]
   iFootballBall i[class="fas fa-football-ball"]
   iForward i[class="fas fa-forward"]
   iFrog i[class="fas fa-frog"]
@@ -435,7 +427,9 @@ htmlwrapper{
   iHamsa i[class="fas fa-hamsa"]
   iHandHolding i[class="fas fa-hand-holding"]
   iHandHoldingHeart i[class="fas fa-hand-holding-heart"]
+  iHandHoldingMedical i[class="fas fa-hand-holding-medical"]
   iHandHoldingUsd i[class="fas fa-hand-holding-usd"]
+  iHandHoldingWater i[class="fas fa-hand-holding-water"]
   iHandLizard i[class="fas fa-hand-lizard"]
   iHandMiddleFinger i[class="fas fa-hand-middle-finger"]
   iHandPaper i[class="fas fa-hand-paper"]
@@ -447,18 +441,25 @@ htmlwrapper{
   iHandPointer i[class="fas fa-hand-pointer"]
   iHandRock i[class="fas fa-hand-rock"]
   iHandScissors i[class="fas fa-hand-scissors"]
+  iHandSparkles i[class="fas fa-hand-sparkles"]
   iHandSpock i[class="fas fa-hand-spock"]
   iHands i[class="fas fa-hands"]
   iHandsHelping i[class="fas fa-hands-helping"]
+  iHandsWash i[class="fas fa-hands-wash"]
   iHandshake i[class="fas fa-handshake"]
+  iHandshakeAltSlash i[class="fas fa-handshake-alt-slash"]
+  iHandshakeSlash i[class="fas fa-handshake-slash"]
   iHanukiah i[class="fas fa-hanukiah"]
   iHardHat i[class="fas fa-hard-hat"]
   iHashtag i[class="fas fa-hashtag"]
   iHatCowboy i[class="fas fa-hat-cowboy"]
   iHatCowboySide i[class="fas fa-hat-cowboy-side"]
   iHatWizard i[class="fas fa-hat-wizard"]
-  iHaykal i[class="fas fa-haykal"]
   iHdd i[class="fas fa-hdd"]
+  iHeadSideCough i[class="fas fa-head-side-cough"]
+  iHeadSideCoughSlash i[class="fas fa-head-side-cough-slash"]
+  iHeadSideMask i[class="fas fa-head-side-mask"]
+  iHeadSideVirus i[class="fas fa-head-side-virus"]
   iHeading i[class="fas fa-heading"]
   iHeadphones i[class="fas fa-headphones"]
   iHeadphonesAlt i[class="fas fa-headphones-alt"]
@@ -479,6 +480,7 @@ htmlwrapper{
   iHospital i[class="fas fa-hospital"]
   iHospitalAlt i[class="fas fa-hospital-alt"]
   iHospitalSymbol i[class="fas fa-hospital-symbol"]
+  iHospitalUser i[class="fas fa-hospital-user"]
   iHotTub i[class="fas fa-hot-tub"]
   iHotdog i[class="fas fa-hotdog"]
   iHotel i[class="fas fa-hotel"]
@@ -487,6 +489,7 @@ htmlwrapper{
   iHourglassHalf i[class="fas fa-hourglass-half"]
   iHourglassStart i[class="fas fa-hourglass-start"]
   iHouseDamage i[class="fas fa-house-damage"]
+  iHouseUser i[class="fas fa-house-user"]
   iHryvnia i[class="fas fa-hryvnia"]
   iICursor i[class="fas fa-i-cursor"]
   iIceCream i[class="fas fa-ice-cream"]
@@ -520,6 +523,7 @@ htmlwrapper{
   iLanguage i[class="fas fa-language"]
   iLaptop i[class="fas fa-laptop"]
   iLaptopCode i[class="fas fa-laptop-code"]
+  iLaptopHouse i[class="fas fa-laptop-house"]
   iLaptopMedical i[class="fas fa-laptop-medical"]
   iLaugh i[class="fas fa-laugh"]
   iLaughBeam i[class="fas fa-laugh-beam"]
@@ -549,6 +553,8 @@ htmlwrapper{
   iLongArrowAltUp i[class="fas fa-long-arrow-alt-up"]
   iLowVision i[class="fas fa-low-vision"]
   iLuggageCart i[class="fas fa-luggage-cart"]
+  iLungs i[class="fas fa-lungs"]
+  iLungsVirus i[class="fas fa-lungs-virus"]
   iMagic i[class="fas fa-magic"]
   iMagnet i[class="fas fa-magnet"]
   iMailBulk i[class="fas fa-mail-bulk"]
@@ -639,6 +645,7 @@ htmlwrapper{
   iPenSquare i[class="fas fa-pen-square"]
   iPencilAlt i[class="fas fa-pencil-alt"]
   iPencilRuler i[class="fas fa-pencil-ruler"]
+  iPeopleArrows i[class="fas fa-people-arrows"]
   iPeopleCarry i[class="fas fa-people-carry"]
   iPepperHot i[class="fas fa-pepper-hot"]
   iPercent i[class="fas fa-percent"]
@@ -658,6 +665,7 @@ htmlwrapper{
   iPlane i[class="fas fa-plane"]
   iPlaneArrival i[class="fas fa-plane-arrival"]
   iPlaneDeparture i[class="fas fa-plane-departure"]
+  iPlaneSlash i[class="fas fa-plane-slash"]
   iPlay i[class="fas fa-play"]
   iPlayCircle i[class="fas fa-play-circle"]
   iPlug i[class="fas fa-plug"]
@@ -681,6 +689,8 @@ htmlwrapper{
   iPrint i[class="fas fa-print"]
   iProcedures i[class="fas fa-procedures"]
   iProjectDiagram i[class="fas fa-project-diagram"]
+  iPumpMedical i[class="fas fa-pump-medical"]
+  iPumpSoap i[class="fas fa-pump-soap"]
   iPuzzlePiece i[class="fas fa-puzzle-piece"]
   iQrcode i[class="fas fa-qrcode"]
   iQuestion i[class="fas fa-question"]
@@ -743,6 +753,7 @@ htmlwrapper{
   iShareSquare i[class="fas fa-share-square"]
   iShekelSign i[class="fas fa-shekel-sign"]
   iShieldAlt i[class="fas fa-shield-alt"]
+  iShieldVirus i[class="fas fa-shield-virus"]
   iShip i[class="fas fa-ship"]
   iShippingFast i[class="fas fa-shipping-fast"]
   iShoePrints i[class="fas fa-shoe-prints"]
@@ -758,6 +769,7 @@ htmlwrapper{
   iSignal i[class="fas fa-signal"]
   iSignature i[class="fas fa-signature"]
   iSimCard i[class="fas fa-sim-card"]
+  iSink i[class="fas fa-sink"]
   iSitemap i[class="fas fa-sitemap"]
   iSkating i[class="fas fa-skating"]
   iSkiing i[class="fas fa-skiing"]
@@ -778,6 +790,7 @@ htmlwrapper{
   iSnowflake i[class="fas fa-snowflake"]
   iSnowman i[class="fas fa-snowman"]
   iSnowplow i[class="fas fa-snowplow"]
+  iSoap i[class="fas fa-soap"]
   iSocks i[class="fas fa-socks"]
   iSolarPanel i[class="fas fa-solar-panel"]
   iSort i[class="fas fa-sort"]
@@ -819,8 +832,11 @@ htmlwrapper{
   iStop i[class="fas fa-stop"]
   iStopCircle i[class="fas fa-stop-circle"]
   iStopwatch i[class="fas fa-stopwatch"]
+  iStopwatch20 i[class="fas fa-stopwatch-20"]
   iStore i[class="fas fa-store"]
   iStoreAlt i[class="fas fa-store-alt"]
+  iStoreAltSlash i[class="fas fa-store-alt-slash"]
+  iStoreSlash i[class="fas fa-store-slash"]
   iStream i[class="fas fa-stream"]
   iStreetView i[class="fas fa-street-view"]
   iStrikethrough i[class="fas fa-strikethrough"]
@@ -881,6 +897,7 @@ htmlwrapper{
   iToggleOn i[class="fas fa-toggle-on"]
   iToilet i[class="fas fa-toilet"]
   iToiletPaper i[class="fas fa-toilet-paper"]
+  iToiletPaperSlash i[class="fas fa-toilet-paper-slash"]
   iToolbox i[class="fas fa-toolbox"]
   iTools i[class="fas fa-tools"]
   iTooth i[class="fas fa-tooth"]
@@ -889,6 +906,7 @@ htmlwrapper{
   iTractor i[class="fas fa-tractor"]
   iTrademark i[class="fas fa-trademark"]
   iTrafficLight i[class="fas fa-traffic-light"]
+  iTrailer i[class="fas fa-trailer"]
   iTrain i[class="fas fa-train"]
   iTram i[class="fas fa-tram"]
   iTransgender i[class="fas fa-transgender"]
@@ -944,6 +962,7 @@ htmlwrapper{
   iUserTimes i[class="fas fa-user-times"]
   iUsers i[class="fas fa-users"]
   iUsersCog i[class="fas fa-users-cog"]
+  iUsersSlash i[class="fas fa-users-slash"]
   iUtensilSpoon i[class="fas fa-utensil-spoon"]
   iUtensils i[class="fas fa-utensils"]
   iVectorSquare i[class="fas fa-vector-square"]
@@ -955,6 +974,9 @@ htmlwrapper{
   iVideo i[class="fas fa-video"]
   iVideoSlash i[class="fas fa-video-slash"]
   iVihara i[class="fas fa-vihara"]
+  iVirus i[class="fas fa-virus"]
+  iVirusSlash i[class="fas fa-virus-slash"]
+  iViruses i[class="fas fa-viruses"]
   iVoicemail i[class="fas fa-voicemail"]
   iVolleyballBall i[class="fas fa-volleyball-ball"]
   iVolumeDown i[class="fas fa-volume-down"]
@@ -985,10 +1007,10 @@ htmlwrapper{
   iXRay i[class="fas fa-x-ray"]
   iYenSign i[class="fas fa-yen-sign"]
   iYinYang i[class="fas fa-yin-yang"]
+}
 
-
-  // Regular icons (Free)
-  // --------------------
+// Regular icons
+htmlwrapper{
   irAddressBook i[class="far fa-address-book"]
   irAddressCard i[class="far fa-address-card"]
   irAngry i[class="far fa-angry"]
@@ -1048,6 +1070,7 @@ htmlwrapper{
   irFlushed i[class="far fa-flushed"]
   irFolder i[class="far fa-folder"]
   irFolderOpen i[class="far fa-folder-open"]
+  irFontAwesomeLogoFull i[class="far fa-font-awesome-logo-full"]
   irFrown i[class="far fa-frown"]
   irFrownOpen i[class="far fa-frown-open"]
   irFutbol i[class="far fa-futbol"]
@@ -1140,11 +1163,19 @@ htmlwrapper{
   irWindowMaximize i[class="far fa-window-maximize"]
   irWindowMinimize i[class="far fa-window-minimize"]
   irWindowRestore i[class="far fa-window-restore"]
+}
 
+// Light icons
+htmlwrapper{
+}
 
-  // Brand icons (Free)
-  // ------------------
-  ib500px i[class="fab fa-500px"]
+// Duotone icons
+htmlwrapper{
+}
+
+// Brand icons
+htmlwrapper{
+  ib500Px i[class="fab fa-500px"]
   ibAccessibleIcon i[class="fab fa-accessible-icon"]
   ibAccusoft i[class="fab fa-accusoft"]
   ibAcquisitionsIncorporated i[class="fab fa-acquisitions-incorporated"]
@@ -1240,7 +1271,9 @@ htmlwrapper{
   ibCuttlefish i[class="fab fa-cuttlefish"]
   ibDAndD i[class="fab fa-d-and-d"]
   ibDAndDBeyond i[class="fab fa-d-and-d-beyond"]
+  ibDailymotion i[class="fab fa-dailymotion"]
   ibDashcube i[class="fab fa-dashcube"]
+  ibDeezer i[class="fab fa-deezer"]
   ibDelicious i[class="fab fa-delicious"]
   ibDeploydog i[class="fab fa-deploydog"]
   ibDeskpro i[class="fab fa-deskpro"]
@@ -1254,7 +1287,7 @@ htmlwrapper{
   ibDiscourse i[class="fab fa-discourse"]
   ibDochub i[class="fab fa-dochub"]
   ibDocker i[class="fab fa-docker"]
-  ibDraft2digital i[class="fab fa-draft2digital"]
+  ibDraft2Digital i[class="fab fa-draft2digital"]
   ibDribbble i[class="fab fa-dribbble"]
   ibDribbbleSquare i[class="fab fa-dribbble-square"]
   ibDropbox i[class="fab fa-dropbox"]
@@ -1263,6 +1296,7 @@ htmlwrapper{
   ibEarlybirds i[class="fab fa-earlybirds"]
   ibEbay i[class="fab fa-ebay"]
   ibEdge i[class="fab fa-edge"]
+  ibEdgeLegacy i[class="fab fa-edge-legacy"]
   ibElementor i[class="fab fa-elementor"]
   ibEllo i[class="fab fa-ello"]
   ibEmber i[class="fab fa-ember"]
@@ -1282,6 +1316,7 @@ htmlwrapper{
   ibFedora i[class="fab fa-fedora"]
   ibFigma i[class="fab fa-figma"]
   ibFirefox i[class="fab fa-firefox"]
+  ibFirefoxBrowser i[class="fab fa-firefox-browser"]
   ibFirstOrder i[class="fab fa-first-order"]
   ibFirstOrderAlt i[class="fab fa-first-order-alt"]
   ibFirstdraft i[class="fab fa-firstdraft"]
@@ -1291,6 +1326,7 @@ htmlwrapper{
   ibFontAwesome i[class="fab fa-font-awesome"]
   ibFontAwesomeAlt i[class="fab fa-font-awesome-alt"]
   ibFontAwesomeFlag i[class="fab fa-font-awesome-flag"]
+  ibFontAwesomeLogoFull i[class="fab fa-font-awesome-logo-full"]
   ibFonticons i[class="fab fa-fonticons"]
   ibFonticonsFi i[class="fab fa-fonticons-fi"]
   ibFortAwesome i[class="fab fa-fort-awesome"]
@@ -1321,6 +1357,7 @@ htmlwrapper{
   ibGoodreadsG i[class="fab fa-goodreads-g"]
   ibGoogle i[class="fab fa-google"]
   ibGoogleDrive i[class="fab fa-google-drive"]
+  ibGooglePay i[class="fab fa-google-pay"]
   ibGooglePlay i[class="fab fa-google-play"]
   ibGooglePlus i[class="fab fa-google-plus"]
   ibGooglePlusG i[class="fab fa-google-plus-g"]
@@ -1342,8 +1379,10 @@ htmlwrapper{
   ibHouzz i[class="fab fa-houzz"]
   ibHtml5 i[class="fab fa-html5"]
   ibHubspot i[class="fab fa-hubspot"]
+  ibIdeal i[class="fab fa-ideal"]
   ibImdb i[class="fab fa-imdb"]
   ibInstagram i[class="fab fa-instagram"]
+  ibInstagramSquare i[class="fab fa-instagram-square"]
   ibIntercom i[class="fab fa-intercom"]
   ibInternetExplorer i[class="fab fa-internet-explorer"]
   ibInvision i[class="fab fa-invision"]
@@ -1391,9 +1430,11 @@ htmlwrapper{
   ibMeetup i[class="fab fa-meetup"]
   ibMegaport i[class="fab fa-megaport"]
   ibMendeley i[class="fab fa-mendeley"]
+  ibMicroblog i[class="fab fa-microblog"]
   ibMicrosoft i[class="fab fa-microsoft"]
   ibMix i[class="fab fa-mix"]
   ibMixcloud i[class="fab fa-mixcloud"]
+  ibMixer i[class="fab fa-mixer"]
   ibMizuni i[class="fab fa-mizuni"]
   ibModx i[class="fab fa-modx"]
   ibMonero i[class="fab fa-monero"]
@@ -1429,6 +1470,7 @@ htmlwrapper{
   ibPiedPiperAlt i[class="fab fa-pied-piper-alt"]
   ibPiedPiperHat i[class="fab fa-pied-piper-hat"]
   ibPiedPiperPp i[class="fab fa-pied-piper-pp"]
+  ibPiedPiperSquare i[class="fab fa-pied-piper-square"]
   ibPinterest i[class="fab fa-pinterest"]
   ibPinterestP i[class="fab fa-pinterest-p"]
   ibPinterestSquare i[class="fab fa-pinterest-square"]
@@ -1458,6 +1500,7 @@ htmlwrapper{
   ibRev i[class="fab fa-rev"]
   ibRocketchat i[class="fab fa-rocketchat"]
   ibRockrms i[class="fab fa-rockrms"]
+  ibRust i[class="fab fa-rust"]
   ibSafari i[class="fab fa-safari"]
   ibSalesforce i[class="fab fa-salesforce"]
   ibSass i[class="fab fa-sass"]
@@ -1468,6 +1511,7 @@ htmlwrapper{
   ibSellsy i[class="fab fa-sellsy"]
   ibServicestack i[class="fab fa-servicestack"]
   ibShirtsinbulk i[class="fab fa-shirtsinbulk"]
+  ibShopify i[class="fab fa-shopify"]
   ibShopware i[class="fab fa-shopware"]
   ibSimplybuilt i[class="fab fa-simplybuilt"]
   ibSistrix i[class="fab fa-sistrix"]
@@ -1514,6 +1558,7 @@ htmlwrapper{
   ibThemeco i[class="fab fa-themeco"]
   ibThemeisle i[class="fab fa-themeisle"]
   ibThinkPeaks i[class="fab fa-think-peaks"]
+  ibTiktok i[class="fab fa-tiktok"]
   ibTradeFederation i[class="fab fa-trade-federation"]
   ibTrello i[class="fab fa-trello"]
   ibTripadvisor i[class="fab fa-tripadvisor"]
@@ -1528,6 +1573,8 @@ htmlwrapper{
   ibUikit i[class="fab fa-uikit"]
   ibUmbraco i[class="fab fa-umbraco"]
   ibUniregistry i[class="fab fa-uniregistry"]
+  ibUnity i[class="fab fa-unity"]
+  ibUnsplash i[class="fab fa-unsplash"]
   ibUntappd i[class="fab fa-untappd"]
   ibUps i[class="fab fa-ups"]
   ibUsb i[class="fab fa-usb"]
@@ -1577,5 +1624,4 @@ htmlwrapper{
   ibYoutube i[class="fab fa-youtube"]
   ibYoutubeSquare i[class="fab fa-youtube-square"]
   ibZhihu i[class="fab fa-zhihu"]
-
 }
