@@ -497,14 +497,32 @@ section horizontal forms
 
 section breadcrumbs
 
+  /** A breadcrumbs navigation bar. */
   template breadcrumbs(){
-    <ul class="breadcrumb" all attributes> elements </ul>
+  	<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb" all attributes>
+  			elements
+  		</ol>
+  	</nav>
   }
+  
+  /** A breadcrumb element. Use inside breadcrumbs(). */
   template breadcrumb() {
-    <li all attributes> elements </li>
+    <li class="breadcrumb-item" all attributes> elements </li>
   }
+  
+  /**
+   * A breadcrumb element which is optionally active. Use inside breadcrumbs().
+   * 
+   * @param active whether this is the active breadcrumb
+   */
+  template breadcrumb(active: Bool) {
+    <li class="breadcrumb-item " + activeClass(active) if (active) { aria-current="page" } all attributes> elements </li>
+  }
+  
+  /** An active breadcrumb element. Use inside breadcrumbs(). */
   template breadcrumbActive() {
-    <li class="active" all attributes> elements </li>
+    breadcrumb(true)[all attributes]{ elements }
   }
 
 section pagers
