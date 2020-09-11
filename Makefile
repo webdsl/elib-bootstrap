@@ -15,9 +15,9 @@ FONTAWESOME_FONT_DIR=$(CSS_DIR)/fontawesome/webfonts
 GENERATOR_DIR=generator
 
 
-.PHONY: update update-bootstrap update-fontawesome generate-icons
+.PHONY: update update-bootstrap update-themes update-fontawesome generate-icons
 
-update: update-bootstrap update-fontawesome generate-icons
+update: update-bootstrap update-themes update-fontawesome generate-icons
 
 # Updates Bootstrap
 update-bootstrap:
@@ -35,6 +35,16 @@ update-bootstrap:
 	mv $(TMP_DIR)/bootstrap$(INFIX).css.map $(BOOTSTRAP_CSS_DIR)/
 	rm -rf $(TMP_DIR)/
 	rm bootstrap.zip
+
+# Updates the Bootstrap themes
+update-themes:
+	wget -O $(BOOTSTRAP_CSS_DIR)/cerulean.min.css   https://bootswatch.com/4/yeti/bootstrap.min.css
+	wget -O $(BOOTSTRAP_CSS_DIR)/cosmo.min.css      https://bootswatch.com/4/cosmo/bootstrap.min.css
+	wget -O $(BOOTSTRAP_CSS_DIR)/flatly.min.css     https://bootswatch.com/4/flatly/bootstrap.min.css
+	wget -O $(BOOTSTRAP_CSS_DIR)/lumen.min.css      https://bootswatch.com/4/lumen/bootstrap.min.css
+	wget -O $(BOOTSTRAP_CSS_DIR)/simplex.min.css    https://bootswatch.com/4/simplex/bootstrap.min.css
+	wget -O $(BOOTSTRAP_CSS_DIR)/spacelab.min.css   https://bootswatch.com/4/spacelab/bootstrap.min.css
+	wget -O $(BOOTSTRAP_CSS_DIR)/yeti.min.css       https://bootswatch.com/4/yeti/bootstrap.min.css
 
 # Updates Font Awesome
 update-fontawesome:
