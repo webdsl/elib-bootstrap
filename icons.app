@@ -50,8 +50,6 @@ section Icons
   template iPicture() { iImage[all attributes] }
   // iMapMarker             -> iMapMarkerAlt
   template iMapMarker() { iMapMarkerAlt[all attributes] }
-  // iCheck                 -> iCheckSquare
-  template iCheck() { iCheckSquare[all attributes] }
   // iMove                  -> iArrowsAlt
   template iMove() { iArrowsAlt[all attributes] }
   // iPlusSign              -> iPlusCircle
