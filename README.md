@@ -24,7 +24,8 @@ To migrate from the previous Bootstrap 3 to this version:
 The following are recommended but optional migrations from Bootstrap 3:
 
 - replace the following:
-  - `brand()` to `navbarBrand()` (deprecated)
+  - `brand()` to `navbarBrand()`
+  - `navItems()` to `navbarNavList()`
   - `dropdownToggle()` to `dropdownToggleLink()`
   - `dropdownMenuDivider()` to `dropdownMenuDividerItem()`
   - `dropdownButton()` to `dropdownLinkMenu()`

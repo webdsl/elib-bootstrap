@@ -187,22 +187,29 @@ section navigation bar
   	</nav>
   }
 
+  /**
+   * A responsive navigation bar that collapses when the window becomes too narrow.
+   */
   template navbarResponsive(){
     navbarResponsive(true)[all attributes]{ elements }
   }
 
-  template navbarResponsive(fixed : Bool) {
-    div[class=if(fixed)"navbar navbar-inverse navbar-fixed-top" else "navbar navbar-inverse navbar-static-top", all attributes]{
-      gridContainer{
-        div[class="navbar-header"]{
-          navbarBrand
-          navCollapseButton
-        }
-        div[class="navbar-collapse collapse", style="height: 0px;"]{
-          elements
-        }
-      }
-    }
+  /**
+   * A responsive navigation bar that collapses when the window becomes too narrow.
+   *
+   * @param fixed whether the navbar is fixed to the top of the window
+   */
+  template navbarResponsive(fixed: Bool) {
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" + navbarFixedClass(fixed) all attributes except id>
+  	  gridContainer{
+  	    button[class="navbar-toggler", type="button", data-toggle="collapse", data-target="#"+id, aria-controls=id, aria-expanded="false", aria-label="Toggle navigation"]{
+	      span[class="navbar-toggler-icon"]
+	    }
+	    div[class="collapse navbar-collapse", id=id]{
+	      elements
+	    }
+	  }
+	</nav>
   }
 
   template navbarFluid() {
@@ -224,22 +231,18 @@ section navigation bar
     }
   }
   template navCollapse() {
-    div[class="nav-collapse"]{
+    div[class="collapse nav-collapse", all attributes]{
       elements
     }
   }
   template navbarRight() {
-    div[class="navbar-right"]{
+    div[class="navbar-right", all attributes]{
       elements
     }
   }
-  template navItems() {
-    list[class="nav navbar-nav"]{
-      elements
-    }
-  }
+  
   template navItem() {
-    listitem{ elements }
+    listitem[all attributes]{ elements }
   }
 
   template navCollapseButton() {
@@ -257,7 +260,7 @@ section navigation bar
     navigate root() [class="navbar-brand", all attributes]{ appname }
   }
 
-  /** Add navigation items (navbarNavLinkItem()) to the navbar. Use in a navbar() template. */
+  /** Add navigation items (navbarNav*Item()) to the navbar. Use in a navbar() template. */
   template navbarNav() {
     div[class="navbar-nav", all attributes]{ elements }
   }
@@ -267,7 +270,7 @@ section navigation bar
   }
   /** Adds a nav item link to a navbar. Use in the navbarNav() template. */
   template navbarNavLinkItem(nav: String, active: Bool, disabled: Bool) {
-    <a href=nav class="nav-item nav-link " + activeClass(active) + " " + disabledClass(disabled) if (disabled) { tabindex="-1" aria-disabled="true" } all attributes>elements</a>
+    <a href=nav class="nav-link " + activeClass(active) + " " + disabledClass(disabled) if (disabled) { tabindex="-1" aria-disabled="true" } all attributes>elements</a>
   }
 
   /** Adds a dropdown button to a navbar. Use in the navbarNav() template. */
@@ -291,6 +294,13 @@ section navigation bar
     <a href=nav class="nav-link " + activeClass(active) + " " + disabledClass(disabled) if (disabled) { tabindex="-1" aria-disabled="true" } all attributes>elements</a>
   }
 
+  function navbarFixedClass(fixed: Bool): String {
+    if(fixed) { return "fixed-top"; } else { return ""; }
+  }
+  
+  
+  // NOTE: navItems() has been renamed to navbarNavList().
+  template navItems() { navbarNavList() }
 
 
 section sections
@@ -943,55 +953,6 @@ section alerts
       }
     }
   }
-
-/*
-  template tabExperiment() {
-    <ul id="tab" class="nav nav-tabs">
-    <li><a href="#home" data-toggle="tab">"Home"</a></li>
-    <li><a href="#profile" data-toggle="tab">"Profile"</a></li>
-    <li><a href="#messages" data-toggle="tab">"Messages"</a></li>
-    <li><a href="#settings" data-toggle="tab">"Settings"</a></li>
-    </ul>
-
-    <div class="tab-content">
-      <div class="tab-pane active" id="home">"home content"</div>
-      <div class="tab-pane" id="profile">"profile content"</div>
-      <div class="tab-pane" id="messages">"messages content"</div>
-      <div class="tab-pane" id="settings">"settings content"</div>
-    </div>
-
-    <script>
-      $(function () {
-        $('.tabs a:last').tab('show')
-        $('#home').tab('show')
-        $('#profile').tab('show')
-        $('#messages').tab('show')
-        $('#settings').tab('show')
-      })
-    </script>
-  }
-*/
-
-/*
-  template tabDefault(label: String) {
-    tab(label, true){ elements }
-  }
-
-  template tab(label: String, checked: Bool) {
-    var tname := getTemplate().getUniqueId()
-    div[class="tab"]{
-      if(checked) {
-        <input type="radio" id=tname name="tab-group-1" checked="true"></input>
-      } else {
-        <input type="radio" id=tname name="tab-group-1"></input>
-      }
-      <label for=tname>output(label)</label>
-      div[class="content"]{
-        elements
-      }
-    }
-  }
-*/
 
 section panels
 
