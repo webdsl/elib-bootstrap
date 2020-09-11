@@ -13,27 +13,38 @@ Current versions:
 ## Required Migration
 To migrate from the previous Bootstrap 3 to this version:
 
+- change the following:
+  - `dropdownMenu()` and `dropdownMenuRight()` need as their first argument the ID of the menu toggle button or link
 - replace the following:
-  - `gridSpan()` to `gridCol()` (was deprecated)
+  - `gridSpan()` with `gridCol()`
 - remove the following:
-  - `dropdownSubMenu()` (was removed from Bootstrap)
-  - `gridColPush()` and `gridColPull()` (where removed from Bootstrap), use `gridColOrder()` instead
-- `dropdownMenu()` and `dropdownMenuRight()` need as their first argument the ID of the menu toggle button or link
+  - `dropdownSubMenu()` (removed from Bootstrap)
+  - `gridColPush()` and `gridColPull()` (removed from Bootstrap), use `gridColOrder()` instead
 
 ### Optional Migration
 The following are recommended but optional migrations from Bootstrap 3:
 
 - replace the following:
-  - `brand()` to `navbarBrand()`
-  - `navItems()` to `navbarNavList()`
-  - `dropdownToggle()` to `dropdownToggleLink()`
-  - `dropdownMenuDivider()` to `dropdownMenuDividerItem()`
-  - `dropdownButton()` to `dropdownLinkMenu()`
-  - `dropdownMenuItem()` to `dropdownMenu*Item()` or `<p>` or `<form>`
-  - `dropdownInNavbar()` to `navbarNavDropdownItem()`
-  - `dropdownMenuDivider()` to `dropdownMenuDividerItem()`
+  - `brand()` with `navbarBrand()`
+  - `navItems()` with `navbarNavList()`
+  - `dropdownToggle()` with `dropdownToggleLink()`
+  - `dropdownMenuDivider()` with `dropdownMenuDividerItem()`
+  - `dropdownButton()` with `dropdownLinkMenu()`
+  - `dropdownMenuItem()` with `dropdownMenu*Item()` or `<p>` or `<form>`
+  - `dropdownInNavbar()` with `navbarNavDropdownItem()`
+  - `dropdownMenuDivider()` with `dropdownMenuDividerItem()`
+  - `well()` with `card()` and `cardBody()`
+  - `wellSmall()` with `card()` and `cardBody()`
+  - `wellLarge()` with `card()` and `cardBody()`
+  - `panel()` with `card()` and `cardBody()`
+  - `panel(header)` with `card()`, `cardHeader()`, and `cardBody()`
+  - `panelWithHeading(header)` with `card()`, `cardHeader()`, and `cardBody()`
+  - `panelCls()` with `cardCls()` and `cardBodyCls()`
+  - `panelCls(header)` with `cardCls()`, `cardHeaderCls()`, and `cardBodyCls()`
+  - `panelClsWithHeading(header)` with `cardCls()`, `cardHeaderCls()`, and `cardBodyCls()`
 - remove the following:
   - `dropdownCaret()`
+
 
 
 ## Updating Bootstrap and Font Awesome

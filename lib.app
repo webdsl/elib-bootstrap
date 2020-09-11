@@ -736,16 +736,36 @@ section dropdowns
   template dropdownMenuDivider() { dropdownMenuDividerItem() } //deprecated
 
 
-section miscellaneous
+section Cards
 
-  /** A simple card, top-level element. Use cardBody*() inside. */
-  template cardSimple(){
-    card[all attributes]{ cardBody{ elements } }
-  }
   /** A card, top-level element. Use card*() inside. */
   template card(){
     div[class="card my-3", all attributes]{ elements }
   }
+  
+  
+  expandtemplate cards to Cls{
+    /** A Cls card, top-level element. Use card*() inside. */
+    template cardCls(){
+      card[class="border-cls", all attributes]{ elements }
+    }
+    /** Card header. Use inside cardCls(). */
+    template cardHeaderCls(){
+      cardHeader[class="bg-cls text-white", all attributes]{ elements }
+    }
+    /** Card body title. Use inside cardBody(). */
+	template cardBodyTitleCls() {
+	  cardBodyTitle[class="text-cls", all attributes] { elements }
+	}
+  }
+  expand
+    Primary
+    Secondary
+    Success
+    Danger
+    Warning
+    Info
+    to cards
   
   
   /** Card top image. Use inside card(). */
@@ -801,12 +821,13 @@ section miscellaneous
   }
   
   
-  // NOTE: well() has been renamed to cardSimple()
-  template well() { cardSimple()[all attributes]{ elements } } //deprecated
-  // NOTE: wellSmall() has been removed, use cardSimple()
-  template wellSmall() { cardSimple()[all attributes]{ elements } } //deprecated
-  // NOTE: wellLarge() has been removed, use cardSimple()
-  template wellLarge() { cardSimple()[all attributes]{ elements } } //deprecated
+  // NOTE: The Well has been removed from Bootstrap 4
+  template well() { card[all attributes]{ cardBody{ elements } } } 		// deprecated
+  template wellSmall() { card[all attributes]{ cardBody{ elements } } } // deprecated
+  template wellLarge() { card[all attributes]{ cardBody{ elements } } } // deprecated
+
+
+section Blockquoetes
 
   /** A blockquote. */
   template blockquote() {
@@ -1046,78 +1067,51 @@ section alerts
     }
   }
 
-section panels
-
+section Panels
+ 
+  // NOTE: Panels have been removed from Bootstrap 4. Use cards instead.
+  
+  // deprecated
   expandtemplate panels to Cls{
-    template panelCls(){
-      panelNoBody("panel-cls")[all attributes]{ elements }
+    template panelCls(){ // deprecated
+      card[class="border-cls", all attributes]{ cardBody() { elements } }
     }
-    template panelCls( header : String ){
-      panelInternal( header, "panel-cls")[all attributes]{ elements }
+    template panelCls(header: String){ // deprecated
+      panelClsWithHeading({ output(header){} })[all attributes]{ elements }
     }
-    template panelClsWithHeading( headerElem : TemplateElements ){
-      panelNoBody("panel-cls")[all attributes]{
-        panelHeading { headerElem }
-        panelBody { elements }
+    template panelClsWithHeading(headerElem: TemplateElements) { // deprecated
+      card[class="border-cls", all attributes] {
+      	cardHeader[class="bg-cls text-white", all attributes] { headerElem }
+      	cardBody() { elements }
       }
     }
-
   }
   expand
+    Primary
+    Secondary
+    Success
     Danger
     Warning
     Info
-    Primary
-    Success
     to panels
 
-  template panel(){
-    panelNoBody("panel-default")[all attributes]{
-      elements
+  template panel(){ card()[all attributes]{ cardBody() { elements } } } // deprecated
+  
+  template panel(header: String){ panelWithHeading({ output(header){} })[all attributes]{ elements } } // deprecated
+  
+  template panelWithHeading(headerElem: TemplateElements) {  // deprecated
+  	card()[all attributes]{
+  	  cardHeader() { headerElem }
+  	  cardBody() { elements }
     }
   }
-  template panel( header : String ){
-    panelInternal( header, "panel-default")[all attributes]{ elements }
-  }
-
-  template panelWithHeading( headerElem : TemplateElements ){
-    panelNoBody("panel-default")[all attributes]{
-      panelHeading { headerElem }
-      panelBody { elements }
-    }
-  }
-
-  template panelNoBody( panelClass : String ){
-    div[class="panel " + panelClass, all attributes]{
-      elements
-    }
-  }
-
-  define panelHeading(){
-    div[class="panel-heading clearfix", all attributes]{
-      div[class="panel-title"]{
-        elements
-      }
-    }
-  }
-  define panelBody(){
-    div[class="panel-body", all attributes]{
-      elements
-    }
-  }
-
-  define panelFooter(){
-    div[class="panel-footer", all attributes]{
-      elements
-    }
-  }
-
-  define panelInternal( header : String, panelclass : String){
-    panelNoBody(panelclass)[all attributes]{
-      panelHeading { output(header) }
-      panelBody { elements }
-    }
-  }
+  template panelNoBody(panelClass: String) { card[class=panelClass, all attributes] { elements } }	// deprecated
+  template panelHeading() { cardHeader()[all attributes] { elements } } // deprecated
+  template panelBody() { cardBody()[all attributes] { elements } }      // deprecated
+  template panelFooter() { cardFooter()[all attributes] { elements } }  // deprecated
+  
+  
+  
   template administerVarsInternal(){ /* overridden */ }
   template accordionPanels(){
     accordionPanels( true, "" )[all attributes]{ elements }
