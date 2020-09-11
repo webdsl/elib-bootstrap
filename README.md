@@ -13,18 +13,19 @@ Current versions:
 ## Required Migration
 To migrate from the previous Bootstrap 3 to this version:
 
-- change the following:
+- change:
   - `dropdownMenu()` and `dropdownMenuRight()` need as their first argument the ID of the menu toggle button or link
-- replace the following:
+  - all uses of the class `btn-default` to `btn-secondary`
+- replace:
   - `gridSpan()` with `gridCol()`
-- remove the following:
+- remove:
   - `dropdownSubMenu()` (removed from Bootstrap)
   - `gridColPush()` and `gridColPull()` (removed from Bootstrap), use `gridColOrder()` instead
 
 ### Optional Migration
 The following are recommended but optional migrations from Bootstrap 3:
 
-- replace the following:
+- replace:
   - `brand()` with `navbarBrand()`
   - `navItems()` with `navbarNavList()`
   - `dropdownToggle()` with `dropdownToggleLink()`
@@ -42,7 +43,7 @@ The following are recommended but optional migrations from Bootstrap 3:
   - `panelCls()` with `cardCls()` and `cardBodyCls()`
   - `panelCls(header)` with `cardCls()`, `cardHeaderCls()`, and `cardBodyCls()`
   - `panelClsWithHeading(header)` with `cardCls()`, `cardHeaderCls()`, and `cardBodyCls()`
-- remove the following:
+- remove:
   - `dropdownCaret()`
 
 

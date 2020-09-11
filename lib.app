@@ -3,7 +3,7 @@ imports elib/elib-bootstrap/icons
 imports elib/elib-bootstrap/icons-fontawesome
 
 section default attribute sets
-  override attributes submit{ class="btn btn-default" }
+  override attributes submit{ class="btn btn-secondary" }
   attributes btnSuccess { class= "btn btn-success" }
   attributes btnWarn{ class= "btn btn-warning" }
   attributes btnDanger{ class= "btn btn-danger" }
@@ -562,17 +562,17 @@ section buttons
     }
   }
   template buttonNavigate(nav: String) {
-    //navigate url(nav) [class="btn btn-default"]{ elements }
-    <a href=nav class="btn btn-default" all attributes>elements</a>
+    //navigate url(nav) [class="btn btn-secondary"]{ elements }
+    <a href=nav class="btn btn-secondary" all attributes>elements</a>
   }
   template button() {
-    div[class="btn btn-default", all attributes]{ elements }
+    div[class="btn btn-secondary", all attributes]{ elements }
   }
   template buttonMini(){
-    div[class="btn btn-default btn-xs", all attributes]{ elements }
+    div[class="btn btn-secondary btn-xs", all attributes]{ elements }
   }
   template buttonSmall(){
-    div[class="btn btn-default btn-sm", all attributes]{ elements }
+    div[class="btn btn-secondary btn-sm", all attributes]{ elements }
   }
   template buttonPrimary() {
     div[class="btn btn-primary ", all attributes]{ elements }
@@ -1261,7 +1261,7 @@ section modal
       modalBody{
         elements
       }
-      modalFooter{ modalCloseLink[class = "btn btn-default"] { iRemove " Close" } }
+      modalFooter{ modalCloseLink[class = "btn btn-secondary"] { iRemove " Close" } }
     }
   }
 
