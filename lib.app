@@ -28,7 +28,7 @@ section default attribute sets
 section tooltips
 
   /** Enables all tooltips on a page. */
-  template tooltipBS(){
+  template tooltipsBS(){
   	postProcess("$('[data-toggle=\"tooltip\"]').tooltip()")
   }
   /**
@@ -274,9 +274,7 @@ section navigation bar
   template navbarNavDropdownItem(title: String) {
     dropdown[class="nav-item"]{
       dropdownToggleLink(id, "nav-link") { output(title) }
-      dropdownMenu(id) {
-        elements
-      }
+      dropdownMenu(id){ elements }
     }
   }
 
@@ -599,36 +597,59 @@ section dropdowns
   
   // NOTE: dropdownSubMenu() was removed from Bootstrap
   
-  /** A toggle link for a dropdown menu. Use inside dropdown() to toggle the dropdown. */
+  /**
+   * A toggle link for a dropdown menu. Use inside dropdown() to toggle the dropdown.
+   *
+   * @param idAttr the ID of the toggle link
+   */
   template dropdownToggleLink(idAttr: String){
     dropdownToggleLink(idAttr, ""){ elements }
   }
-  /** A toggle link for a dropdown menu, with the specified class. Use inside dropdown() to toggle the dropdown. */
+  /**
+   * A toggle link for a dropdown menu, with the specified class. Use inside dropdown() to toggle the dropdown.
+   *
+   * @param idAttr the ID of the toggle link
+   */
   template dropdownToggleLink(idAttr: String, cls: String){
-    // TODO: Support id for aria-labelledby
-    <a class="dropdown-toggle "+cls href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id=idAttr>
+    <a class="dropdown-toggle "+cls href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-labelledby=idAttr id=idAttr>
       elements
     </a>
   }
 
-  /** A toggle button for a dropdown menu. Use inside dropdown() to toggle the dropdown. */
+  /**
+   * A toggle button for a dropdown menu. Use inside dropdown() to toggle the dropdown.
+   *
+   * @param idAttr the ID of the toggle button
+   */
   template dropdownToggleButton(idAttr: String){
     dropdownToggleButton(idAttr, ""){ elements }
   }
-  /** A toggle button for a dropdown menu, with the specified class. Use inside dropdown() to toggle the dropdown. */
+  /**
+   * A toggle button for a dropdown menu, with the specified class. Use inside dropdown() to toggle the dropdown.
+   *
+   * @param idAttr the ID of the toggle button
+   */
   template dropdownToggleButton(idAttr: String, cls: String){
     <button class="btn dropdown-toggle "+cls href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id=idAttr>
       elements
     </button>
   }
 
-  /** A dropdown menu. Use inside dropdown() to provide the menu. */
+  /**
+   * A dropdown menu. Use inside dropdown() to provide the menu.
+   *
+   * @param idAttr the ID of the button or link that expands this dropdown menu.
+   */
   template dropdownMenu(idAttr: String){
     div[class="dropdown-menu", aria-labelledby=idAttr, all attributes]{
       elements
     }
   }
-  /** A dropdown menu floating right. Use inside dropdown() to provide the menu. */
+  /**
+   * A dropdown menu floating right. Use inside dropdown() to provide the menu.
+   *
+   * @param idAttr the ID of the button or link that expands this dropdown menu.
+   */
   template dropdownMenuRight(idAttr: String){
     div[class="dropdown-menu float-right", aria-labelledby=idAttr, all attributes]{
       elements

@@ -18,7 +18,7 @@ To migrate from the previous Bootstrap 3 to this version:
 - remove the following:
   - `dropdownSubMenu()` (was removed from Bootstrap)
   - `gridColPush()` and `gridColPull()` (where removed from Bootstrap), use `gridColOrder()` instead
-
+- `dropdownMenu()` and `dropdownMenuRight()` need as their first argument the ID of the menu toggle button or link
 
 ### Optional Migration
 The following are recommended but optional migrations from Bootstrap 3:
