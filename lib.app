@@ -305,26 +305,35 @@ section navigation bar
 
 section sections
 
+  /** Displays an underlined page header. */
   template pageHeader() {
-    div[class="page-header", all attributes]{
+    div[class="pb-2 mt-4 mb-2 border-bottom", all attributes]{
       header1{ elements }
     }
   }
+  
+  /** Displays an underlined page header. */
   template pageHeader2() {
-    div[class="page-header", all attributes]{
+    div[class="pb-2 mt-4 mb-2 border-bottom", all attributes]{
       header2{ elements }
     }
   }
+  
+  /** Displays an underlined page header. */
   template pageHeader3() {
-    div[class="page-header", all attributes]{
+    div[class="pb-2 mt-4 mb-2 border-bottom", all attributes]{
       header3{ elements }
     }
   }
+  
+  /** Displays an underlined page header. */
   template pageHeader4() {
-    div[class="page-header", all attributes]{
+    div[class="pb-2 mt-4 mb-2 border-bottom", all attributes]{
       header4{ elements }
     }
   }
+  
+  
   template small() {
     <small all attributes>elements</small>
   }
