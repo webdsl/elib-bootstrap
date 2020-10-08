@@ -285,7 +285,15 @@ section forms
     elements
     <span class="help-inline">output(help)</span>
   }
-
+  
+  template formGroup(s: String){
+    div[class="form-group ", all attributes]{
+      label(s)[class="control-label"]{
+        elements
+      }
+    }
+  }
+  
   template formActions(){
     // div[class="form-group"]{
     //   div[class="col-sm-offset-2 col-sm-10"]{
@@ -1020,6 +1028,17 @@ section panels
   }
 
 section modal
+
+  template infoModal(title : String){
+    modalLink( id )[all attributes]{ iInfoSign }
+    modal( id ){
+      modalHeader{ header3{ output(title) } }
+      modalBody[style="font-weight: normal;"]{
+        elements
+      }
+      modalFooter{ modalCloseLink[class = "btn btn-default"] { iRemove " Close" } }
+    }
+  }
 
   template modalInfo( linkTitle : String){
     modalLink( id )[all attributes]{ output(linkTitle) }
