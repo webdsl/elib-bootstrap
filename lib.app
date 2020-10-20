@@ -620,6 +620,7 @@ section tabs
   }
 template setHashOnTabAndOpenFirstTab(){
   <script>
+    var ignoreHashChange = false;
     function hashChangeFunc(){
       // show active tab on hash in url
       if (window.location.hash !== ''){
@@ -647,14 +648,17 @@ template setHashOnTabAndOpenFirstTab(){
         //Prevent the browser to auto-scroll to the anchor of the tab
         window.location.hash = "";
       }
+      //make in-page #links open the tabs
       if ($._data( $(window)[0], 'events' ).hashchange == undefined){
         $(window).on('hashchange', hashChangeFunc);
       }
-      setTimeout( function(){
-        if(tabFromRequestUrl.length){
+      if(tabFromRequestUrl.length){
+        setTimeout( function(){
+        	ignoreHashChange = true;
           history.replaceState(null, null, initUrlHash);
-        }
-      }, 10 );
+          ignoreHashChange = false;
+        }, 10 );
+      }
     });
     var autoTabFunction = function(node){
       // remember the hash in the URL without jumping
@@ -1065,14 +1069,16 @@ section modal
     modal(modalID, "")[all attributes]{ elements }
   }
   define modal(modalID : String, modalSizeClass : String){
-    <div class="modal " tabindex="-1" id=modalID all attributes except "id">
+    <div class="modal" tabindex="-1" id=modalID all attributes except "id">
       <div class="modal-dialog ~modalSizeClass">
         <div class="modal-content">
           elements
         </div>
       </div>
     </div>
-
+    modalIncludes
+  }
+  define modalIncludes(){
     includeHead(
       "<script type=\"text/javascript\"> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
       rendertemplate(
