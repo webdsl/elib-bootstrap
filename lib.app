@@ -1115,7 +1115,7 @@ section modal
 
   define modalHide(modalID : String){
     <script>
-      $('#~modalID').hide();
+      $('#~modalID').modal('hide');
     </script>
   }
 
