@@ -1086,6 +1086,8 @@ section modal
           "$(node).find('.modal').on( 'shown.bs.modal', function(){ if(history.pushState){ history.pushState({ id: 'modal', modalId: $(this).attr('id') }, null, window.location.href); } } )" +
           ".on( 'hidden.bs.modal', function (){ if( history.state != null && history.state.modalId == $(this).attr('id') ){ history.back(); } } );"
         )
+        //To unload iframes, e.g. a video currently playing, the following code can be added to the 'hidden.bs.modal' event in the postProcess function:
+        //$(this).find('iframe').each(function(){ $(this).attr('src', $(this).attr('src')) }); 
       )
     )
   }
