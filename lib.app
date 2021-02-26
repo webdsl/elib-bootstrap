@@ -632,7 +632,7 @@ template setHashOnTabAndOpenFirstTab(){
           // and open parent tabs in case the target element is nested in a tab
           var parentPane = hashTarget.closest( '.tab-pane' );
           if(parentPane.length){
-            $('.nav a[href=#'+ parentPane.attr('id') +']').tab('show');
+            $('.nav a[href="#'+ parentPane.attr('id') +'"]').tab('show');
           }
           var parentCollapse = hashTarget.closest( '.panel-collapse:not(.in)' ).collapse('show');
         }
