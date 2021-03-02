@@ -35,9 +35,13 @@ section default attribute sets
 
 section tooltips
 
-  template tooltipsBS(){
-    postProcess("$(node).find('[title]').tooltip({placement: 'auto top', container: 'body'}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
-  }
+//sanitizing content to be displayed in tooltip significantly degrades page load time in case of many tooltip elements
+template tooltipsBS( sanitize : Bool ){
+  postProcess("$(node).find('[title]').tooltip({placement: 'auto top', container: 'body', sanitize: ~sanitize}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
+}
+template tooltipsBS(){
+  tooltipsBS( false )
+}
 
 section positioning
 
