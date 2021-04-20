@@ -1056,7 +1056,10 @@ section modal
 
   }
   template modalInfo( modalID: String, title : String){
-    modal( modalID, "" )[all attributes]{
+    modalInfo( modalID, title, "")[all attributes]{ elements }
+  }
+  template modalInfo( modalID: String, title : String, modalSizeClass : String){
+    modal( modalID, modalSizeClass )[all attributes]{
       modalHeader{ header3{ output(title) } }
       modalBody{
         elements
