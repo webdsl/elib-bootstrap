@@ -740,6 +740,17 @@ template setHashOnTabAndOpenFirstTab(){
     }
   }
 
+section collapse
+
+  template collapseLink(colId : String){
+  	<a role="button" data-toggle="collapse" href="#~colId" aria-expanded="false" aria-controls="~colId" all attributes>
+  	  collapseIndicator(colId) elements
+    </a>
+  }
+  template collapseContent(colId : String){
+		div[class="collapse", id=colId, all attributes]{ elements }
+  }
+
 section labels
 
   template labelDefault(){ labelInternal("label-default")[all attributes]{ elements } }
@@ -1014,21 +1025,20 @@ section panels
 
   }
 
-  template collapseIndicator(accordionId : String){
-    var accordionIdSelector := "#" + accordionId + " .panel-collapse"
+  template collapseIndicator(containerElemId : String){
+    // var accordionIdSelector := "#" + accordionId + " .collapse"
 
     iChevronRight " "
 
     head{
       <script>
         $( document ).ready(function() {
-          $('~accordionIdSelector').on('shown.bs.collapse', function () {
+          var colElem = $('#~containerElemId').find('.collapse').addBack('.collapse');
+          colElem.on('shown.bs.collapse', function () {
               $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
-          });
-
-          $('~accordionIdSelector').on('hidden.bs.collapse', function () {
+          }).on('hidden.bs.collapse', function () {
               $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
-          });
+          });;
         });
       </script>
     }
