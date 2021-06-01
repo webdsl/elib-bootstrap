@@ -889,26 +889,26 @@ section panels
     }
   }
 
-  define panelHeading(){
+  template panelHeading(){
     div[class="panel-heading clearfix", all attributes]{
       div[class="panel-title"]{
         elements
       }
     }
   }
-  define panelBody(){
+  template panelBody(){
     div[class="panel-body", all attributes]{
       elements
     }
   }
 
-  define panelFooter(){
+  template panelFooter(){
     div[class="panel-footer", all attributes]{
       elements
     }
   }
 
-  define panelInternal( header : String, panelclass : String){
+  template panelInternal( header : String, panelclass : String){
     panelNoBody(panelclass)[all attributes]{
       panelHeading { output(header) }
       panelBody { elements }
@@ -1080,14 +1080,14 @@ section modal
     }
   }
 
-  define modalLink (modalID : String){
+  template modalLink (modalID : String){
     <a data-toggle="modal" href="#" + modalID all attributes except ["href","data-toggle"] >elements</a>
   }
 
-  define modal(modalID : String){
+  template modal(modalID : String){
     modal(modalID, "")[all attributes]{ elements }
   }
-  define modal(modalID : String, modalSizeClass : String){
+  template modal(modalID : String, modalSizeClass : String){
     <div class="modal" tabindex="-1" id=modalID all attributes except "id">
       <div class="modal-dialog ~modalSizeClass">
         <div class="modal-content">
@@ -1097,7 +1097,7 @@ section modal
     </div>
     modalIncludes
   }
-  define modalIncludes(){
+  template modalIncludes(){
     includeHead(
       "<script type=\"text/javascript\"> $(window).on('popstate', function(){ $('.modal.in').modal('hide') }); </script>" +
       rendertemplate(
@@ -1111,30 +1111,30 @@ section modal
     )
   }
 
-  define modalHeader(){
+  template modalHeader(){
     <div class="modal-header" all attributes>
       <a class="close" data-dismiss="modal">iRemove()</a>
       elements
     </div>
   }
 
-  define modalBody(){
+  template modalBody(){
     <div class="modal-body" all attributes>
       elements
     </div>
   }
 
-  define modalFooter(){
+  template modalFooter(){
     <div class="modal-footer" all attributes>
       elements
     </div>
   }
 
-  define modalCloseLink(){
+  template modalCloseLink(){
     <a href="#" data-dismiss="modal" all attributes except ["href","data-dismiss"]>elements</a>
   }
 
-  define modalHide(modalID : String){
+  template modalHide(modalID : String){
     <script>
       $('#~modalID').modal('hide');
     </script>
@@ -1160,37 +1160,37 @@ section list groups
 
 section definitionList
 
-   define definitionList() {
+   template definitionList() {
     <dl all attributes>elements</dl>
   }
 
-  define definitionItem(term : String) {
+  template definitionItem(term : String) {
     <dt all attributes> output(term) </dt>
     <dd> elements </dd>
   }
 
-    define definitionListDescription() {
-      <dl class="dl-horizontal" all attributes> elements </dl>
-    }
+  template definitionListHorizontal() {
+    definitionList[class="dl-horizontal", all attributes]{ elements }
+  }
 
  section media
 
-  define media(){
+  template media(){
     div[class="media", all attributes]{ elements }
   }
 
-  define mediaObject(){
+  template mediaObject(){
     div[class="media-object", all attributes]{ elements }
   }
 
-  define mediaBody(){
+  template mediaBody(){
     div[class="media-body", all attributes]{ elements }
   }
 
-  define thumbnail(){
+  template thumbnail(){
     div[class="thumbnail", all attributes]{ elements }
   }
 
-  define caption(){
+  template caption(){
     div[class="caption", all attributes]{ elements }
   }
