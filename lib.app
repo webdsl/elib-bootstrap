@@ -1,5 +1,8 @@
 module elib/elib-bootstrap/lib
+
 imports elib/elib-bootstrap/icons
+
+imports elib/elib-utils/markup
 
 section default attribute sets
   // override attributes navigate{ class="navigate" }
