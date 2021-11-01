@@ -262,7 +262,7 @@ section tables
   }
 
   template tbody() {
-    <tbody all attributes>elements</thead>
+    <tbody all attributes>elements</tbody>
   }
 
   template tfooter() {
