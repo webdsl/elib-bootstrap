@@ -276,7 +276,7 @@ section forms
 
   template inlForm() {
     span[class="form-inline", role="form", all attributes]{
-      form[class="bla"]{
+      form{
         elements
       }
     }
