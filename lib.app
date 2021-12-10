@@ -29,8 +29,10 @@ section default attribute sets
   override attributes inputSelect{ class="select form-control" }
   override attributes inputSelectMultiple{ class="select form-control" }
   override attributes inputFile{ class="inputFile  form-control" }
-  override attributes inputMultiFile{ class="inputFile  form-control" }
+  override attributes inputMultiFile{ class="inputFile form-control" }
   override attributes inputSDF{ class="inputSDF form-control" }
+  override attributes inputSetCheckboxElements{ class="checkbox" }
+  override attributes inputBool{ class ="checkbox" }
   // override attributes radio{ class="radio " }
 
 section tooltips
