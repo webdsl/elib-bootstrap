@@ -32,7 +32,7 @@ section default attribute sets
   override attributes inputMultiFile{ class="inputFile form-control" }
   override attributes inputSDF{ class="inputSDF form-control" }
   override attributes inputSetCheckboxElements{ class="checkbox" }
-  override attributes inputBool{ class ="checkbox" }
+  // override attributes inputBool{ class ="checkbox" }
   // override attributes radio{ class="radio " }
 
 section tooltips
@@ -333,7 +333,7 @@ section forms
     }
   }
 
-section horizontal forms
+section horizontal forms and input
 
   template horizontalForm(){
     form[class="form-horizontal", role="form", all attributes] {
@@ -401,6 +401,14 @@ section horizontal forms
     <span class="input-group-addon" all attributes> elements </span>
   }
 
+  template inputCheckbox(bool : ref Bool){
+    div[class="checkbox", all attributes]{
+      <label>
+        input(bool)
+        elements
+      </label>
+    }
+  }
 section breadcrumbs
 
   template breadcrumbs(){
