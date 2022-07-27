@@ -312,7 +312,7 @@ section forms
   }
 
   template formActions(labelOff: Int, elemCol: Int){
-    div[class="form-group", all attributes]{
+    div[class="row form-group", all attributes]{
       div[class="col-sm-offset-" + labelOff + " col-sm-" + elemCol]{
         elements
       }
