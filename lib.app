@@ -755,12 +755,17 @@ template setHashOnTabAndOpenFirstTab(){
 section collapse
 
   template collapseLink(colId : String){
-  	<a role="button" data-toggle="collapse" href="#~colId" aria-expanded="false" aria-controls="~colId" all attributes>
+    var expandedAttr := attribute( "aria-expanded" )
+    var expanded := if( expandedAttr != null && expandedAttr == "true") true else false
+  	<a role="button" data-toggle="collapse" href="#~colId" aria-expanded=""+expanded aria-controls="~colId" all attributes>
   	  collapseIndicator(colId) elements
     </a>
   }
   template collapseContent(colId : String){
-		div[class="collapse", id=colId, all attributes]{ elements }
+    var expandedAttr := attribute( "aria-expanded" )
+    var collapseCls := if( expandedAttr != null && expandedAttr == "true") "collapse in" else "collapse"
+    
+    div[class=collapseCls, id=colId, all attributes]{ elements }
   }
 
 section labels
