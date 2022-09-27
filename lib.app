@@ -758,7 +758,7 @@ section collapse
     var expandedAttr := attribute( "aria-expanded" )
     var expanded := if( expandedAttr != null && expandedAttr == "true") true else false
   	<a role="button" data-toggle="collapse" href="#~colId" aria-expanded=""+expanded aria-controls="~colId" all attributes>
-  	  collapseIndicator(colId) elements
+  	  collapseIndicator(colId, expanded) elements
     </a>
   }
   template collapseContent(colId : String){
@@ -988,7 +988,7 @@ section panels
         div[class="panel-heading clearfix", role="tab", id=currentPanelId, all attributes]{
           <h3 class="panel-title">
             <a role="button" if(!expanded){class="collapsed"} data-toggle="collapse" data-parent="#"+accordionId href="#collapse"+currentPanelId aria-expanded=""+expanded aria-controls="collapse"+currentPanelId>
-              collapseIndicator(accordionId) elements
+              collapseIndicator(accordionId, expanded) elements
             </a>
           </h3>
         }
@@ -1042,21 +1042,22 @@ section panels
 
   }
 
-  template collapseIndicator(containerElemId : String){
+  template collapseIndicator(containerElemId : String, expanded : Bool){
     // var accordionIdSelector := "#" + accordionId + " .collapse"
 
-    iChevronRight " "
+    if(expanded){ iChevronDown } else { iChevronRight } " "
 
+    <script> collapseIndicator( '~containerElemId' ) </script>
     head{
       <script>
-        $( document ).ready(function() {
-          var colElem = $('#~containerElemId').find('.collapse').addBack('.collapse');
-          colElem.on('shown.bs.collapse', function () {
-              $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
-          }).on('hidden.bs.collapse', function () {
-              $(this).prev().find(".glyphicon:first").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
-          });;
-        });
+        function collapseIndicator( containerElemId ){
+          $( document ).ready(function(){
+	          var colElem = $('#' + containerElemId + ':not([data-collapse-handler])').attr('data-collapse-handler', 'true').find('.collapse').addBack('.collapse');
+	          colElem.on('shown.bs.collapse hidden.bs.collapse', function () {
+	              $(this).prev().find('.glyphicon:first').toggleClass('glyphicon-chevron-right glyphicon-chevron-down');
+	          })
+	        })
+        }
       </script>
     }
 
