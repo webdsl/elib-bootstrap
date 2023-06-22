@@ -640,10 +640,14 @@ template setHashOnTabAndOpenFirstTab(){
     function hashChangeFunc(){
       // show active tab on hash in url
       if (window.location.hash !== ''){
-        var hashTarget = $('a[href="' + window.location.hash + '"]');
-        if(hashTarget.length){
-          if( hashTarget.attr('data-toggle') === 'tab' ){
+        var hashTargetAll = $('a[href="' + window.location.hash + '"]');
+        if(hashTargetAll.length){
+          var hashTarget = hashTargetAll.filter('[data-toggle="tab"]')
+          if( hashTarget.length ){
+            hashTarget = hashTarget.first();
             hashTarget.tab('show');
+          } else {
+            hashTarget = hashTargetAll.first();
           }
           // and open parent tabs in case the target element is nested in a tab
           var parentPane = hashTarget.closest( '.tab-pane' );
