@@ -1214,3 +1214,14 @@ section definitionList
   template caption(){
     div[class="caption", all attributes]{ elements }
   }
+ 
+ section typography
+ 
+  htmlwrapper{
+    textMuted span[class="text-muted"]
+    textDanger span[class="text-danger"]
+    textWarning span[class="text-warning"]
+    textInfo span[class="text-info"]
+    textPrimary span[class="text-primary"]
+    textSuccess span[class="text-success"]
+  }
