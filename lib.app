@@ -501,12 +501,12 @@ section dropdowns
     listitem[all attributes]{ elements }
   }
   template dropdownSubMenu(title : String){
-  	dropdownMenuItem[class="dropdown dropdown-submenu", all attributes]{
-  		<a tabindex="-1" href="#"> output(title) </a>
-  		dropdownMenu{
-  			elements
-  		}
-  	}
+    dropdownMenuItem[class="dropdown dropdown-submenu", all attributes]{
+      <a tabindex="-1" href="#"> output(title) </a>
+      dropdownMenu{
+        elements
+      }
+    }
   }
   template dropdownMenuDivider() {
     listitem[class="divider", all attributes]
@@ -674,7 +674,7 @@ template setHashOnTabAndOpenFirstTab(){
       }
       if(tabFromRequestUrl.length){
         setTimeout( function(){
-        	ignoreHashChange = true;
+          ignoreHashChange = true;
           history.replaceState(null, null, initUrlHash);
           ignoreHashChange = false;
         }, 10 );
@@ -761,8 +761,8 @@ section collapse
   template collapseLink(colId : String){
     var expandedAttr := attribute( "aria-expanded" )
     var expanded := if( expandedAttr != null && expandedAttr == "true") true else false
-  	<a role="button" data-toggle="collapse" href="#~colId" aria-expanded=""+expanded aria-controls="~colId" all attributes>
-  	  collapseIndicator(colId, expanded) elements
+    <a role="button" data-toggle="collapse" href="#~colId" aria-expanded=""+expanded aria-controls="~colId" all attributes>
+      collapseIndicator(colId, expanded) elements
     </a>
   }
   template collapseContent(colId : String){
@@ -860,6 +860,57 @@ section alerts
     }
   }
 */
+
+section radio buttons
+  template radioButtons(ent1: ref Entity, ent2: [Entity]){
+    radioButtons(ent1, ent2, "btn btn-xs btn-default")[all attributes]
+  }
+  template radioButtons(ent1: ref Entity, ent2: [Entity], btnClass : String){
+    buttonGroup[data-toggle="buttons"]{
+      radio(ent1, ent2)[all attributes]
+    }
+    
+    template selectionInput(e : Entity, checked : Bool, type : String, tname : String){
+      <label class=if(checked) btnClass + " active" else btnClass>
+          <input type = type
+            //either it was submitted or it was not submitted but the value was already p
+            if(checked){ checked = "checked" }
+            name = tname
+            value = e.id
+            all attributes
+          />
+          outputLabel( e )
+        </label>
+    }
+    
+  }
+  template radioButtons( prop : ref String, from : [String]){
+    radioButtons(prop, from, "btn btn-xs btn-default")[all attributes]
+  }
+  template radioButtons( prop : ref String, from : [String], btnClass : String ){
+    var tname := id
+    var req := getRequestParameter(tname)
+    
+      buttonGroup[data-toggle="buttons"]{
+        for( option in from ){
+          <label class=if(option==prop) btnClass + " active" else btnClass>
+            <input type = "radio"
+              //either it was submitted or it was not submitted but the value was already p
+              if(option==prop){ checked = "checked" }
+              name = tname
+              value = option
+              all attributes
+            />
+            output( option )
+          </label>
+        }
+      }
+    databind{
+      if(from.indexOf(req) > -1){
+        prop := req;
+      }
+    }
+  }
 
 section panels
 
@@ -1056,11 +1107,11 @@ section panels
       <script>
         function collapseIndicator( containerElemId ){
           $( document ).ready(function(){
-	          var colElem = $('#' + containerElemId + ':not([data-collapse-handler])').attr('data-collapse-handler', 'true').find('.collapse').addBack('.collapse');
-	          colElem.on('shown.bs.collapse hidden.bs.collapse', function () {
-	              $(this).prev().find('.glyphicon:first').toggleClass('glyphicon-chevron-right glyphicon-chevron-down');
-	          })
-	        })
+            var colElem = $('#' + containerElemId + ':not([data-collapse-handler])').attr('data-collapse-handler', 'true').find('.collapse').addBack('.collapse');
+            colElem.on('shown.bs.collapse hidden.bs.collapse', function () {
+                $(this).prev().find('.glyphicon:first').toggleClass('glyphicon-chevron-right glyphicon-chevron-down');
+            })
+          })
         }
       </script>
     }
