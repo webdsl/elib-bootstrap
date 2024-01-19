@@ -682,7 +682,7 @@ template setHashOnTabAndOpenFirstTab(){
     });
     var autoTabFunction = function(node){
       // remember the hash in the URL without jumping
-      $('a[data-toggle="tab"]:not(.bound)').addClass('bound').on('shown.bs.tab', function(e){
+      $('a[data-toggle="tab"]:not(.no-hash):not(.bound)').addClass('bound').on('shown.bs.tab', function(e){
         var newhash = '#' + $(e.target).attr('href').substr(1);
         if(history.replaceState){
           history.replaceState(null, null, newhash);
