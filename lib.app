@@ -40,8 +40,8 @@ section tooltips
 //sanitizing content to be displayed in tooltip significantly degrades page load time in case of many tooltip elements
 template tooltipsBS( sanitize : Bool ){
   //prevent 'top' placement issue with horizontal scrolled page by switching to 'left' placement which does not have this issue in BS 3
-  var placementFun := "function(tt, elem){ return $(document).scrollLeft() > 100 ? 'auto left' : 'auto top' }"
-  postProcess("$(node).find('[title]').tooltip({placement: ~placementFun, container: 'body', sanitize: ~sanitize}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
+  var placementFun := "function(tt, elem){ var attval = elem.getAttribute('data-placement'); return attval ? attval : defaultplacement; }"
+  postProcess("var defaultplacement = $(document).scrollLeft() > 100 ? 'auto left' : 'auto top'; $(node).find('[title]').tooltip({placement: ~placementFun, container: 'body', sanitize: ~sanitize}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
 }
 template tooltipsBS(){
   tooltipsBS( false )
@@ -447,6 +447,7 @@ section buttons
       elements
     }
   }
+  
   template buttonGroupSpan(){
     span[class="btn-group", all attributes]{
       elements
