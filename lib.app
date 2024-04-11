@@ -41,7 +41,13 @@ section tooltips
 template tooltipsBS( sanitize : Bool ){
   //prevent 'top' placement issue with horizontal scrolled page by switching to 'left' placement which does not have this issue in BS 3
   var placementFun := "function(tt, elem){ var attval = elem.getAttribute('data-placement'); return attval ? attval : defaultplacement; }"
-  postProcess("var defaultplacement = $(document).scrollLeft() > 100 ? 'auto left' : 'auto top'; $(node).find('[title]').tooltip({placement: ~placementFun, container: false, sanitize: ~sanitize}); $('.tooltip.fade.in, .ui-tooltip-content').remove();")
+  //prevent growing/moving/changing borders for button/input group elements, as the tooltip would by default be appended next to the elem with [title] attr
+  var containerOpt := "$parent.hasClass('btn-group') || $parent.hasClass('input-group') ? $parent.parent() : false"
+  postProcess(
+    "var defaultplacement = $(document).scrollLeft() > 100 ? 'auto left' : 'auto top'; " +
+    "$(node).find('[title]').each( function(i,el){ var $e=$(el); var $parent=$e.parent();" +
+    "$e.tooltip({placement: ~placementFun, sanitize: ~sanitize, container: ~containerOpt}) } ); $('.tooltip.fade.in, .ui-tooltip-content').remove(); "
+  )
 }
 template tooltipsBS(){
   tooltipsBS( false )
