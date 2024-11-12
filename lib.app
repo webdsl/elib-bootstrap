@@ -688,22 +688,26 @@ template setHashOnTabAndOpenFirstTab(){
       }
     });
     var autoTabFunction = function(node){
+      var isActivatingFirstTab = false;
       // remember the hash in the URL without jumping
       $('a[data-toggle="tab"]:not(.no-hash):not(.bound)').addClass('bound').on('shown.bs.tab', function(e){
-        var newhash = '#' + $(e.target).attr('href').substr(1);
-        if(history.replaceState){
-          history.replaceState(null, null, newhash);
-        } else{
-          location.hash = newhash;
+        if(!isActivatingFirstTab){
+          var newhash = '#' + $(e.target).attr('href').substr(1);
+          if(history.replaceState){
+            history.replaceState(null, null, newhash);
+          } else{
+            location.hash = newhash;
+          }
         }
       });
 
       //When no tab is active, set the first one to active
       $(node).find('.nav-tabs:not(.bound), .nav-pills:not(.bound)').addClass('bound').each(function(){
         if( $(this).children().length > 0 && 1 > $(this).find('.active').length){
-          const activeElem = $(this).children().first().addClass('active');
-          const href = activeElem.children('a').attr('href');
-          $(node).find('.tab-content ' + href).first().addClass('active');
+          const firstItem = $(this).find('a[data-toggle="tab"]').first();
+          isActivatingFirstTab = true;
+          firstItem.tab('show');
+          isActivatingFirstTab = false;
         }
       });
     }
