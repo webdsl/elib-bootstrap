@@ -44,10 +44,10 @@ template tooltipsBS( sanitize : Bool ){
   postProcess(
     "let defaultplacement = $(document).scrollLeft() > 100 ? 'auto left' : 'auto top'; " +
     "$(node).find('[title]').each( function(i,el){ var $e=$(el);" +
-    "$e.tooltip({placement: ~placementFun, sanitize: ~sanitize }) } )" +
+    "$e.tooltip({placement: ~placementFun, sanitize: ~sanitize, container: 'body' }) } )" +
     //determine the container element, depending on whether the tooltip element is positioned fixed. The tooltip would otherwise move away with scrolling
     ".on('show.bs.tooltip', function () {"+
-    "  let el = this; while (el && window.getComputedStyle(el).position !== 'fixed') { el = el.parentElement; } $(this).data('bs.tooltip').options.container = el;" +
+    "  let el = this; while (el && window.getComputedStyle(el).position !== 'fixed') { el = el.parentElement; } if(el) $(this).data('bs.tooltip').options.container = el;" +
     "});" +
     //and try remove existing tooltipsin case it was loaded by ajax
     "$('.tooltip.fade.in, .ui-tooltip-content').remove(); "
