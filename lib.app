@@ -714,6 +714,18 @@ template setHashOnTabAndOpenFirstTab(){
           isActivatingFirstTab = false;
         }
       });
+      //In case this is an AJAX replacement with a .tab-content without .active element, and its associated .nav element is already in DOM, try adding missing active class
+      if (!$(node).is(document)) {
+        $(node).find('.tab-content').each(function () {
+          var $tabContent = $(this);
+          if (!$tabContent.children('.active').length) {
+            $('.nav a[data-toggle="tab"][aria-expanded="true"]').each(function () {
+              $tabContent.children($(this).attr('href')).addClass('active');
+            });
+          }
+        });
+      }
+      
     }
   </script>
 }
